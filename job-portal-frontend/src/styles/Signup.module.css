@@ -1,0 +1,15 @@
+.content {
+    margin: 0 auto;
+    width: 900px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    border: 1px solid silver;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.img_container img {
+    width: 400px;
+    border-radius: 10px 0 0 10px;
+}
