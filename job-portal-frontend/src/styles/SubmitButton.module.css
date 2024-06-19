@@ -1,0 +1,21 @@
+.button_container {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.button_container button {
+    margin-top: 20px;
+    width: 180px;
+    height: 50px;
+    font-size: 14px;
+    background-color: #5D7599;
+    color: #F7F0C6;
+    border: none;
+    border-radius: 10px;
+}
+
+.button_container button:hover {
+    cursor: pointer;
+    background-color: #F7F0C6;
+    color: #5D7599;
+}
