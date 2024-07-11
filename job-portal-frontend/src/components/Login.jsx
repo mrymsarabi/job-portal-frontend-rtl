@@ -5,6 +5,7 @@ import styles from "/src/styles/Login.module.css";
 
 //CSS:
 import SubmitButton from '/src/components/SubmitButton';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     //States:
@@ -45,7 +46,7 @@ const Login = () => {
                         <SubmitButton text="Login" />
                     </div>
                     <div>
-                        <a href='#'>If you don't already have an account, please sign up!</a>
+                        <Link to="/signup">If you don't already have an account, please sign up!</Link>
                     </div>
                 </form>
             </div>
