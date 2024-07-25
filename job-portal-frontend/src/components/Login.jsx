@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-//Modules and Libraries:
-import axios from 'axios';
+//APIs:
+import { loginAPI } from "/src/apis/loginAPI";
 
 //Components:
 import styles from "/src/styles/Login.module.css";
@@ -23,15 +23,9 @@ const Login = () => {
     };
 
     //Handling form submit:
-    const submitHandler = (e) => {
+    const submitHandler = async(e) => {
         e.preventDefault();
-        axios.post('http://localhost:5000/users/login', data)
-            .then(response => {
-                console.log(response.data);
-            })
-            .catch(error => {
-                console.error(error.response ? error.response.data : error.message);
-            });
+        const response = await loginAPI(data);
     };
 
     return (
@@ -41,15 +35,13 @@ const Login = () => {
                     <h1>Login</h1>
                     <div>
                         <div className={styles.field_container}>
-                            <label>User Name</label>
-                            <input type='text' placeholder='User Name' name='username' value={data.username} onChange={changeHandler} />
+                            <input type='text' placeholder='Username' name='username' value={data.username} onChange={changeHandler} />
                         </div>
                         <div className={styles.field_container}>
-                            <label>Password</label>
                             <input type='password' placeholder='Password' name='password' value={data.password} onChange={changeHandler} />
                         </div>
                     </div>
-                    <div>
+                    <div className={styles.buttonContainer}>
                         <SubmitButton text="Login" />
                     </div>
                     <div>
@@ -57,7 +49,7 @@ const Login = () => {
                     </div>
                 </form>
                 <div className={styles.img_container}>
-                    <img src='/src/assets/Login.jpg' />
+                    <img src='/src/assets/Hiring-amico.svg' />
                 </div>
             </div>
         </div>

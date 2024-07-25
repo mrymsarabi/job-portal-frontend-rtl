@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-//Modules andLibraries:
-import axios from 'axios';
+//APIs:
+import { signupAPI } from '/src/apis/signupAPI';
 
 //Components:
 import SubmitButton from "/src/components/SubmitButton";
@@ -27,15 +27,9 @@ const Signup = () => {
     };
 
     //Handling form submit:
-    const submitHandler = (e) => {
+    const submitHandler = async(e) => {
         e.preventDefault();
-        axios.post('http://localhost:5000/users/signup', data)
-            .then(response => {
-                console.log(response.data);
-            })
-            .catch(error => {
-                console.error(error.response ? error.response.data : error.message);
-            });
+        const response = await signupAPI(data);
     };
     
     return (
@@ -44,31 +38,29 @@ const Signup = () => {
                 <form onSubmit={submitHandler} className={styles.form_container}>
                     <h1>Sign Up</h1>
                     <div>
-                        <div className={styles.field_container}>
-                            <label>First Name</label>
-                            <input type='text' placeholder='First Name' name='first_name' value={data.first_name} onChange={changeHandler} />
+                        <div className={styles.fields}>
+                            <div className={`${styles.field_container} ${styles.first}`}>
+                                <input type='text' placeholder='First Name' name='first_name' value={data.first_name} onChange={changeHandler} />
+                            </div>
+                            <div className={styles.field_container}>
+                                <input type='text' placeholder='Last Name' name='last_name' value={data.last_name} onChange={changeHandler} />
+                            </div>
+                        </div>
+                        <div className={styles.fields}>
+                            <div className={`${styles.field_container} ${styles.first}`}>
+                                <input type='text' placeholder='Username' name='username' value={data.username} onChange={changeHandler} />
+                            </div>
+                            <div className={styles.field_container}>
+                                <input type='password' placeholder='Password' name='password' value={data.password} onChange={changeHandler} />
+                            </div>
                         </div>
                         <div className={styles.field_container}>
-                            <label>Last Name</label>
-                            <input type='text' placeholder='Last Name' name='last_name' value={data.last_name} onChange={changeHandler} />
-                        </div>
-                        <div className={styles.field_container}>
-                            <label>Email</label>
                             <input type='email' placeholder='Email' name='email' value={data.email} onChange={changeHandler} />
                         </div>
                         <div className={styles.field_container}>
-                            <label>User Name</label>
-                            <input type='text' placeholder='User Name' name='username' value={data.username} onChange={changeHandler} />
-                        </div>
-                        <div className={styles.field_container}>
-                            <label>Password</label>
-                            <input type='password' placeholder='Password' name='password' value={data.password} onChange={changeHandler} />
-                        </div>
-                        <div className={styles.field_container}>
-                            <label>Birth Date</label>
                             <input type='date' placeholder='Birth Date' name='birth_date' value={data.birth_date} onChange={changeHandler} />
                         </div>
-                        <div>
+                        <div className={styles.buttonContainer}>
                             <SubmitButton text="Sign Up" />
                         </div>
                         <div>
@@ -77,7 +69,7 @@ const Signup = () => {
                     </div>
                 </form>
                 <div className={styles.img_container}>
-                    <img src='/src/assets/Login.jpg' />
+                    <img src='/src/assets/Hiring-amico.svg' />
                 </div>
             </div>
         </div>

@@ -1,6 +1,14 @@
+.page {
+    font-family: "Inter", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 .content {
     margin: 0 auto;
-    width: fit-content;
+    width: 900px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
@@ -14,20 +22,45 @@
     border-radius: 0 10px 10px 0;
 }
 
+.img_container {
+    display: flex;
+    justify-content: center;
+}
+
+.form_container {
+    padding: 50px;
+    width: 400px;
+}
+
 .form_container h1 {
-    text-align: center;
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.fields {
+    display: flex;
+    justify-content: space-between;
 }
 
 .field_container {
     display: flex;
     flex-direction: column;
-    margin: 25px;
+    margin-bottom: 20px;
 }
 
 .field_container input {
     border: 1px solid silver;
-    margin-top: 10px;
     height: 32px;
     line-height: 32px;
     border-radius: 10px;
+    margin-bottom: 10px;
+    width: 400px;
+}
+
+.fields input {
+    width: 180px;
+}
+
+.form_container>div>div>a {
+    font-size: 14px;
 }
