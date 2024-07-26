@@ -11,7 +11,7 @@ import styles from "/src/styles/Login.module.css";
 
 //CSS:
 import SubmitButton from '/src/components/SubmitButton';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     //States:
@@ -19,6 +19,8 @@ const Login = () => {
         username: "",
         password: "",
     });
+
+    const navigate = useNavigate();
 
     //Handling input change:
     const changeHandler = (event) => {
@@ -29,6 +31,7 @@ const Login = () => {
     const submitHandler = async(e) => {
         e.preventDefault();
         const response = await loginAPI(data);
+        navigate("/add-job")
         Cookies.set("token", response.data.token);
         Cookies.set("user_id", response.data.user_id)
     };

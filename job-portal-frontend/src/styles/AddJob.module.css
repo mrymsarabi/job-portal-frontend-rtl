@@ -1,0 +1,60 @@
+.page {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+}
+
+.content {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex: 1;
+}
+
+.content h1 {
+    margin: 40px 0 20px 10px;
+    font-size: 24px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Add some space between the form elements */
+    border: 1px solid silver;
+    padding: 10px;
+    border-radius: 20px;
+    width: fit-content;
+    margin: 20px auto;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns with equal width */
+    grid-template-rows: auto; /* 5 rows with equal height */
+    gap: 20px;
+}
+
+.fieldContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.fieldContainer input {
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid silver;
+    margin-top: 10px;
+}
+
+.fieldContainer textarea {
+    width: 300px;
+    height: 100px;
+    border-radius: 10px;
+    border: 1px solid silver;
+    margin-top: 10px;
+}
+
+.buttonContainer {
+    margin: 20px auto;
+}
