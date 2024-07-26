@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+//Modules and Libraries:
+import Cookies from "js-cookie"
+
 //APIs:
 import { loginAPI } from "/src/apis/loginAPI";
 
@@ -26,6 +29,8 @@ const Login = () => {
     const submitHandler = async(e) => {
         e.preventDefault();
         const response = await loginAPI(data);
+        Cookies.set("token", response.data.token);
+        Cookies.set("user_id", response.data.user_id)
     };
 
     return (
