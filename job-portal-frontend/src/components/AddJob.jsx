@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-import axios from 'axios';
+//APIs:
+import { addJobAPI } from '/src/apis/addJobAPI';
 
 //Modules and Libraries:
 import Cookies from 'js-cookie';
@@ -42,18 +43,7 @@ const AddJob = () => {
         const config = {
             headers: { Authorization: `Bearer ${token}` }
         };
-        try {
-            const response = await axios.post('http://localhost:5000/jobs/jobs', data, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            console.log('Job posted successfully');
-        } catch (error) {
-            console.error(error);
-            console.log('Failed to post job');
-        }
+        const response = await addJobAPI(data, token);
     };
 
     return (

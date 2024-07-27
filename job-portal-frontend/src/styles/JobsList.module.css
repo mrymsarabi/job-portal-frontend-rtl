@@ -1,0 +1,27 @@
+.content h1 {
+    margin: 40px 0 0 25px;
+    font-size: 24px;
+}
+
+.listContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Adjust as needed */
+    align-items: flex-start; /* Adjust as needed */
+}
+
+.listContainer>div:first-child {
+    width: 40%;
+}
+
+.itemContainer, .activeItem  {
+    border: 1px solid silver;
+    height: 200px;
+    margin: 20px;
+    border-radius: 10px;
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+.activeItem {
+    border: 1px solid #ADECFE;
+}
