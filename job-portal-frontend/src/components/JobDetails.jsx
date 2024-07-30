@@ -14,6 +14,7 @@ const JobDetails = ({ data }) => {
             <div>{data.job_type}</div>
             <div>{data.location}</div>
             <div>{data.company_name}</div>
+            <hr />
             <div>{data.description}</div>
             <div>{data.benefits}</div>
             <div>{data.requirements}</div>
