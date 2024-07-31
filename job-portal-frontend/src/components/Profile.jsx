@@ -38,13 +38,13 @@ const Profile = () => {
     };
     
     return (
-        <div className={styles.component}>
+        <div className={styles.page}>
             <Navbar />
             <div className={styles.content}>
                 <h1 className={styles.heading}>Profile</h1>
                 <div className={styles.personalInfo}>
                     <div>
-                        <div>{pInfo.username}</div>
+                        <div className={styles.username}>{pInfo.username}</div>
                         <div className={styles.names}>
                             <div>{pInfo.first_name}</div>
                             <div>{pInfo.last_name}</div>

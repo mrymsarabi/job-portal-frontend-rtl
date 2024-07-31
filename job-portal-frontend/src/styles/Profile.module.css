@@ -1,7 +1,8 @@
-.component {
+.page {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: "Inter", sans-serif;
 }
   
 .content {
@@ -33,7 +34,11 @@
 .personalInfo>div>div {
     margin: 10px;
 }
-  
+
+.username {
+    font-size: 24px;
+}
+
 .names {
     display: flex;
     gap: 10px;
@@ -41,7 +46,7 @@
 
 .iconContainer {
     position: relative;
-    left: 500px;
+    left: 480px;
     top: -20px;
 }
   
