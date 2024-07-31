@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-//APIs:
-import { addJobAPI } from '/src/apis/addJobAPI';
-
 //Modules and Libraries:
 import Cookies from 'js-cookie';
+
+//APIs:
+import { addJobAPI } from '/src/apis/addJobAPI';
 
 //Components:
 import Navbar from "/src/components/Navbar";
