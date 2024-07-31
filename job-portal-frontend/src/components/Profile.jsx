@@ -2,18 +2,22 @@ import React, { useEffect, useState } from 'react';
 
 //Modules and Libraries:
 import Cookies from 'js-cookie';
+import { Link, useNavigate } from 'react-router-dom';
 
 //APIs:
 import { getUserAPI } from '/src/apis/getUserAPI';
 
 //Components:
 import Navbar from "/src/components/Navbar";
+import Icon from "/src/icons/Icon";
 
 //CSS:
 import styles from "/src/styles/Profile.module.css";
 
 const Profile = () => {
     const token = Cookies.get("token");
+
+    const navigate = useNavigate();
 
     //States:
     const [pInfo, setPInfo] = useState({});
@@ -27,6 +31,10 @@ const Profile = () => {
     const getPersonalInfo = async() => {
         const response = await getUserAPI(token);
         setPInfo(response.data.user);
+    };
+
+    const editHandler = () => {
+        navigate("/update-user-info");
     };
     
     return (
@@ -44,8 +52,10 @@ const Profile = () => {
                         <div>{pInfo.email}</div>
                         <div>{pInfo.birth_date}</div>
                     </div>
-                    <div>
-                        
+                    <div className={styles.iconContainer} onClick={editHandler}>
+                        <Link to="/update-user-info">
+                            <Icon icon="account-edit" color="#000" width="90px" height="90px" />
+                        </Link>
                     </div>
                 </div>
             </div>

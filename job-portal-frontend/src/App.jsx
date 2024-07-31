@@ -9,6 +9,7 @@ import Signup from '/src/components/Signup';
 import JobsList from '/src/components/JobsList';
 import AddJob from '/src/components/AddJob';
 import Profile from '/src/components/Profile';
+import UpdateUserInfo from '/src/components/UpdateUserInfo';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
       <Route path='/signup' element={<Signup />} />
       <Route path='/add-job' element={<AddJob />} />
       <Route path='/profile' element={<Profile />} />
+      <Route path='/update-user-info' element={<UpdateUserInfo />} />
       <Route path="/*" element={<Navigate to="/home" replace />} />
     </Routes>
   );
