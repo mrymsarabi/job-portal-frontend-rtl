@@ -39,10 +39,10 @@ const Signup = () => {
                     <h1>Sign Up</h1>
                     <div>
                         <div className={styles.fields}>
-                            <div className={`${styles.field_container} ${styles.first}`}>
+                            <div className={`${styles.field_container} ${styles.first} mr-2`}>
                                 <input type='text' placeholder='First Name' name='first_name' value={data.first_name} onChange={changeHandler} />
                             </div>
-                            <div className={styles.field_container}>
+                            <div className={`${styles.field_container} ml-1`}>
                                 <input type='text' placeholder='Last Name' name='last_name' value={data.last_name} onChange={changeHandler} />
                             </div>
                         </div>

@@ -50,7 +50,14 @@
     height: 32px;
     line-height: 32px;
     border-radius: 10px;
-    width: 400px;
+    width: 295px;
+    padding: 3px;
+
+}
+
+.field_container input::placeholder {
+    font-size: 14px;
+    padding-left: 3px;
 }
 
 .form_container>div>a {

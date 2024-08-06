@@ -55,11 +55,17 @@
     line-height: 32px;
     border-radius: 10px;
     margin-bottom: 10px;
-    width: 400px;
+    width: 295px;
+    padding: 3px;
+}
+
+.field_container input::placeholder {
+    font-size: 14px;
+    padding-left: 3px;
 }
 
 .fields input {
-    width: 180px;
+    width: 135px;
 }
 
 .form_container>div>div>a {

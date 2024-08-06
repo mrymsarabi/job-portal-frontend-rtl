@@ -13,7 +13,7 @@ import Navbar from "/src/components/Navbar";
 import styles from "/src/styles/UpdateResume.module.css";
 
 const UpdateResume = () => {
-    const token = Cookies.ger("token");
+    const token = Cookies.get("token");
 
     //States:
     const [data, setData] = useState();
@@ -25,8 +25,13 @@ const UpdateResume = () => {
 
     const fetchData = async() => {
         const response = await getResumeAPI(token);
-        if(response) {
-            setData(response);
+        console.log(response)
+        if(response.status === "error") {
+            if(response.error.status === 404) {
+                console.log("no data");
+            }
+        } else {
+            setData({})
         }
     }
 
@@ -34,28 +39,28 @@ const UpdateResume = () => {
         <div>
             <Navbar />
             <form>
-                <div>
+                <div className={`${styles.aboutContainer} rounded border border-light`}>
                     {/* About */}
                 </div>
-                <div>
+                <div className={`${styles.experienceContainer} rounded`}>
                     {/* Experience */}
                 </div>
-                <div>
+                <div className={`${styles.educationContainer} rounded`}>
                     {/* Education */}
                 </div>
-                <div>
+                <div className={`${styles.licsencesCertification} rounded`}>
                     {/* Licsences and Cerifications */}
                 </div>
-                <div>
+                <div className={`${styles.projectsContainer} rounded`}>
                     {/* Projects */}
                 </div>
-                <div>
+                <div className={`${styles.skillsContainer} rounded`}>
                     {/* Skills */}
                 </div>
-                <div>
+                <div className={`${styles.languagesContainer} rounded`}>
                     {/* Languages */}
                 </div>
-                <div>
+                <div className={`${styles.buttonContainer} rounded`}>
                     {/* Button Container */}
                 </div>
             </form>

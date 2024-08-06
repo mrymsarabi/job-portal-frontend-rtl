@@ -2,22 +2,21 @@ import axios from "axios";
 
 export const getResumeAPI = async (token) => {
     try {
-        const response = await axios.get('http://localhost:5000/resume', {
+        const response = await axios.get('http://localhost:5000/resume/resume', {
             headers: {
-            'Authorization': `Bearer ${token}` // Send the token in the Authorization header
+                'Authorization': `Bearer ${token}` // Send the token in the Authorization header
             }
         });
-    
-        if (response.status === 200) {
+
+        if (response.data.status === "success") {
             console.log('Resume Data:', response.data.resume);
-            // The resume data can now be used in your component
             return response.data.resume;
-        } else {
-            console.error('Failed to fetch resume:', response.data.error);
-            return null;
+        } else if (response.data.status === "error") {
+            console.error('Error fetching resume:', response.data.error);
+            return null; // or some other indication of an error
         }
     } catch (error) {
         console.error('Error fetching resume:', error);
-        return null;
+        return {status: "error", error: error.response}; // or some other indication of an error
     }
 };
