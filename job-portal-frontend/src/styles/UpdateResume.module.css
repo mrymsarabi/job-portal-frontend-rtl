@@ -1,0 +1,60 @@
+/* Center the form-container horizontally */
+.formContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.form {
+    width: 80%;
+    max-width: 1000px; 
+    padding: 20px;
+}
+
+/* Ensure partContainer elements take the full width of the form */
+.partContainer {
+    box-shadow: 1px 4px 4px 0px rgba(89, 89, 89, 34%);
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.buttonContainer {
+    width: 200px;
+    margin: 0 auto; /* Center the button container */
+    text-align: center;
+}
+
+.dataContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.detailsContainer {
+    text-align: left;
+}
+
+.experienceContainer>div>div,
+.educationContainer>div>div,
+.licensesContainer>div>div,
+.projectsContainer>div>div,
+.referencesContainer>div>div,
+.skillsContainer>div>div,
+.languagesContainer>div>div {
+    display: grid;
+    grid-template-rows: auto;
+    gap: 20px;
+}
+
+.experienceContainer>div>div { grid-template-columns: 1fr 3fr 3fr 3fr 3fr 4fr; }
+.educationContainer>div>div { grid-template-columns: 1fr 3fr 3fr 3fr 4fr; }
+.licensesContainer>div>div { grid-template-columns: 1fr 3fr 3fr 4fr; }
+.projectsContainer>div>div { grid-template-columns: 1fr 3fr 8fr; }
+.referencesContainer>div>div { grid-template-columns: 1fr 3fr 3fr 3fr 3fr 4fr; }
+.skillsContainer>div>div { grid-template-columns: 1fr 11fr }
+.languagesContainer>div>div { grid-template-columns: 1fr 3fr 4fr; }
+
+.dataContainer>textarea {
+    width: 99%;
+    height: 200px;
+}

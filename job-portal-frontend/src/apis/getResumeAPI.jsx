@@ -10,7 +10,7 @@ export const getResumeAPI = async (token) => {
 
         if (response.data.status === "success") {
             console.log('Resume Data:', response.data.resume);
-            return response.data.resume;
+            return response.data;
         } else if (response.data.status === "error") {
             console.error('Error fetching resume:', response.data.error);
             return null; // or some other indication of an error
