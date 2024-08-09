@@ -10,7 +10,8 @@ import JobsList from '/src/components/JobsList';
 import AddJob from '/src/components/AddJob';
 import Profile from '/src/components/Profile';
 import UpdateUserInfo from '/src/components/UpdateUserInfo';
-import UpdateResume from './components/UpdateResume';
+import UpdateResume from '/src/components/UpdateResume';
+import JobsUploaded from './components/JobsUploaded';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
       <Route path='/profile' element={<Profile />} />
       <Route path='/update-user-info' element={<UpdateUserInfo />} />
       <Route path='/update-resume' element={<UpdateResume />} />
+      <Route path='/jobs-uploaded' element={<JobsUploaded />} />
       <Route path="/*" element={<Navigate to="/home" replace />} />
     </Routes>
   );
