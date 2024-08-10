@@ -24,15 +24,16 @@ const JobsList = () => {
     //Getting data from API:
     const fetchData = async() => {
         const response = await jobsListAPI();
-        setData(response.data);
-        let showing = {};
-        showing[0] = true;
-        for(let i = 1; i < response.data.length; i++) {
-            showing[i] = false;
+        if(response.status === 200) {
+            setData(response.data.jobs);
+            let showing = {};
+            showing[0] = true;
+            for(let i = 1; i < response.data.length; i++) {
+                showing[i] = false;
+            }
+            setChoseItem(response.data.jobs[0]);
+            setShow(showing);
         }
-        console.log(showing);
-        setChoseItem(response.data[0]);
-        setShow(showing);
     };
 
     //Handling which item to show:
@@ -54,7 +55,7 @@ const JobsList = () => {
                 <div className={styles.listContainer}>
                     <div>
                         {
-                            data.map((item, index) => (
+                            data && data.map((item, index) => (
                                 <div onClick={() => showHandler(index)} className={show[index] ? styles.activeItem : styles.itemContainer}>
                                     <div>{item.title}</div>
                                     <div>{item.sector}</div>

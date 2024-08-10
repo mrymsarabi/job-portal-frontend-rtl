@@ -1,0 +1,39 @@
+.listHead, .listBody {
+    box-shadow: 1px 4px 4px 0px rgba(89, 89, 89, 34%);
+    width: 80%;
+    height: 80px;
+    line-height: 80px;
+    margin: 10px;
+}
+
+.tbody tr {
+    border-bottom: 1px solid silver;
+}
+
+.col1 {
+    width: 5%;
+}
+
+.col2 {
+    width: 15%;
+}
+
+.col3 {
+    width: 15%;
+}
+
+.col4 {
+    width: 15%;
+}
+
+.col5 {
+    width: 15%;
+}
+
+.col6 {
+    width: 20%;
+}
+
+.col7 {
+    width: 15%;
+}

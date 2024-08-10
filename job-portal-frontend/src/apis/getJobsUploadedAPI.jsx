@@ -6,7 +6,13 @@ export const getJobsUploadedAPI = async(token) => {
             headers: {
                 'Authorization': `Bearer ${token}` // Send the token in the Authorization header
             }
-        });
+        },
+    {
+        params: {
+            page_size: 20,
+            current_page: 1
+        }
+    });
         console.log(response);
         return response
 
