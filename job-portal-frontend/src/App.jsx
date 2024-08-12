@@ -12,6 +12,7 @@ import Profile from '/src/components/Profile';
 import UpdateUserInfo from '/src/components/UpdateUserInfo';
 import UpdateResume from '/src/components/UpdateResume';
 import JobsUploaded from './components/JobsUploaded';
+import Test from './components/Test';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
       <Route path='/update-user-info' element={<UpdateUserInfo />} />
       <Route path='/update-resume' element={<UpdateResume />} />
       <Route path='/jobs-uploaded' element={<JobsUploaded />} />
+      <Route path='/test' element={<Test />} />
       <Route path="/*" element={<Navigate to="/home" replace />} />
     </Routes>
   );

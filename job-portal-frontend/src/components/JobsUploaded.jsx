@@ -39,10 +39,10 @@ const JobsUploaded = () => {
         return date.toLocaleDateString(undefined, options);
       };
 
-    return (
+      return (
         <div>
             <Navbar />
-            <div>
+            <div className={styles.content}>
                 <div className={styles.listContainer}>
                     <table className={`${styles.listHead} rounded`}>
                         <colgroup>
@@ -57,7 +57,7 @@ const JobsUploaded = () => {
                         <thead className={`${styles.thead} rounded`}>
                             <tr>
                                 <th>#</th>
-                                <th>title</th>
+                                <th>Title</th>
                                 <th>Job Type</th>
                                 <th>Sector</th>
                                 <th>Location</th>
@@ -78,7 +78,7 @@ const JobsUploaded = () => {
                         </colgroup>
                         <tbody className={`${styles.tbody}`}>
                             {data && data.map((item, index) => (
-                                <tr>
+                                <tr key={index}>
                                     <td>{item.counter}</td>
                                     <td>{item.title}</td>
                                     <td>{item.job_type}</td>
@@ -93,7 +93,7 @@ const JobsUploaded = () => {
                 </div>
             </div>
         </div>
-    );
+    );        
 };
 
 export default JobsUploaded;
