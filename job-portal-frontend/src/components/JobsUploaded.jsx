@@ -8,6 +8,7 @@ import { getJobsUploadedAPI } from '/src/apis/getJobsUploadedAPI';
 
 //Compoennts:
 import Navbar from "/src/components/Navbar";
+import PaginationComponent from '/src/components/PaginationComponent';
 
 //CSS:
 import styles from "/src/styles/JobsUploaded.module.css";
@@ -18,16 +19,22 @@ const JobsUploaded = () => {
     //States:
     const [data, setData] = useState([]);
 
+    //Pagination:
+    const [totalCount, setTotalCount] = useState(0);
+    const [pageSize, setPageSize] = useState(10);
+    const [currentPage, setCurrentPage] = useState(1);
+
     //Functions:
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [currentPage, pageSize, totalCount]);
 
     //Getting list's data:
     const fetchData = async() => {
-        const response = await getJobsUploadedAPI(token);
+        const response = await getJobsUploadedAPI(token, 20, 1);
         if(response.status === 200) {
             setData(response.data.jobs);
+            setTotalCount(response.data.total_count)
         } else {
             
         }
@@ -38,6 +45,11 @@ const JobsUploaded = () => {
         const options = { year: 'numeric', month: 'short', day: 'numeric' };
         return date.toLocaleDateString(undefined, options);
       };
+
+      const handlePageChange = (page, size) => {
+        setCurrentPage(page);
+        setPageSize(size);
+    };
 
       return (
         <div>
@@ -90,6 +102,9 @@ const JobsUploaded = () => {
                             ))}
                         </tbody>
                     </table>
+                </div>
+                <div className={styles.pagination}>
+                    <PaginationComponent currentPage={currentPage} pageSize={pageSize} total={totalCount} onPageChange={handlePageChange} />
                 </div>
             </div>
         </div>
