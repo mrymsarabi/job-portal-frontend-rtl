@@ -1,24 +1,20 @@
-import React, { useEffect, useState } from 'react';
-
-//Modules and Libraries:
-import Cookies from "js-cookie";
-
-//APIs:
-import { getResumeAPI } from '/src/apis/getResumeAPI';
-
-//Components:
-import Navbar from "/src/components/Navbar";
-import SubmitButton from "/src/components/SubmitButton";
-import Icon from "/src/icons/Icon";
-
-//CSS:
-import styles from "/src/styles/UpdateResume.module.css";
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import AboutSection from './AboutSection';
+import ExperienceSection from './ExperienceSection';
+import EducationSection from './EducationSection';
+import SkillsSection from './SkillsSection';
+import LanguagesSection from './LanguagesSection';
+import ProjectsSection from './ProjectsSection';
+import ReferencesSection from './ReferencesSection';
+import HobbiesSection from './HobbiesSection';
+import Navbar from './Navbar';
+import styles from '/src/styles/UpdateResume.module.css';
+import { getResumeAPI } from '/src/apis/getResumeAPI'; // Adjust this import based on your API functions
+import Cookies from 'js-cookie';
 
 const UpdateResume = () => {
     const token = Cookies.get("token");
 
-    //States:
     const [data, setData] = useState({
         about: "",
         experience: [],
@@ -28,19 +24,20 @@ const UpdateResume = () => {
         languages: [],
         projects: [],
         references: [],
-        hobbies: [],
+        hobbies: []
     });
 
-    //Functions:
+    // Fetch data from the API on component mount
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [token]);
 
-    const fetchData = async() => {
+    const fetchData = async () => {
         const response = await getResumeAPI(token);
-        console.log(response)
-        if(response.status === "error") {
-            if(response.error.status === 404) {
+        console.log(response);
+
+        if (response.status === "error") {
+            if (response.error.status === 404) {
                 console.log("no data");
                 setData({
                     about: "",
@@ -67,286 +64,126 @@ const UpdateResume = () => {
                 references: resume.references,
                 hobbies: resume.hobbies
             });
-        };
+        }
     };
 
-    //Submitting form's data:
-    const submitHandler = async(event) => {
-        event.preventDefault();
-        const response = await axios.post(`http://localhost:5000/resume/resume`, {
-            about: "Motivated software engineer with 5+ years of experience in full-stack web development, specializing in React and Node.js.",
-
-    experience: [
-        {
-            title: "Senior Software Engineer",
-            company: "Tech Innovators Inc.",
-            start_date: "2020-01-01",
-            end_date: "Present",
-            description: "Leading a team of developers in designing and implementing scalable web applications. Key achievements include reducing page load time by 30% and improving overall system architecture."
-        },
-        {
-            title: "Software Engineer",
-            company: "Web Solutions Ltd.",
-            start_date: "2017-06-01",
-            end_date: "2019-12-31",
-            description: "Developed and maintained several client-facing applications, collaborating with cross-functional teams to deliver high-quality products. Increased customer satisfaction by 20% through enhanced UI/UX designs."
-        }
-    ],
-
-    education: [
-        {
-            degree: "Bachelor of Science in Computer Science",
-            institution: "University of Technology",
-            year: "2017",
-            description: "Focused on software engineering, algorithms, and data structures. Graduated with honors."
-        },
-        {
-            degree: "Master of Science in Software Engineering",
-            institution: "Global Tech University",
-            year: "2020",
-            description: "Specialized in advanced software development methodologies and cloud computing."
-        }
-    ],
-
-    licenses_and_certificates: [
-        {
-            title: "Certified ScrumMaster (CSM)",
-            institution: "Scrum Alliance",
-            year: "2019"
-        },
-        {
-            title: "AWS Certified Solutions Architect – Associate",
-            institution: "Amazon Web Services",
-            year: "2021"
-        }
-    ],
-
-    skills: [
-        "JavaScript",
-        "React",
-        "Node.js",
-        "Python",
-        "Django",
-        "SQL",
-        "AWS",
-        "Docker"
-    ],
-
-    languages: [
-        {
-            name: "English",
-            proficiency: "Native"
-        },
-        {
-            name: "Spanish",
-            proficiency: "Intermediate"
-        }
-    ],
-
-    projects: [
-        {
-            title: "E-commerce Platform",
-            description: "Developed a full-featured e-commerce platform using React, Node.js, and MongoDB, handling over 10,000 daily active users."
-        },
-        {
-            title: "Real-time Chat Application",
-            description: "Built a real-time chat application using WebSockets and React, supporting group chats, media sharing, and notifications."
-        }
-    ],
-
-    references: [
-        {
-            name: "John Doe",
-            position: "Senior Manager",
-            company: "XYZ Corporation",
-            email: "john.doe@example.com",
-            phone: "123-456-7890",
-            relationship: "Former Manager"
-        },
-        {
-            name: "Jane Smith",
-            position: "CTO",
-            company: "Tech Innovators Inc.",
-            email: "jane.smith@techinnovators.com",
-            phone: "987-654-3210",
-            relationship: "Direct Supervisor"
-        }
-    ],
-
-    hobbies: [
-        "Hiking",
-        "Photography",
-        "Coding Challenges",
-        "Traveling"
-    ]
-        }, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
+    const changeHandler = (e) => {
+        const { name, value } = e.target;
+        const [section, index, key] = name.split('.');
+        setData((prevState) => {
+            const updatedSection = [...prevState[section]];
+            updatedSection[index][key] = value;
+            return { ...prevState, [section]: updatedSection };
         });
-        console.log(response)
-    }
+    };
 
-    //Handling input's changes:
-    const changeHandler = (event) => {
-        console.log(event.target.value)
-        setData({...data, [event.targt.name]: event.target.value});
+    const addItem = (sectionName, newItem) => {
+        setData((prevState) => ({
+            ...prevState,
+            [sectionName]: [...prevState[sectionName], newItem]
+        }));
+    };
+
+    const deleteItem = (sectionName, index) => {
+        setData((prevState) => {
+            const updatedSection = prevState[sectionName].filter((_, i) => i !== index);
+            return { ...prevState, [sectionName]: updatedSection };
+        });
+    };
+
+    const editItem = (sectionName, index) => {
+        // Here, you would implement whatever logic you need to edit an item.
+        // For example, you might prompt the user with a modal to edit the item.
+        // As a simple example:
+        console.log(`Editing ${sectionName} at index ${index}`);
+    };
+
+    const submitHandler = async (e) => {
+        e.preventDefault();  // Prevent the default form submission behavior
+
+        // try {
+        //     const response = await submitResumeAPI(data, token); // Submit the full data object
+        //     console.log('Submit Response:', response);
+
+        //     if (response.status === "success") {
+        //         alert('Resume updated successfully!');
+        //     } else {
+        //         alert('Failed to update resume. Please try again.');
+        //     }
+        // } catch (error) {
+        //     console.error('Error submitting resume:', error);
+        //     alert('An error occurred while submitting your resume.');
+        // }
     };
 
     return (
-        <div className={styles.page}>
+        <div>
             <Navbar />
-            <div className={styles.formContainer}>
-
-                <form className={styles.form} onSubmit={submitHandler}>
-                    <div>
-                        <div className={`${styles.partContainer} ${styles.aboutContainer} rounded`}>
-                            {/* About */}
-                            <div className={`${styles.dataContainer}`}>
-                                <label>About</label>
-                                <textarea name="about" value={data.about} onChange={changeHandler} className={`rounded`} />
-                            </div>
-                        </div>
-                        <div className={`${styles.partContainer} ${styles.experienceContainer} rounded`}>
-                            {/* Experience */}
-                            <div className={`${styles.dataContainer}`}>
-                                <label>Experience</label>
-                                {
-                                    data.experience && data.experience.map((experience, index) => (
-                                        <div className={styles.detailsContainer}>
-                                            <div>{index + 1}</div>
-                                            <div>{experience.title}</div>
-                                            <div>{experience.company}</div>
-                                            <div>{experience.start_date}</div>
-                                            <div>{experience.end_date}</div>
-                                            <div>{experience.description}</div>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                            <div className={styles.iconContainer}>
-                                <Icon icon="plus" width="24px" height="24px" color="#000000" />
-                            </div>
-                        </div>
-                        <div className={`${styles.partContainer} ${styles.educationContainer} rounded`}>
-                            {/* Education */}
-                            <div className={`${styles.dataContainer}`}>
-                                <label>Education</label>
-                                {
-                                    data.education && data.education.map((education, index) => (
-                                        <div className={styles.detailsContainer}>
-                                            <div>{index + 1}</div>
-                                            <div>{education.degree}</div>
-                                            <div>{education.institution}</div>
-                                            <div>{education.year}</div>
-                                            <div>{education.description}</div>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                            <div className={styles.iconContainer}>
-                                <Icon icon="plus" width="24px" height="24px" color="#000000" />
-                            </div>
-                        </div>
-                        <div className={`${styles.partContainer} ${styles.licensesContainer} rounded`}>
-                            {/* Licenses and Cerifications */}
-                            <div className={`${styles.dataContainer}`}>
-                                <label>Licenses and Certifications</label>
-                                {
-                                    data.licenses_and_certificates && data.licenses_and_certificates.map((item, index) => (
-                                        <div className={styles.detailsContainer}>
-                                            <div>{index + 1}</div>
-                                            <div>{item.title}</div>
-                                            <div>{item.institution}</div>
-                                            <div>{item.year}</div>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                            <div className={styles.iconContainer}>
-                                <Icon icon="plus" width="24px" height="24px" color="#000000" />
-                            </div>
-                        </div>
-                        <div className={`${styles.partContainer} ${styles.projectsContainer} rounded`}>
-                            {/* Projects */}
-                            <div className={`${styles.dataContainer}`}>
-                                <label>Projects</label>
-                                {
-                                    data.projects && data.projects.map((project, index) => (
-                                        <div className={styles.detailsContainer}>
-                                            <div>{index + 1}</div>
-                                            <div>{project.title}</div>
-                                            <div>{project.description}</div>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                            <div className={styles.iconContainer}>
-                                <Icon icon="plus" width="24px" height="24px" color="#000000" />
-                            </div>
-                        </div>
-                        <div className={`${styles.partContainer} ${styles.referencesContainer} rounded`}>
-                            {/* References: */}
-                            <div className={`${styles.dataContainer}`}>
-                                <label>References</label>
-                                {
-                                    data.references && data.references.map((reference, index) => (
-                                        <div className={styles.detailsContainer}>
-                                            <div>{index + 1}</div>
-                                            <div>{reference.name}</div>
-                                            <div>{reference.position}</div>
-                                            <div>{reference.company}</div>
-                                            <div>{reference.email}</div>
-                                            <div>{reference.phone}</div>
-                                            <div>{reference.relationship}</div>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                            <div className={styles.iconContainer}>
-                                <Icon icon="plus" width="24px" height="24px" color="#000000" />
-                            </div>
-                        </div>
-                        <div className={`${styles.partContainer} ${styles.skillsContainer} rounded`}>
-                            {/* Skills */}
-                            <div className={`${styles.dataContainer}`}>
-                                <label>Skills</label>
-                                {
-                                    data.skills && data.skills.map((skill, index) => (
-                                        <div className={styles.detailsContainer}>
-                                            <div>{index + 1}</div>
-                                            <div>{skill}</div>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                            <div className={styles.iconContainer}>
-                                <Icon icon="plus" width="24px" height="24px" color="#000000" />
-                            </div>
-                        </div>
-                        <div className={`${styles.partContainer} ${styles.languagesContainer} rounded`}>
-                            {/* Languages */}
-                            <div className={`${styles.dataContainer}`}>
-                                <label>Languages</label>
-                                {
-                                    data.languages && data.languages.map((language, index) => (
-                                        <div className={styles.detailsContainer}>
-                                            <div>{index + 1}</div>
-                                            <div>{language.name}</div>
-                                            <div>{language.proficiency}</div>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                            <div className={styles.iconContainer}>
-                                <Icon icon="plus" width="24px" height="24px" color="#000000" />
-                            </div>
-                        </div>
-                        <div className={`${styles.buttonContainer} rounded`}>
-                            {/* Button Container */}
-                            <SubmitButton text="Submit" />
-                        </div>
-                    </div>
+            <div className={styles.container}>
+                <form onSubmit={submitHandler}>  {/* Wrap sections in a form */}
+                    <AboutSection
+                        title="About Me"
+                        value={data.about}
+                        onChange={changeHandler}
+                        editItem={editItem}
+                    />
+                    <ExperienceSection
+                        title="Experience"
+                        items={data.experience}
+                        onChange={changeHandler}
+                        addItem={() => addItem('experience', { title: "", company: "", start_date: "", end_date: "", description: "" })}
+                        deleteItem={deleteItem}
+                        editItem={editItem}
+                    />
+                    <EducationSection
+                        title="Education"
+                        items={data.education}
+                        onChange={changeHandler}
+                        addItem={() => addItem('education', { degree: "", institution: "", year: "", description: "" })}
+                        deleteItem={deleteItem}
+                        editItem={editItem}
+                    />
+                    <SkillsSection
+                        title="Skills"
+                        items={data.skills}
+                        onChange={changeHandler}
+                        addItem={() => addItem('skills', "")}
+                        deleteItem={deleteItem}
+                        editItem={editItem}
+                    />
+                    <LanguagesSection
+                        title="Languages"
+                        items={data.languages}
+                        onChange={changeHandler}
+                        addItem={() => addItem('languages', { name: "", proficiency: "" })}
+                        deleteItem={deleteItem}
+                        editItem={editItem}
+                    />
+                    <ProjectsSection
+                        title="Projects"
+                        items={data.projects}
+                        onChange={changeHandler}
+                        addItem={() => addItem('projects', { title: "", description: "" })}
+                        deleteItem={deleteItem}
+                        editItem={editItem}
+                    />
+                    <ReferencesSection
+                        title="References"
+                        items={data.references}
+                        onChange={changeHandler}
+                        addItem={() => addItem('references', { name: "", position: "", company: "", email: "", phone: "", relationship: "" })}
+                        deleteItem={deleteItem}
+                        editItem={editItem}
+                    />
+                    <HobbiesSection
+                        title="Hobbies"
+                        items={data.hobbies}
+                        onChange={changeHandler}
+                        addItem={() => addItem('hobbies', "")}
+                        deleteItem={deleteItem}
+                        editItem={editItem}
+                    />
+                    <button type="submit" className={styles.submitButton}>Submit</button>  {/* Submit button */}
                 </form>
             </div>
         </div>

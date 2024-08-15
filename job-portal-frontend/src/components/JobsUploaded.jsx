@@ -55,6 +55,7 @@ const JobsUploaded = () => {
         <div>
             <Navbar />
             <div className={styles.content}>
+                <h1>Jobs Uploaded</h1>
                 <div className={styles.listContainer}>
                     <table className={`${styles.listHead} rounded`}>
                         <colgroup>
