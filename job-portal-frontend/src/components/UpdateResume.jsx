@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import AboutSection from './AboutSection';
-import ExperienceSection from './ExperienceSection';
-import EducationSection from './EducationSection';
-import SkillsSection from './SkillsSection';
-import LanguagesSection from './LanguagesSection';
-import ProjectsSection from './ProjectsSection';
-import ReferencesSection from './ReferencesSection';
-import HobbiesSection from './HobbiesSection';
-import Navbar from './Navbar';
-import styles from '/src/styles/UpdateResume.module.css';
-import { getResumeAPI } from '/src/apis/getResumeAPI'; // Adjust this import based on your API functions
+
+//Modules and Libraries:
 import Cookies from 'js-cookie';
+
+//APIs:
+import { getResumeAPI } from '/src/apis/getResumeAPI'; // Adjust this import based on your API functions
+import { updateResumeAPI } from '/src/apis/updateResumeAPI';
+
+//Components:
+import Navbar from '/src/components/Navbar';
+import AboutSection from '/src/components/AboutSection';
+import ExperienceSection from '/src/components/ExperienceSection';
+import EducationSection from '/src/components/EducationSection';
+import SkillsSection from '/src/components/SkillsSection';
+import LanguagesSection from '/src/components/LanguagesSection';
+import ProjectsSection from '/src/components/ProjectsSection';
+import ReferencesSection from '/src/components/ReferencesSection';
+import HobbiesSection from '/src/components/HobbiesSection';
+
+//CSS:
+import styles from '/src/styles/UpdateResume.module.css';
 
 const UpdateResume = () => {
     const token = Cookies.get("token");
@@ -67,15 +76,45 @@ const UpdateResume = () => {
         }
     };
 
+    // const changeHandler = (e) => {
+    //     const { name, value } = e.target;
+    //     const [section, index, key] = name.split('.');
+    //     setData((prevState) => {
+    //         const updatedSection = [...prevState[section]];
+    //         updatedSection[index][key] = value;
+    //         return { ...prevState, [section]: updatedSection };
+    //     });
+    // };
+
     const changeHandler = (e) => {
         const { name, value } = e.target;
-        const [section, index, key] = name.split('.');
-        setData((prevState) => {
-            const updatedSection = [...prevState[section]];
-            updatedSection[index][key] = value;
-            return { ...prevState, [section]: updatedSection };
-        });
+    
+    const [section, index, key] = name.split('.');
+
+        // Check if the name is 'about' or another simple field
+        if (name === "about") {
+            setData((prevState) => ({
+                ...prevState,
+                [name]: value
+            }));
+        } else if(!key) { // Handle sections that are arrays of strings (like 'skills' and 'hobbies')
+            setData((prevState) => {
+                const updatedSection = [...prevState[section]];
+                updatedSection[index] = value;  // Directly update the string at the specific index
+                return { ...prevState, [section]: updatedSection };
+            });
+        } else {
+            // Handle complex sections (arrays of objects)
+            const [section, index, key] = name.split('.');
+            setData((prevState) => {
+                const updatedSection = [...prevState[section]];
+                updatedSection[index][key] = value;
+                return { ...prevState, [section]: updatedSection };
+            });
+        }
     };
+    
+    
 
     const addItem = (sectionName, newItem) => {
         setData((prevState) => ({
@@ -101,19 +140,17 @@ const UpdateResume = () => {
     const submitHandler = async (e) => {
         e.preventDefault();  // Prevent the default form submission behavior
 
-        // try {
-        //     const response = await submitResumeAPI(data, token); // Submit the full data object
-        //     console.log('Submit Response:', response);
-
-        //     if (response.status === "success") {
-        //         alert('Resume updated successfully!');
-        //     } else {
-        //         alert('Failed to update resume. Please try again.');
-        //     }
-        // } catch (error) {
-        //     console.error('Error submitting resume:', error);
-        //     alert('An error occurred while submitting your resume.');
-        // }
+        try {
+            const response = await updateResumeAPI(data, token);
+            if (response.status === 200) {
+                console.log(response)
+            } else {
+                // return { status: "error", message: "Failed to update resume section." };
+                console.log("Failed to update resume section.")
+            }
+        } catch (error) {
+            console.log(error)
+        }
     };
 
     return (
