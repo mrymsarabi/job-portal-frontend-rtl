@@ -55,7 +55,7 @@ const JobsList = () => {
                 <div className={styles.listContainer}>
                     <div>
                         {
-                            data && data.map((item, index) => (
+                            data.length > 0 && data.map((item, index) => (
                                 <div onClick={() => showHandler(index)} className={show[index] ? styles.activeItem : styles.itemContainer}>
                                     <div>{item.title}</div>
                                     <div>{item.sector}</div>
@@ -67,7 +67,9 @@ const JobsList = () => {
                         }
                     </div>
                     <div>
-                        <JobDetails data={chosenItem} />
+                        {data.length > 0 &&
+                            <JobDetails data={chosenItem} />
+                        }
                     </div>
                 </div>
             </div>

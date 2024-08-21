@@ -26,9 +26,10 @@ const AddJob = () => {
         salary: "",
         location: "",
         job_type: "",
-        description: "",
         requirements: "",
+        description: "",
         benefits: "",
+        
     });
 
     //Functions:
