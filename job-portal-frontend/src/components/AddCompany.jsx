@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 //Modules and Libraries:
 import Cookies from 'js-cookie';
 
+//APIs:
+import { AddCompanyAPI } from '/src/apis/addCompanyAPI';
+
 //Components:
 import Navbar from "/src/components/Navbar";
 
@@ -23,22 +26,40 @@ const AddCompany = () => {
     //Funstions:
     //Handling a field's changes:
     const changeHander = (event) =>{
-        setData({...data, [even.target.name]: event.target.value});
+        setData({...data, [event.target.name]: event.target.value});
     };
 
     //Handling form's submission:
     const submitHandler = async(event) => {
         event.preventDefault();
+        const response = await AddCompanyAPI(data, token);
     };
 
     return (
         <div className={styles.page}>
-            <div>
-                {/* Top Content */}
+            <Navbar />
+            <div className={styles.content}>
+                <div className={`${styles.topContent}`}>
+                    {/* Top Content */}
+                    <h1>Add Company</h1>
+                </div>
+                <form onSubmit={submitHandler} className={`${styles.form} rounded p-4`}>
+                    <div className={styles.gridContainer}>
+                        <div className={styles.field}>
+                            <label>Title</label>
+                            <input type='text' name='title' value={data.title} onChange={changeHander} className={`border rounded`} />
+                        </div>
+                        <div className={styles.field}>
+                            <label>About Us</label>
+                            <textarea name='about_us' value={data.about_us} onChange={changeHander} className={`border rounded`} />
+                        </div>
+                        <div className={styles.field}>
+                            <label>Number of Employees</label> 
+                            <input type='number' name='number_of_employees' value={data.number_of_employees} onChange={changeHander} className={`border rounded`} /> 
+                        </div>
+                    </div>
+                </form>
             </div>
-            <form onSubmit={submitHandler} className={styles.form}>
-                
-            </form>
         </div>
     );
 };
