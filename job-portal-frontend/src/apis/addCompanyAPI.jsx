@@ -1,8 +1,9 @@
 import axios from "axios";
 
-export const AddCompanyAPI = async(data, token) => {
+export const addCompanyAPI = async(data, token) => {
+  console.log(data)
     try {
-        const response = await axios.post('http://localhost:5000/companies', data, {
+        const response = await axios.post('http://localhost:5000/companies/companies', data, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',

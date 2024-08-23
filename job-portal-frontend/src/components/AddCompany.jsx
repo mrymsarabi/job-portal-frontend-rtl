@@ -4,10 +4,11 @@ import React, { useState } from 'react';
 import Cookies from 'js-cookie';
 
 //APIs:
-import { AddCompanyAPI } from '/src/apis/addCompanyAPI';
+import { addCompanyAPI } from '/src/apis/addCompanyAPI';
 
 //Components:
 import Navbar from "/src/components/Navbar";
+import SubmitButton from "/src/components/SubmitButton";
 
 //CSS:
 import styles from "/src/styles/AddCompany.module.css";
@@ -32,7 +33,7 @@ const AddCompany = () => {
     //Handling form's submission:
     const submitHandler = async(event) => {
         event.preventDefault();
-        const response = await AddCompanyAPI(data, token);
+        const response = await addCompanyAPI(data, token);
     };
 
     return (
@@ -57,6 +58,13 @@ const AddCompany = () => {
                             <label>Number of Employees</label> 
                             <input type='number' name='number_of_employees' value={data.number_of_employees} onChange={changeHander} className={`border rounded`} /> 
                         </div>
+                        <div className={styles.field}>
+                            <label>Founded date</label>
+                            <input type='date' name='founded_date' value={data.founded_date} onChange={changeHander} className={`border rounded`} />
+                        </div>
+                    </div>
+                    <div>
+                        <SubmitButton text="Submit" />
                     </div>
                 </form>
             </div>

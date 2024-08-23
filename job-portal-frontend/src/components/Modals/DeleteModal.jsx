@@ -26,7 +26,7 @@ const DeleteModal = ({ isOpen, setIsOpen, deleteHandler, selectedInfo, setSelect
             <div className={styles.closeModal}>
                 <Icon icon="close-circle" color="#6A6A6A" onClick={closeModal} />
             </div>
-            <h2>Are you sure you want to delet this item?</h2>
+            <h2>Are you sure you want to delete this item?</h2>
             <div>
                 <button className={styles.yes} onClick={() => deleteHandler(selectedInfo)}>Yes</button>
                 <button className={styles.no} onClick={closeModal}>No</button>

@@ -14,6 +14,7 @@ import UpdateResume from '/src/components/UpdateResume';
 import JobsUploaded from '/src/components/JobsUploaded';
 import Test from '/src/components/Test';
 import AddCompany from '/src/components/AddCompany';
+import JobDetailsPage from '/src/components/JobDetailsPage';
 
 const App = () => {
   return (
@@ -26,7 +27,8 @@ const App = () => {
       <Route path='/update-user-info' element={<UpdateUserInfo />} />
       <Route path='/update-resume' element={<UpdateResume />} />
       <Route path='/jobs-uploaded' element={<JobsUploaded />} />
-      <Route path="/add-company" element={<AddCompany />} />
+      <Route path='/add-company' element={<AddCompany />} />
+      <Route path='/job/:id' element={<JobDetailsPage />} />
       <Route path='/test' element={<Test />} />
       <Route path="/*" element={<Navigate to="/home" replace />} />
     </Routes>
