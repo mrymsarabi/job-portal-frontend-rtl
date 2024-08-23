@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 
 //APIs:
 import { getJobAPI } from '/src/apis/getJobAPI';
+import { applyForJobAPI } from '/src/apis/applyForJobAPI';
 
 //Components:
 import Navbar from "/src/components/Navbar";
@@ -14,8 +15,9 @@ import styles from "/src/styles/JobDetailsPage.module.css";
 import { useParams } from 'react-router-dom';
 
 const JobDetailsPage = () => {
+    const token = Cookies.get("token");
     const id = useParams().id;
-
+    
     //States:
     const [data, setData] = useState({});
 
@@ -31,8 +33,9 @@ const JobDetailsPage = () => {
     };
 
     //Handling apply for the position:
-    const applyHandler = async() => {
-        
+    const applyHandler = async(event, job_id) => {
+        event.preventDefault();
+        const response = await applyForJobAPI(id, token);
     }
 
     return (
@@ -78,7 +81,7 @@ const JobDetailsPage = () => {
                             <div>If you want to make changes to your resume, click here.</div>
                             <div>Click on Apply button to send your resume for this postion</div>
                         </div>
-                        <div onClick={applyHandler} className={`${styles.buttonContainer} rounded`}>
+                        <div onClick={event => applyHandler(event, id)} className={`${styles.buttonContainer} rounded`}>
                             Apply
                         </div>
                     </div>
