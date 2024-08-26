@@ -90,3 +90,7 @@ td:first-child {
 .pagination {
     margin-top: 20px !important;
 }
+
+.tbody tr:hover {
+    cursor: pointer;
+}

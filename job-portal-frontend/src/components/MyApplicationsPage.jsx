@@ -59,6 +59,7 @@ const MyApplicationsPage = () => {
                                     <col className={styles.col3} />
                                     <col className={styles.col4} />
                                     <col className={styles.col5} />
+                                    <col className={styles.col6} />
                                 </colgroup>
                                 <thead className={styles.thead}>
                                     <tr>
@@ -67,6 +68,7 @@ const MyApplicationsPage = () => {
                                         <th>Company</th>
                                         <th>Location</th>
                                         <th>Applied date</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -77,6 +79,7 @@ const MyApplicationsPage = () => {
                                     <col className={styles.col3} />
                                     <col className={styles.col4} />
                                     <col className={styles.col5} />
+                                    <col className={styles.col6} />
                                 </colgroup>
                                 <tbody className={styles.tbody}>
                                     {
@@ -87,6 +90,7 @@ const MyApplicationsPage = () => {
                                                 <td>{item.company_name}</td>
                                                 <td>{item.location}</td>
                                                 <td>{item.date_applied}</td>
+                                                <td>{item.status}</td>
                                             </tr>
                                         ))
                                     }

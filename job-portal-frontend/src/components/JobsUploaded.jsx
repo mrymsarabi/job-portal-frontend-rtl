@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 //Modules and Libraries:
 import Cookies from "js-cookie";
+import { useNavigate } from 'react-router-dom';
 
 //APIs:
 import { getJobsUploadedAPI } from '/src/apis/getJobsUploadedAPI';
@@ -15,6 +16,8 @@ import styles from "/src/styles/JobsUploaded.module.css";
 
 const JobsUploaded = () => {
     const token = Cookies.get("token");
+
+    const navigate = useNavigate();
 
     //States:
     const [data, setData] = useState([]);
@@ -49,6 +52,11 @@ const JobsUploaded = () => {
     const handlePageChange = (page, size) => {
         setCurrentPage(page);
         setPageSize(size);
+    };
+
+    const detailsHandler = (event, id) => {
+        event.preventDefault();
+        navigate(`/jobs-uploaded/${id}`);
     };
 
       return (
@@ -91,7 +99,7 @@ const JobsUploaded = () => {
                         </colgroup>
                         <tbody className={`${styles.tbody}`}>
                             {data && data.map((item, index) => (
-                                <tr key={index}>
+                                <tr key={index} onClick={event => detailsHandler(event, item._id)}>
                                     <td>{item.counter}</td>
                                     <td>{item.title}</td>
                                     <td>{item.job_type}</td>

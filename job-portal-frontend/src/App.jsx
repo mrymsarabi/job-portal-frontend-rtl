@@ -16,6 +16,7 @@ import Test from '/src/components/Test';
 import AddCompany from '/src/components/AddCompany';
 import JobDetailsPage from '/src/components/JobDetailsPage';
 import MyApplicationsPage from '/src/components/MyApplicationsPage';
+import JobDetailsApplicants from '/src/components/JobDetailsApplicants';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
       <Route path='/update-user-info' element={<UpdateUserInfo />} />
       <Route path='/update-resume' element={<UpdateResume />} />
       <Route path='/jobs-uploaded' element={<JobsUploaded />} />
+      <Route path='/jobs-uploaded/:id' element={<JobDetailsApplicants />} />
       <Route path='/add-company' element={<AddCompany />} />
       <Route path='/job/:id' element={<JobDetailsPage />} />
       <Route path='/my-applications' element={<MyApplicationsPage />} />

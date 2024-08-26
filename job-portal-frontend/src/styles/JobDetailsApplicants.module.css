@@ -1,0 +1,11 @@
+.jobDetailsContainer {
+    box-shadow: 1px 4px 4px 0px rgba(89, 89, 89, 0.34);
+    width: 80%;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* First column 200px wide, second column takes up the remaining space */
+    grid-template-rows: auto;
+    gap: 20px;
+}
