@@ -8,6 +8,7 @@ import { getMyApplicatiosAPI } from '/src/apis/getMyApplicationsAPI';
 
 //Components:
 import Navbar from "/src/components/Navbar";
+import PaginationComponent from '/src/components/PaginationComponent';
 
 //CSS:
 import styles from "/src/styles/MyApplicationsPage.module.css";
@@ -18,15 +19,26 @@ const MyApplicationsPage = () => {
     //States:
     const [data, setData] = useState([]);
 
+    //Pagination States:
+    const [totalCount, setTotalCount] = useState(0);
+    const [pageSize, setPageSize] = useState(10);
+    const [currentPage, setCurrentPage] = useState(1);
+
     //Functions:
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [totalCount, pageSize, currentPage]);
 
     //Getting the application's list (applied by the logged-in user):
     const fetchData = async() => {
-        const response = await getMyApplicatiosAPI(token);
+        const response = await getMyApplicatiosAPI(pageSize, currentPage, token);
         setData(response.data.applied_jobs);
+        setTotalCount(response.data.total_count);
+    };
+
+    const handlePageChange = (page, size) => {
+        setCurrentPage(page);
+        setPageSize(size);
     };
 
     return (
@@ -39,46 +51,51 @@ const MyApplicationsPage = () => {
                 {
                     data.length > 0 &&
                     <div className={styles.listContainer}>
-                        <table className={styles.listHead}>
-                            <colgroup>
-                                <col className={styles.col1} />
-                                <col className={styles.col2} />
-                                <col className={styles.col3} />
-                                <col className={styles.col4} />
-                                <col className={styles.col5} />
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Position</th>
-                                    <th>Company</th>
-                                    <th>Location</th>
-                                    <th>Applied date</th>
-                                </tr>
-                            </thead>
-                        </table>
-                        <table className={styles.listBody}>
-                            <colgroup>
-                                <col className={styles.col1} />
-                                <col className={styles.col2} />
-                                <col className={styles.col3} />
-                                <col className={styles.col4} />
-                                <col className={styles.col5} />
-                            </colgroup>
-                            <tbody>
-                                {
-                                    data && data.map((item, index) => (
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    ))
-                                }
-                            </tbody>
-                        </table>
+                        <div>
+                            <table className={`${styles.listHead} rounded`}>
+                                <colgroup>
+                                    <col className={styles.col1} />
+                                    <col className={styles.col2} />
+                                    <col className={styles.col3} />
+                                    <col className={styles.col4} />
+                                    <col className={styles.col5} />
+                                </colgroup>
+                                <thead className={styles.thead}>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Position</th>
+                                        <th>Company</th>
+                                        <th>Location</th>
+                                        <th>Applied date</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <table className={`${styles.listBody} rounded`}>
+                                <colgroup>
+                                    <col className={styles.col1} />
+                                    <col className={styles.col2} />
+                                    <col className={styles.col3} />
+                                    <col className={styles.col4} />
+                                    <col className={styles.col5} />
+                                </colgroup>
+                                <tbody className={styles.tbody}>
+                                    {
+                                        data && data.map((item, index) => (
+                                            <tr>
+                                                <td>{item.counter}</td>
+                                                <td>{item.job_title}</td>
+                                                <td>{item.company_name}</td>
+                                                <td>{item.location}</td>
+                                                <td>{item.date_applied}</td>
+                                            </tr>
+                                        ))
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div className={styles.pagination}>
+                            <PaginationComponent currentPage={currentPage} pageSize={pageSize} total={totalCount} onPageChange={handlePageChange} />
+                        </div>
                     </div>
                 }
             </div>

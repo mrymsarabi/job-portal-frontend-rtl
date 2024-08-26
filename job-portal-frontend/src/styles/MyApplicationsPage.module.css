@@ -1,0 +1,73 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centers the table and pagination horizontally */
+    width: 100%; /* Ensures the content takes up most of the screen width */
+}
+
+.topContent {
+    width: 80%; /* Ensures the top content takes the full width of the container */
+    margin-bottom: 20px; /* Adds space below the heading */
+    text-align: left; /* Aligns the heading to the left */
+}
+
+.topContent > h1 {
+    font-size: 32px;
+    font-weight: 400;
+    margin-left: 0; /* Aligns the header to the start of the table */
+    text-align: left;
+}
+
+.listContainer {
+    width: 80%; /* Ensures the container takes the full width available */
+}
+
+.listHead, .listBody {
+    box-shadow: 1px 4px 4px 0px rgba(89, 89, 89, 0.34);
+    width: 100%; /* Makes the tables take up the full width of the container */
+    margin: 10px 0; /* Adds margin between the tables */
+    padding: 15px; /* Adds padding inside the tables */
+}
+
+.thead th {
+    padding: 10px 5px; /* Padding around the table headers */
+    height: 80px; /* Set a fixed height for table headers */
+}
+
+.tbody td {
+    padding: 10px 5px; /* Padding around the table cells */
+    height: 80px; /* Set a fixed height for table rows */
+    vertical-align: middle; /* Vertically center the content within table cells */
+}
+
+.tbody tr {
+    border-bottom: 1px solid silver;
+}
+
+.col1 {
+    width: 5%;
+}
+
+.col2 {
+    width: 20%;
+}
+
+.col3 {
+    width: 25%;
+}
+
+.col4 {
+    width: 25%;
+}
+
+.col5 {
+    width: 25%;
+}
+
+.pagination {
+    margin-top: 20px; /* Adds space above the pagination */
+    display: flex;
+    justify-content: center; /* Centers the pagination */
+    width: 100%; /* Ensures the pagination takes the full width of the container */
+}
