@@ -48,8 +48,7 @@ const Signup = () => {
             navigate("/login");
         } else if(response.status === "error") {
             openUnsuccesModal();
-        }
-
+        };
     };
 
     //Opening Unsuccess Mesage Modal:
