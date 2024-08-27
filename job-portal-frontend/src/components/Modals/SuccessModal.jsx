@@ -16,6 +16,10 @@ const SuccessModal = ({ isOpenSuccess, setIsOpenSuccess, type }) => {
 
     const typeHandler = () => {
         switch(type) {
+            case "signup":
+                return "Signup was successful";
+            case "login":
+                return "Login was successful";
             case "add":
                 return "item was added successfully";
             case "update":

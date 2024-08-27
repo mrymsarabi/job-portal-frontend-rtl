@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 
+//Modules and Libraries:
+import { Link, useNavigate } from 'react-router-dom';
+
 //APIs:
 import { signupAPI } from '/src/apis/signupAPI';
 
 //Components:
 import SubmitButton from "/src/components/SubmitButton";
+//Modals:
+import SuccessModal from "/src/components/Modals/SuccessModal";
+import UnsuccessModal from "/src/components/Modals/UnsuccessModal";
 
 //CSS:
 import styles from "/src/styles/Signup.module.css";
-import { Link } from 'react-router-dom';
 
 const Signup = () => {
+    const navigate = useNavigate();
+
     //Statess:
     const [data, setData] = useState({
         first_name: "",
@@ -21,15 +28,38 @@ const Signup = () => {
         birth_date: "",
     });
 
+    //States for Unsucces Message Modal:
+    const [isOpenUnsuccess, setIsOpenUnsuccess] = useState(false);
+
+    //States for Succes Message Modal:
+    const [isOpenSuccess, setIsOpenSuccess] = useState(false);
+
     //Handling input changes:
     const changeHandler = (event) => {
         setData({...data, [event.target.name]: event.target.value});
     };
 
     //Handling form submit:
-    const submitHandler = async(e) => {
-        e.preventDefault();
+    const submitHandler = async(event) => {
+        event.preventDefault();
         const response = await signupAPI(data);
+        if(response.status === "success") {
+            openSuccesModal();
+            navigate("/login");
+        } else if(response.status === "error") {
+            openUnsuccesModal();
+        }
+
+    };
+
+    //Opening Unsuccess Mesage Modal:
+    const openUnsuccesModal = () => {
+        setIsOpenUnsuccess(true);
+    };
+
+    //Opening Success Mesage Modal:
+    const openSuccesModal = () => {
+        setIsOpenSuccess(true);
     };
     
     return (
@@ -72,6 +102,8 @@ const Signup = () => {
                     <img src='/src/assets/Hiring-amico.svg' />
                 </div>
             </div>
+            <SuccessModal isOpenSuccess={isOpenSuccess} setIsOpenSuccess={setIsOpenSuccess} type="signup" />
+            <UnsuccessModal isOpenUnsuccess={isOpenUnsuccess} setIsOpenUnsuccess={setIsOpenUnsuccess} />
         </div>
     );
 };
