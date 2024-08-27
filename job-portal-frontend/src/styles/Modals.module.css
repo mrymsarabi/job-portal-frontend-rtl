@@ -71,3 +71,27 @@
     letter-spacing: 0em;
     color: #929497;
 }
+
+.modalMessage {
+    text-align: center;
+    /* Font */
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+
+.modalMessage>div>svg {
+    width: 32px;
+    height: 32px;
+    margin: 5px;
+}
+
+.unsuccess {
+    color: #FB5C5C;
+}
+
+.success {
+    color: #00C6A5;
+}
