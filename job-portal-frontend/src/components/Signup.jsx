@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 //Modules and Libraries:
 import { Link, useNavigate } from 'react-router-dom';
@@ -11,6 +11,9 @@ import SubmitButton from "/src/components/SubmitButton";
 //Modals:
 import SuccessModal from "/src/components/Modals/SuccessModal";
 import UnsuccessModal from "/src/components/Modals/UnsuccessModal";
+
+//functions:
+import { validation } from "/src/helper/validation";
 
 //CSS:
 import styles from "/src/styles/Signup.module.css";
@@ -28,15 +31,36 @@ const Signup = () => {
         birth_date: "",
     });
 
+    //Handling Error Showing:
+    const [errors, setErrors] = useState({});
+    const [touched, setTouched] = useState({
+        first_name: false,
+        last_name: false,
+        username: false,
+        email: false,
+        password: false,
+        birth_date: false,
+    });
+
     //States for Unsucces Message Modal:
     const [isOpenUnsuccess, setIsOpenUnsuccess] = useState(false);
 
     //States for Succes Message Modal:
     const [isOpenSuccess, setIsOpenSuccess] = useState(false);
 
+    //Functions:
+    useEffect(() => {
+        setErrors(validation(data, "signup"));
+    }, [data]);
+
     //Handling input changes:
     const changeHandler = (event) => {
         setData({...data, [event.target.name]: event.target.value});
+    };
+
+    //Handling an input's focus:
+    const focusHandler = (event) => {
+        setTouched({...touched, [event.target.name]: true});
     };
 
     //Handling form submit:
@@ -69,25 +93,43 @@ const Signup = () => {
                     <div>
                         <div className={styles.fields}>
                             <div className={`${styles.field_container} ${styles.first} mr-2`}>
-                                <input type='text' placeholder='First Name' name='first_name' value={data.first_name} onChange={changeHandler} />
+                                <input type='text' placeholder='First Name' name='first_name' value={data.first_name} onChange={changeHandler} onFocus={focusHandler} />
+                                {
+                                    (touched.first_name && errors.first_name) && <span>{errors.first_name}</span>
+                                }
                             </div>
                             <div className={`${styles.field_container} ml-1`}>
-                                <input type='text' placeholder='Last Name' name='last_name' value={data.last_name} onChange={changeHandler} />
+                                <input type='text' placeholder='Last Name' name='last_name' value={data.last_name} onChange={changeHandler} onFocus={focusHandler} />
+                                {
+                                    (touched.last_name && errors.last_name) && <span>{errors.last_name}</span>
+                                }
                             </div>
                         </div>
                         <div className={styles.fields}>
                             <div className={`${styles.field_container} ${styles.first}`}>
-                                <input type='text' placeholder='Username' name='username' value={data.username} onChange={changeHandler} />
+                                <input type='text' placeholder='Username' name='username' value={data.username} onChange={changeHandler} onFocus={focusHandler} />
+                                {
+                                    (touched.username && errors.username) && <span>{errors.username}</span>
+                                }
                             </div>
                             <div className={styles.field_container}>
-                                <input type='password' placeholder='Password' name='password' value={data.password} onChange={changeHandler} />
+                                <input type='password' placeholder='Password' name='password' value={data.password} onChange={changeHandler} onFocus={focusHandler} />
+                                {
+                                    (touched.password && errors.password) && <span>{errors.password}</span>
+                                }
                             </div>
                         </div>
                         <div className={styles.field_container}>
-                            <input type='email' placeholder='Email' name='email' value={data.email} onChange={changeHandler} />
+                            <input type='email' placeholder='Email' name='email' value={data.email} onChange={changeHandler} onFocus={focusHandler} />
+                            {
+                                (touched.email && errors.email) && <span>{errors.email}</span>
+                            }
                         </div>
                         <div className={styles.field_container}>
-                            <input type='date' placeholder='Birth Date' name='birth_date' value={data.birth_date} onChange={changeHandler} />
+                            <input type='date' placeholder='Birth Date' name='birth_date' value={data.birth_date} onChange={changeHandler} onFocus={focusHandler} />
+                            {
+                                (touched.birth_date && errors.birth_date) && <span>{errors.birth_date}</span>
+                            }
                         </div>
                         <div className={styles.buttonContainer}>
                             <SubmitButton text="Sign Up" />

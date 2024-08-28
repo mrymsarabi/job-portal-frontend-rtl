@@ -81,4 +81,6 @@ export const validation = (data, type) => {
             delete errors.password;
         };
     }
+
+    return errors;
 }
