@@ -45,7 +45,7 @@ export const validation = (data, type) => {
                 <Icon icon="alert-circle" />
                 <div>You must enter a password.</div>
             </span>;
-        } else if(data.password.length > 8) {
+        } else if(data.password.length < 8) {
             errors.password = <span>
                 <Icon icon="alert-circle" />
                 <div>You must enter a password with at least 8 characters.</div>

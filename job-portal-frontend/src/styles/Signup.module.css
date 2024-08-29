@@ -8,7 +8,7 @@
 
 .content {
     margin: 0 auto;
-    width: 900px;
+    width: 950px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
@@ -29,7 +29,7 @@
 
 .form_container {
     padding: 50px;
-    width: 400px;
+    width: 450px;
 }
 
 .form_container h1 {
@@ -55,7 +55,7 @@
     line-height: 32px;
     border-radius: 10px;
     margin-bottom: 10px;
-    width: 295px;
+    width: 350px;
     padding: 3px;
 }
 
@@ -70,4 +70,17 @@
 
 .form_container>div>div>a {
     font-size: 14px;
+}
+
+.error {
+    color: #FB5C5C;
+    font-size: 12px;
+}
+
+.error svg {
+    width: 18px;
+}
+
+.error div {
+    display: inline;
 }

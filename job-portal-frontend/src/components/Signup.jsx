@@ -66,12 +66,23 @@ const Signup = () => {
     //Handling form submit:
     const submitHandler = async(event) => {
         event.preventDefault();
-        const response = await signupAPI(data);
-        if(response.status === "success") {
-            openSuccesModal();
-            navigate("/login");
-        } else if(response.status === "error") {
-            openUnsuccesModal();
+        if(Object.keys(errors).length === 0) {
+            const response = await signupAPI(data);
+            if(response.status === "success") {
+                openSuccesModal();
+                navigate("/login");
+            } else if(response.status === "error") {
+                openUnsuccesModal();
+            };
+        } else {
+            setTouched({
+                first_name: true,
+                last_name: true,
+                username: true,
+                email: true,
+                password: true,
+                birth_date: true,
+            });
         };
     };
 
@@ -95,13 +106,13 @@ const Signup = () => {
                             <div className={`${styles.field_container} ${styles.first} mr-2`}>
                                 <input type='text' placeholder='First Name' name='first_name' value={data.first_name} onChange={changeHandler} onFocus={focusHandler} />
                                 {
-                                    (touched.first_name && errors.first_name) && <span>{errors.first_name}</span>
+                                    (touched.first_name && errors.first_name) && <span className={styles.error}>{errors.first_name}</span>
                                 }
                             </div>
-                            <div className={`${styles.field_container} ml-1`}>
+                            <div className={`${styles.field_container} ${styles.second} ml-1`}>
                                 <input type='text' placeholder='Last Name' name='last_name' value={data.last_name} onChange={changeHandler} onFocus={focusHandler} />
                                 {
-                                    (touched.last_name && errors.last_name) && <span>{errors.last_name}</span>
+                                    (touched.last_name && errors.last_name) && <span className={styles.error}>{errors.last_name}</span>
                                 }
                             </div>
                         </div>
@@ -109,26 +120,26 @@ const Signup = () => {
                             <div className={`${styles.field_container} ${styles.first}`}>
                                 <input type='text' placeholder='Username' name='username' value={data.username} onChange={changeHandler} onFocus={focusHandler} />
                                 {
-                                    (touched.username && errors.username) && <span>{errors.username}</span>
+                                    (touched.username && errors.username) && <span className={styles.error}>{errors.username}</span>
                                 }
                             </div>
                             <div className={styles.field_container}>
                                 <input type='password' placeholder='Password' name='password' value={data.password} onChange={changeHandler} onFocus={focusHandler} />
                                 {
-                                    (touched.password && errors.password) && <span>{errors.password}</span>
+                                    (touched.password && errors.password) && <span className={styles.error}>{errors.password}</span>
                                 }
                             </div>
                         </div>
                         <div className={styles.field_container}>
                             <input type='email' placeholder='Email' name='email' value={data.email} onChange={changeHandler} onFocus={focusHandler} />
                             {
-                                (touched.email && errors.email) && <span>{errors.email}</span>
+                                (touched.email && errors.email) && <span className={styles.error}>{errors.email}</span>
                             }
                         </div>
                         <div className={styles.field_container}>
                             <input type='date' placeholder='Birth Date' name='birth_date' value={data.birth_date} onChange={changeHandler} onFocus={focusHandler} />
                             {
-                                (touched.birth_date && errors.birth_date) && <span>{errors.birth_date}</span>
+                                (touched.birth_date && errors.birth_date) && <span className={styles.error}>{errors.birth_date}</span>
                             }
                         </div>
                         <div className={styles.buttonContainer}>
