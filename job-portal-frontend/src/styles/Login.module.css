@@ -68,3 +68,16 @@
 .buttonContainer button {
     margin-left: 30px;
 }
+
+.error {
+    color: #FB5C5C;
+    font-size: 12px;
+}
+
+.error svg {
+    width: 18px;
+}
+
+.error div {
+    display: inline;
+}
