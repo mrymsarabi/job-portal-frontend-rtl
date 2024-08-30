@@ -49,7 +49,7 @@ const JobsList = () => {
 
     return (
         <div className={styles.page}>
-            <Navbar />
+            <Navbar name="home" />
             <div className={styles.content}>
                 <h1>Jobs List</h1>
                 <div className={styles.listContainer}>

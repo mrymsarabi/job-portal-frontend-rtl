@@ -58,9 +58,9 @@ const Login = () => {
         if(Object.keys(errors).length === 0) {
             const response = await loginAPI(data);
             if(response.status === "success") {
+                Cookies.set("token", response.token);
+                Cookies.set("user_id", response.user_id)
                 navigate("/home")
-                Cookies.set("token", response.data.token);
-                Cookies.set("user_id", response.data.user_id)
             } else {
                 openUnsuccesModal();
             }
