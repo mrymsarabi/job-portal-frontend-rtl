@@ -9,6 +9,8 @@ import { loginAPI } from "/src/apis/loginAPI";
 
 //Components:
 import SubmitButton from '/src/components/SubmitButton';
+//Modals:
+import UnsuccessModal from "/src/components/Modals/UnsuccessModal";
 
 //Functions:
 import { validation } from "/src/helper/validation";
@@ -32,6 +34,9 @@ const Login = () => {
 
     const navigate = useNavigate();
 
+    //States for Unsucces Message Modal:
+    const [isOpenUnsuccess, setIsOpenUnsuccess] = useState(false);
+
     //Functions:
     useEffect(() => {
         setErrors(validation(data, "login"));
@@ -52,15 +57,24 @@ const Login = () => {
         e.preventDefault();
         if(Object.keys(errors).length === 0) {
             const response = await loginAPI(data);
-            navigate("/add-job")
-            Cookies.set("token", response.data.token);
-            Cookies.set("user_id", response.data.user_id)
+            if(response.status === "success") {
+                navigate("/home")
+                Cookies.set("token", response.data.token);
+                Cookies.set("user_id", response.data.user_id)
+            } else {
+                openUnsuccesModal();
+            }
         } else {
             setTouched({
                 username: true,
                 password: true,
             });
         };
+    };
+
+    //Opening Unsuccess Mesage Modal:
+    const openUnsuccesModal = () => {
+        setIsOpenUnsuccess(true);
     };
 
     return (
@@ -93,6 +107,7 @@ const Login = () => {
                     <img src='/src/assets/Hiring-amico.svg' />
                 </div>
             </div>
+            <UnsuccessModal isOpenUnsuccess={isOpenUnsuccess} setIsOpenUnsuccess={setIsOpenUnsuccess} />
         </div>
     );
 };
