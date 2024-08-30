@@ -1,29 +1,38 @@
 import React, { useState, useEffect } from 'react';
 
-//APIs:
+// APIs:
 import { checkLoginStatus } from '/src/apis/checkLoginStatus';
 
-//CSS:
+// Components:
+import Icon from "/src/icons/Icon";
+
+// CSS:
 import styles from "/src/styles/Navbar.module.css";
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-    //States:
+    // States:
     const [loggedIn, setLoggedIn] = useState(false);
+    const [show, setShow] = useState(false);
 
-    //Functions:
+    // Functions:
     useEffect(() => {
         loginCheck();
     }, []);
 
-    //Checking if the user is logged in:
-    const loginCheck = async() => {
+    // Checking if the user is logged in:
+    const loginCheck = async () => {
         const response = await checkLoginStatus();
-        if(response.status === "success") {
+        if (response.status === "success") {
             setLoggedIn(true);
         } else {
             setLoggedIn(false);
         };
+    };
+
+    // Handle showing more profile related items:
+    const showHandler = () => {
+        setShow(prev => !prev);
     };
 
     return (
@@ -41,10 +50,30 @@ const Navbar = () => {
                             <Link to="/add-job">Add a Position</Link>
                         </li>
                     </div>
-                    <div>
-                        <li className={styles.login}>
-                            <Link to="/signup">Sign Up</Link>/<Link to="/login">Login</Link>
-                        </li>
+                    <div className={styles.profileContainer}>
+                        {
+                            loggedIn ? 
+                            <li className={styles.profile} onClick={showHandler}>
+                                <Icon icon="account-circle-1" color="#ffffff" width="24px" height="24px" />
+                            </li>
+                            :
+                            <li className={styles.login}>
+                                <Link to="/signup">Sign Up</Link>/<Link to="/login">Login</Link>
+                            </li>
+                        }
+                        {show && (
+                            <ul className={styles.dropDown}>
+                                <li>
+                                    <Link>My Profile</Link>    
+                                </li>
+                                <li>
+                                    <Link>My Jobs</Link>
+                                </li>
+                                <li>
+                                    <Link>Messages</Link>
+                                </li>
+                            </ul>
+                        )}
                     </div>
                 </ul>
             </nav>
