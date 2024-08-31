@@ -64,10 +64,10 @@ const Navbar = () => {
                         {show && (
                             <ul className={styles.dropDown}>
                                 <li>
-                                    <Link>My Profile</Link>    
+                                    <Link to="/profile">My Profile</Link>    
                                 </li>
                                 <li>
-                                    <Link>My Jobs</Link>
+                                    <Link to="/jobs-uploaded">My Jobs</Link>
                                 </li>
                                 <li>
                                     <Link>Messages</Link>
