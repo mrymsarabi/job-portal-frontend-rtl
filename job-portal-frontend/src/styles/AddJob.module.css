@@ -40,7 +40,7 @@
 }
 
 .fieldContainer input {
-    width: 300px;
+    width: 350px;
     height: 40px;
     border-radius: 10px;
     border: 1px solid silver;
@@ -48,7 +48,7 @@
 }
 
 .fieldContainer textarea {
-    width: 300px;
+    width: 350px;
     height: 100px;
     border-radius: 10px;
     border: 1px solid silver;
