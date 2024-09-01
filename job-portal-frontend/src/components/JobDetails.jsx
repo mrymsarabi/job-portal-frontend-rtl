@@ -18,8 +18,8 @@ const JobDetails = ({ data }) => {
     return (
         <div className={styles.component}>
             <div>
-                <div>
-                    <div>{data.title}</div>
+                <div className={styles.details}>
+                    <h2>{data.title}</h2>
                     <div>{data.salary}</div>
                     <div>{data.sector}</div>
                     <div>{data.date_posted}</div>

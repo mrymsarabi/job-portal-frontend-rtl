@@ -57,7 +57,7 @@ const JobsList = () => {
                         {
                             data.length > 0 && data.map((item, index) => (
                                 <div onClick={() => showHandler(index)} className={show[index] ? styles.activeItem : styles.itemContainer}>
-                                    <div>{item.title}</div>
+                                    <h3>{item.title}</h3>
                                     <div>{item.sector}</div>
                                     <div>{item.location}</div>
                                     <div>{item.salary}</div>

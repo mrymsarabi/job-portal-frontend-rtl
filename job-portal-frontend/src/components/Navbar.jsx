@@ -23,10 +23,6 @@ const Navbar = () => {
         loginCheck();
     }, []);
 
-    useEffect(() => {
-        console.log(loggedIn)
-    }, [loggedIn]);
-
     // Checking if the user is logged in:
     const loginCheck = async () => {
         const response = await checkLoginStatus();

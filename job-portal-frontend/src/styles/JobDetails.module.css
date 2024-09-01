@@ -5,19 +5,35 @@
     padding: 20px;
     border-radius: 10px;
     margin-top: 20px;
+    position: relative; /* Make the .component container a positioning context */
 }
 
-.component>div {
+.component > div {
     margin: 10px;
 }
 
-.component>hr {
+.details h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.details div {
+    font-size: 18px;
+    color: #525252;
+    margin: 10px;
+    font-weight: 500;
+}
+
+.component > hr {
     color: silver;
     background-color: silver;
     border-top: 1px solid silver;
 }
 
 .buttonContainer {
+    position: absolute;
+    right: 20px; /* Align the button to the right */
+    top: 20px; /* Adjust this value to place the button at the desired vertical position */
     width: 120px;
     height: 50px;
     background-color: #003459;
@@ -28,4 +44,7 @@
 
 .buttonContainer:hover {
     cursor: pointer;
+    background-color: #FFFFFF;
+    color: #003459;
+    border: 1px solid #003459;
 }

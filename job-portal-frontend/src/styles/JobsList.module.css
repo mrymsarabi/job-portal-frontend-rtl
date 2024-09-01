@@ -1,6 +1,6 @@
 .content h1 {
     margin: 40px 0 0 25px;
-    font-size: 24px;
+    font-size: 28px;
 }
 
 .listContainer {
@@ -24,6 +24,16 @@
     margin: 20px;
     border-radius: 10px;
     box-sizing: border-box; /* Ensure padding and border are included in the width */
+    padding: 20px;
+}
+
+.itemContainer h3, .activeItem h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.itemContainer div, .activeItem div {
+    margin: 10px;
 }
 
 .activeItem {
