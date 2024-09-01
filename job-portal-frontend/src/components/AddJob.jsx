@@ -10,6 +10,9 @@ import { addJobAPI } from '/src/apis/addJobAPI';
 import Navbar from "/src/components/Navbar";
 import SubmitButton from '/src/components/SubmitButton';
 import SelectComponent from "/src/components/Inputs/SelectComponent";
+//Modals:
+import SuccessModal from "/src/components/Modals/SuccessModal";
+import UnsuccessModal from "/src/components/Modals/UnsuccessModal";
 
 //CSS:
 import styles from "/src/styles/AddJob.module.css";
@@ -31,6 +34,25 @@ const AddJob = () => {
         description: "",
         benefits: "",
     });
+
+    //Handle Errors:
+    const [errors, setErrors] = useState({});
+    const [touched, setTouched] = useState({
+        title: false,
+        sector: false,
+        salary: false,
+        location: false,
+        job_type: false,
+        requirements: false,
+        description: false,
+        benefits: false,
+    });
+
+    //States for Unsucces Message Modal:
+    const [isOpenUnsuccess, setIsOpenUnsuccess] = useState(false);
+
+    //States for Succes Message Modal:
+    const [isOpenSuccess, setIsOpenSuccess] = useState(false);
 
     const sectors = [
         {
@@ -189,10 +211,23 @@ const AddJob = () => {
     //Handling form's submit:
     const submitHandler = async(event) => {
         event.preventDefault();
-        const config = {
-            headers: { Authorization: `Bearer ${token}` }
-        };
         const response = await addJobAPI(data, token);
+        if(response.status === "success") {
+            openSuccesModal();
+        } else {
+            openUnsuccesModal();
+        }
+    };
+
+    
+    //Opening Unsuccess Mesage Modal:
+    const openUnsuccesModal = () => {
+        setIsOpenUnsuccess(true);
+    };
+
+    //Opening Success Mesage Modal:
+    const openSuccesModal = () => {
+        setIsOpenSuccess(true);
     };
 
     return (
@@ -242,6 +277,8 @@ const AddJob = () => {
                     </form>
                 </div>
             </div>
+            <SuccessModal isOpenSuccess={isOpenSuccess} setIsOpenSuccess={setIsOpenSuccess} type="add" />
+            <UnsuccessModal isOpenUnsuccess={isOpenUnsuccess} setIsOpenUnsuccess={setIsOpenUnsuccess} />
         </div>
     );
 };

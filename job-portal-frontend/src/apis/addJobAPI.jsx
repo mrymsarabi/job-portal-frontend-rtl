@@ -9,9 +9,11 @@ export const addJobAPI = async (data, token) => {
             }
         });
         console.log('Job posted successfully');
-        return response;
+        console.log(response)
+        return response.data;
     } catch (error) {
         console.error(error);
         console.log('Failed to post job');
+        return {status: "error", error: "An error occurred. Please try again."}
     }
 }
