@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
+//Modules andLibraries:
+import Cookies from 'js-cookie';
+import { Link } from 'react-router-dom';
+
 // APIs:
 import { checkLoginStatus } from '/src/apis/checkLoginStatus';
 
@@ -8,7 +12,6 @@ import Icon from "/src/icons/Icon";
 
 // CSS:
 import styles from "/src/styles/Navbar.module.css";
-import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     // States:
@@ -19,6 +22,10 @@ const Navbar = () => {
     useEffect(() => {
         loginCheck();
     }, []);
+
+    useEffect(() => {
+        console.log(loggedIn)
+    }, [loggedIn]);
 
     // Checking if the user is logged in:
     const loginCheck = async () => {
@@ -33,6 +40,13 @@ const Navbar = () => {
     // Handle showing more profile related items:
     const showHandler = () => {
         setShow(prev => !prev);
+    };
+
+    //Handle logging out of the account:
+    const logoutHandler = () => {
+        Cookies.remove("token");
+        setShow(false);
+        loginCheck();
     };
 
     return (
@@ -71,6 +85,9 @@ const Navbar = () => {
                                 </li>
                                 <li>
                                     <Link>Messages</Link>
+                                </li>
+                                <li onClick={logoutHandler}>
+                                    Logout
                                 </li>
                             </ul>
                         )}

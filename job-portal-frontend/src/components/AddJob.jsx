@@ -232,7 +232,7 @@ const AddJob = () => {
                                 <SelectComponent options={jobTypes} handleChange={handleJobTypeChange} width="350px" height="40px" />
                             </div>
                             <div className={styles.fieldContainer}>
-                                <label>Country, City</label>
+                                <label>City</label>
                                 <input type='text' name='location' value={data.location} onChange={changeHandler} />
                             </div>
                         </div>
