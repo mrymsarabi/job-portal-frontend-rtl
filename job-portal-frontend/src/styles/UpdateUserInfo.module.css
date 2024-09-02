@@ -3,7 +3,7 @@
 }
 
 .form {
-    border: 1px solid silver;
+    border: 1px solid #DDDDDC;
     border-radius: 10px;
     width: fit-content;
     padding: 10px;
@@ -24,7 +24,7 @@
 .field>input {
     width: 370px;
     height: 40px;
-    border: 1px solid silver;
+    border: 1px solid #DDDDDC;
     border-radius: 10px;
     margin-top: 10px;
 }

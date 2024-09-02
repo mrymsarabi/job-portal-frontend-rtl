@@ -1,5 +1,5 @@
 .component {
-    border: 1px solid silver;
+    border: 1px solid #DDDDDC;
     width: 90%;
     margin-left: 20px;
     padding: 20px;
@@ -25,9 +25,9 @@
 }
 
 .component > hr {
-    color: silver;
-    background-color: silver;
-    border-top: 1px solid silver;
+    color: #a5a5a5;
+    background-color: #a5a5a5;
+    border-top: 1px solid #a5a5a5;
 }
 
 .buttonContainer {

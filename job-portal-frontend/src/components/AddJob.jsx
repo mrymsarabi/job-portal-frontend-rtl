@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 //Modules and Libraries:
 import Cookies from 'js-cookie';
 
 //APIs:
 import { addJobAPI } from '/src/apis/addJobAPI';
+
+//Functions:
+import { validation } from "/src/helper/validation";
 
 //Components:
 import Navbar from "/src/components/Navbar";
@@ -197,6 +200,11 @@ const AddJob = () => {
         }
     ];
 
+    //Handling errors with data changes:
+    useEffect(() => {
+        setErrors(validation(data, "jobs"))
+    }, [data]);
+
     //HandleJob Type Select:
     const handleJobTypeChange = (selectedOption) => {
         setData({...data, job_type: selectedOption});
@@ -208,15 +216,33 @@ const AddJob = () => {
         setData({...data, [event.target.name]: event.target.value});
     };
 
+    //Handling an input's focus:
+    const focusHanlder = (event) => {
+        setTouched({...touched, [event.target.name]: true});
+    };
+
     //Handling form's submit:
     const submitHandler = async(event) => {
         event.preventDefault();
-        const response = await addJobAPI(data, token);
-        if(response.status === "success") {
-            openSuccesModal();
+        if(Object.keys(errors).length === 0) {
+            const response = await addJobAPI(data, token);
+            if(response.status === "success") {
+                openSuccesModal();
+            } else {
+                openUnsuccesModal();
+            }
         } else {
-            openUnsuccesModal();
-        }
+            setTouched({
+                title: true,
+                sector: true,
+                salary: true,
+                location: true,
+                job_type: true,
+                requirements: true,
+                description: true,
+                benefits: true,
+            });
+        };
     };
 
     
@@ -240,35 +266,50 @@ const AddJob = () => {
                         <div className={styles.gridContainer}>
                             <div className={styles.fieldContainer}>
                                 <label>Title</label>
-                                <input type='text' name='title' value={data.title} onChange={changeHandler} />
+                                <input type='text' name='title' value={data.title} onChange={changeHandler} onFocus={focusHanlder} />
+                                {
+                                    (touched.title && errors.title) && <span className={styles.error}>{errors.title}</span>
+                                }
                             </div>
                             <div className={styles.fieldContainer}>
                                 <label>Salary</label>
-                                <input type='text' name='salary' value={data.salary} onChange={changeHandler} />
+                                <input type='text' name='salary' value={data.salary} onChange={changeHandler} onFocus={focusHanlder} />
+                                {
+                                    (touched.salary && errors.salary) && <span className={styles.error}>{errors.salary}</span>
+                                }
+                            </div>
+                            <div className={styles.fieldContainer}>
+                                <label>Sector</label>
+                                <SelectComponent options={sectors} handleChange={handleSectorChange} width="350px" height="40px" />
+                                {
+                                    (touched.sector && errors.sector) && <span className={styles.error}>{errors.sector}</span>
+                                }
+                            </div>
+                            <div className={styles.fieldContainer}>
+                                <label>Job Type</label>
+                                <SelectComponent options={jobTypes} handleChange={handleJobTypeChange} width="350px" height="40px" />
+                                {
+                                    (touched.job_type && errors.job_type) && <span className={styles.error}>{errors.job_type}</span>
+                                }
+                            </div>
+                            <div className={styles.fieldContainer}>
+                                <label>City</label>
+                                <input type='text' name='location' value={data.location} onChange={changeHandler} onFocus={focusHanlder} />
+                                {
+                                    (touched.location && errors.location) && <span className={styles.error}>{errors.location}</span>
+                                }
                             </div>
                             <div className={styles.fieldContainer}>
                                 <label>Desctiption</label>
                                 <textarea name='description' value={data.description} onChange={changeHandler} />
                             </div>
                             <div className={styles.fieldContainer}>
-                                <label>Benefits</label>
-                                <textarea name='benefits' value={data.benefits} onChange={changeHandler} />
-                            </div>
-                            <div className={styles.fieldContainer}>
                                 <label>Reuirements</label>
                                 <textarea name='requirements' value={data.requirements} onChange={changeHandler} />
                             </div>
                             <div className={styles.fieldContainer}>
-                                <label>Sector</label>
-                                <SelectComponent options={sectors} handleChange={handleSectorChange} width="350px" height="40px" />
-                            </div>
-                            <div className={styles.fieldContainer}>
-                                <label>Job Type</label>
-                                <SelectComponent options={jobTypes} handleChange={handleJobTypeChange} width="350px" height="40px" />
-                            </div>
-                            <div className={styles.fieldContainer}>
-                                <label>City</label>
-                                <input type='text' name='location' value={data.location} onChange={changeHandler} />
+                                <label>Benefits</label>
+                                <textarea name='benefits' value={data.benefits} onChange={changeHandler} />
                             </div>
                         </div>
                         <div className={styles.buttonContainer}>

@@ -75,10 +75,55 @@ export const validation = (data, type) => {
         if(!data.password) {
             errors.password = <span>
                 <Icon icon="alert-circle" />
-                <div>You must enter yout password.</div>
+                <div>You must enter your password.</div>
             </span>;
         } else {
             delete errors.password;
+        };
+    } else if(type === "jobs") {
+        if(!data.title.trim()) {
+            errors.title = <span>
+                <Icon icon="alert-circle" />
+                <div>You must enter a title.</div>
+            </span>;
+        } else {
+            delete errors.title;
+        };
+
+        if(!data.sector) {
+            errors.sector = <span>
+                <Icon icon="alert-circle" />
+                <div>You must enter the sector.</div>
+            </span>;
+        } else {
+            delete errors.sector;
+        };
+
+        if(!data.salary) {
+            errors.salary = <span>
+                <Icon icon="alert-circle" />
+                <div>You must enter the salary.</div>
+            </span>;
+        } else {
+            delete errors.sector;
+        };
+
+        if(!data.location.trim()) {
+            errors.location = <span>
+                <Icon icon="alert-circle" />
+                <div>You must enter the location.</div>
+            </span>;
+        } else {
+            delete errors.location;
+        };
+
+        if(!data.job_type) {
+            errors.job_type = <span>
+                <Icon icon="alert-circle" />
+                <div>You must enter the job type.</div>
+            </span>;
+        } else  {
+            delete errors.job_type;
         };
     }
 

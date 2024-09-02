@@ -12,7 +12,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    border: 1px solid silver;
+    border: 1px solid #DDDDDC;
     padding: 20px;
     border-radius: 10px;
 }
@@ -50,7 +50,7 @@
 }
 
 .field_container input {
-    border: 1px solid silver;
+    border: 1px solid #DDDDDC;
     height: 32px;
     line-height: 32px;
     border-radius: 10px;
@@ -78,7 +78,7 @@
 }
 
 .error svg {
-    width: 18px;
+    width: 15px;
 }
 
 .error div {

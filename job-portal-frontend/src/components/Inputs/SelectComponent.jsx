@@ -20,7 +20,7 @@ const SelectComponent = ({ options, handleChange, defaultOption, width, height, 
     };
     
     return (
-        <div>
+        <div className={`mt-3`}>
             <ConfigProvider 
                 theme={{
                     token: {
