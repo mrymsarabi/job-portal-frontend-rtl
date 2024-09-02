@@ -7,6 +7,8 @@ import { useParams } from 'react-router-dom';
 
 //APIs:
 import { getJobAPI } from '/src/apis/getJobAPI';
+import { jobApplicationsAPI } from '/src/apis/jobApplicationsAPI';
+
 
 //Components:
 import Navbar from "/src/components/Navbar";
@@ -41,7 +43,13 @@ const JobDetailsApplicants = () => {
 
     //Getting the Applicants' list:
     const fetchApplicants = async() => {
+        const response = await jobApplicationsAPI(id, token, 1, 10);
+        console.log(response);
+        if(response.status === "success") {
+            setApplicants(response.applications);
+        } else {
 
+        }
     }
 
     return (
