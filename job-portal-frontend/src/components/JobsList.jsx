@@ -5,16 +5,24 @@ import { jobsListAPI } from '/src/apis/jobsListAPI';
 
 //Components:
 import Navbar from '/src/components/Navbar';
+import JobDetails from '/src/components/JobDetails';
+import PaginationComponent from '/src/components/PaginationComponent';
+
 
 //CSS:
 import styles from "/src/styles/JobsList.module.css";
-import JobDetails from './JobDetails';
+
 
 const JobsList = () => {
     //States:
     const [data, setData] = useState([]);
     const [show, setShow] = useState({});
     const [chosenItem, setChoseItem] = useState({});
+
+    //Pagination:
+    const [totalCount, setTotalCount] = useState(0);
+    const [pageSize, setPageSize] = useState(10);
+    const [currentPage, setCurrentPage] = useState(1);
 
     //Functions:
     useEffect(() => {
@@ -23,9 +31,10 @@ const JobsList = () => {
 
     //Getting data from API:
     const fetchData = async() => {
-        const response = await jobsListAPI();
+        const response = await jobsListAPI(pageSize, currentPage);
         if(response.status === 200) {
             setData(response.data.jobs);
+            setTotalCount(response.data.total_count)
             let showing = {};
             showing[0] = true;
             for(let i = 1; i < response.data.length; i++) {
@@ -45,7 +54,12 @@ const JobsList = () => {
         showing[index] = true;
         setShow(showing);
         setChoseItem(data[index]);
-    }
+    };
+
+    const handlePageChange = (page, size) => {
+        setCurrentPage(page);
+        setPageSize(size);
+    };0
 
     return (
         <div className={styles.page}>
@@ -71,6 +85,9 @@ const JobsList = () => {
                             <JobDetails data={chosenItem} />
                         }
                     </div>
+                </div>
+                <div className={styles.pagination}>
+                    <PaginationComponent currentPage={currentPage} pageSize={pageSize} total={totalCount} onPageChange={handlePageChange} />
                 </div>
             </div>
         </div>
