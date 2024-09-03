@@ -1,3 +1,9 @@
+.header {
+    font-size: 28px;
+    margin: 30px;
+    margin-left: 10%;
+}
+
 .gridContainer {
     display: grid;
     grid-template-columns: 1fr 3fr; /* First column 200px wide, second column takes up the remaining space */
@@ -9,6 +15,7 @@
 .jobDetailsContainer {
     box-shadow: 1px 4px 4px 0px rgba(89, 89, 89, 0.34);
     width: 80%; /* Adjust this width as needed */
+    max-width: 1200px;
     margin: 20px auto; /* This centers the container horizontally */
     padding: 20px;
     background-color: #fff;
@@ -33,4 +40,69 @@
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.listContainer {
+    width: 80%; /* Ensures the container takes the full width available */
+    max-width: 1200px; /* Restricts the maximum width */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+.listContainer h2 {
+    font-size: 24px;
+    margin: 10px;
+}
+
+/* Ensure the tables are centered within their container */
+.listHead, .listBody {
+    box-shadow: 1px 4px 4px 0px rgba(89, 89, 89, 0.34);
+    width: 100%;
+    margin: 10px 0;
+    padding: 15px;
+}
+
+.thead th {
+    height: 80px;
+}
+
+.tbody td {
+    height: 80px;
+}
+
+.tbody tr:last-child {
+    border: none;
+}
+
+.tbody tr {
+    border-bottom: 1px solid #DDDDDC;
+}
+
+.col1 {
+    width: 5%;
+}
+
+.col2 {
+    width: 25%;
+}
+
+.col3 {
+    width: 25%;
+}
+
+.col4 {
+    width: 20%;
+}
+
+.col5 {
+    width: 25%;
+}
+
+.noData {
+    color: #FB5C5C;
+    margin: 10px;
+}
+
+.noData svg {
+    width: 18px;
+    margin: 5px;
 }

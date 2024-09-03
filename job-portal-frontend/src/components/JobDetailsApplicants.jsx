@@ -58,7 +58,7 @@ const JobDetailsApplicants = () => {
             <div className={styles.content}>
                 <div>
                     {/* Job Details */}
-                    <JobDetailsComponent data={jobInfo} />
+                    <JobDetailsComponent jobInfo={jobInfo} applicants={applicants} />
                 </div>
                 <div>
                     {/* Applicants list */}
