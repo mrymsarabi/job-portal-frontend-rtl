@@ -18,6 +18,7 @@ import JobDetailsPage from '/src/components/JobDetailsPage';
 import MyApplicationsPage from '/src/components/MyApplicationsPage';
 import JobDetailsApplicants from '/src/components/JobDetailsApplicants';
 import AboutUs from '/src/components/AboutUs';
+import AnswerJobApplications from '/src/components/AnswerJobApplications';
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
       <Route path='/add-company' element={<AddCompany />} />
       <Route path='/job/:id' element={<JobDetailsPage />} />
       <Route path='/my-applications' element={<MyApplicationsPage />} />
+      <Route path='/answer-applications/:id' element={<AnswerJobApplications />} />
       <Route path='/about-us' element={<AboutUs />} />
       <Route path='/test' element={<Test />} />
       <Route path="/*" element={<Navigate to="/home" replace />} />

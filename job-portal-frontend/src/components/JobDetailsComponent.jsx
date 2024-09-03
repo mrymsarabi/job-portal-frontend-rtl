@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+//Modules and Libraries:
+import { useNavigate } from 'react-router-dom';
+
 // Components:
 import Icon from "/src/icons/Icon";
 
@@ -7,6 +10,9 @@ import Icon from "/src/icons/Icon";
 import styles from "/src/styles/JobDetailsApplicants.module.css";
 
 const JobDetailsComponent = ({ jobInfo, applicants }) => {
+    const navigate = useNavigate();
+
+    //States:
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleDropdown = () => {
@@ -29,6 +35,12 @@ const JobDetailsComponent = ({ jobInfo, applicants }) => {
         return `${formattedDate} ${formattedTime}`;
     };
 
+    //HAndling clicking on an applicant to see the details in another page:
+    const applicantHandler = (event, application_id) => {
+        event.preventDefault();
+        navigate(`/answer-applications/${application_id}`);
+    };
+    
     return (
         <div>
             <h1 className={styles.header}>Job Details and Applicants</h1>
@@ -101,7 +113,7 @@ const JobDetailsComponent = ({ jobInfo, applicants }) => {
                             <tbody className={`${styles.tbody}`}>
                                 {
                                     applicants.map((applicant, index) => (
-                                        <tr key={index}>
+                                        <tr key={index} onClick={event => applicantHandler(event, applicant.application_id)}>
                                             <td>{applicant.counter}</td>
                                             <td>{applicant.username}</td>
                                             <td>{formatDateApplied(applicant.date_applied)}</td>

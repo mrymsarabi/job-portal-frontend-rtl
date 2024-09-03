@@ -77,6 +77,10 @@
     border-bottom: 1px solid #DDDDDC;
 }
 
+.tbody tr:hover {
+    cursor: pointer;
+}
+
 .col1 {
     width: 5%;
 }
