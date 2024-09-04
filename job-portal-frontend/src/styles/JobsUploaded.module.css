@@ -95,13 +95,13 @@ td:first-child {
     margin-top: 20px !important;
 }
 
-.tbody tr:hover {
-    cursor: pointer;
-}
-
 .iconContainer {
     display: flex;
     line-height: 60px;
+}
+
+.iconContainer div:hover {
+    cursor: pointer;
 }
 
 .iconContainer svg {

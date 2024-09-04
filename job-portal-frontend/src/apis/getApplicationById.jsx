@@ -13,6 +13,7 @@ export const getApplicationById = async(applicationId, token) => {
 
         return response.data;
     } catch (error) {
+        console.log(error)
         return {status: "error", message: "Error fetching application"};
     };
 };

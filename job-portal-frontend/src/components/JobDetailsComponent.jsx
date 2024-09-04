@@ -36,9 +36,9 @@ const JobDetailsComponent = ({ jobInfo, applicants }) => {
     };
 
     //HAndling clicking on an applicant to see the details in another page:
-    const applicantHandler = (event, application_id) => {
+    const applicantHandler = (event, application_id, applicant) => {
         event.preventDefault();
-        navigate(`/answer-applications/${application_id}`);
+        navigate(`/answer-applications/${application_id}`, { state: applicant });
     };
     
     return (
@@ -113,7 +113,7 @@ const JobDetailsComponent = ({ jobInfo, applicants }) => {
                             <tbody className={`${styles.tbody}`}>
                                 {
                                     applicants.map((applicant, index) => (
-                                        <tr key={index} onClick={event => applicantHandler(event, applicant.application_id)}>
+                                        <tr key={index} onClick={event => applicantHandler(event, applicant.application_id, applicant)}>
                                             <td>{applicant.counter}</td>
                                             <td>{applicant.username}</td>
                                             <td>{formatDateApplied(applicant.date_applied)}</td>
