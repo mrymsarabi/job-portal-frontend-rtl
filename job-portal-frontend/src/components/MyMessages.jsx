@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 //Modules and Libraries:
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 //APIs:
 import { getMyMessagesAPI } from '/src/apis/getMyMessagesAPI';
@@ -15,6 +16,8 @@ import styles from "/src/styles/MyMessages.module.css";
 
 const MyMessages = () => {
     const token = Cookies.get("token");
+
+    const navigate = useNavigate();
 
     //States:
     const [messages, setMessages] = useState([]);
@@ -44,6 +47,12 @@ const MyMessages = () => {
     const handlePageChange = (page, size) => {
         setCurrentPage(page);
         setPageSize(size);
+    };
+
+    //Handle clicking on a message:
+    const messageHandler = (event, messageId) => {
+        event.preventDefault();
+        navigate(`/message/${messageId}`);
     };
 
     return (
@@ -83,7 +92,7 @@ const MyMessages = () => {
                             <tbody className={styles.tbody}>
                                 {
                                     messages && messages.map((message, index) => (
-                                        <tr>
+                                        <tr onClick={event => messageHandler(event, message.id)}>
                                             <td>{message.counter}</td>
                                             <td>{message.job_name}</td>
                                             <td>{message.company_name}</td>

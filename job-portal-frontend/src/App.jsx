@@ -20,6 +20,7 @@ import JobDetailsApplicants from '/src/components/JobDetailsApplicants';
 import AboutUs from '/src/components/AboutUs';
 import AnswerJobApplications from '/src/components/AnswerJobApplications';
 import MyMessages from '/src/components/MyMessages';
+import Message from '/src/components/Message';
 
 const App = () => {
   return (
@@ -38,6 +39,7 @@ const App = () => {
       <Route path='/my-applications' element={<MyApplicationsPage />} />
       <Route path='/answer-applications/:id' element={<AnswerJobApplications />} />
       <Route path='/my-messages' element={<MyMessages />} />
+      <Route path='/message/:id' element={<Message />} />
       <Route path='/about-us' element={<AboutUs />} />
       <Route path='/test' element={<Test />} />
       <Route path="/*" element={<Navigate to="/home" replace />} />

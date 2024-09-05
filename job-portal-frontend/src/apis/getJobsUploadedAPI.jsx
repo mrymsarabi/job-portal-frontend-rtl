@@ -16,6 +16,6 @@ export const getJobsUploadedAPI = async (token, pageSize, currentPage) => {
 
     } catch (error) {
         console.error('Error fetching jobs:', error);
-        return { status: "error", error: error.response }; // or some other indication of an error
+        return { status: "error", error: error.response }; 
     }
 }
