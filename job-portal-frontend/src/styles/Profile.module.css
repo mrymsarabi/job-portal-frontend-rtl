@@ -18,7 +18,8 @@
 }
 
 .personalInfo {
-    border: 1px solid #DDDDDC;
+    position: relative;  /* This makes the iconContainer position relative to personalInfo */
+    box-shadow: 1px 4px 4px 0px rgba(89, 89, 89, 0.34);
     border-radius: 10px;
     padding: 20px;
     margin-top: 20px;
@@ -45,8 +46,53 @@
 }
 
 .iconContainer {
-    position: relative;
-    left: 480px;
-    top: -20px;
+    position: absolute;
+    top: 10px;  /* Adjusts the vertical position */
+    right: 10px;  /* Adjusts the horizontal position */
+    cursor: pointer;
 }
-  
+
+.resumeContainer {
+    position: relative;  /* This makes the editIcon position relative to resumeContainer */
+    box-shadow: 1px 4px 4px 0px rgba(89, 89, 89, 0.34);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.editIcon {
+    position: absolute;
+    top: 10px;  /* Adjusts the vertical position */
+    right: 10px;  /* Adjusts the horizontal position */
+    cursor: pointer;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.sectionTitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.educationItem, .experienceItem, .projectItem {
+    margin-bottom: 10px;
+}
+
+.educationItem h3, .experienceItem h3, .projectItem h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}
