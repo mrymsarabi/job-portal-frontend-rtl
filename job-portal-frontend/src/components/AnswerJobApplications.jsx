@@ -6,13 +6,12 @@ import { useLocation, useParams } from 'react-router-dom';
 
 //APIs:
 import { jobApplicationAnswerAPI } from '/src/apis/jobApplicationAnswerAPI';
-import { getApplicationById } from "/src/apis/getApplicationById";
-import { getResumeById } from '/src/apis/getResumeById';
 import { getResumeByUserId } from '/src/apis/getResumeByUserId';
 import { getUserByIdAPI } from '/src/apis/getUserByIdAPI';
 
 //Components:
 import Navbar from "/src/components/Navbar";
+import SubmitButton from "/src/components/SubmitButton";
 
 //CSS:
 import styles from "/src/styles/AnswerJobApplications.module.css";
@@ -27,6 +26,10 @@ const AnswerJobApplications = () => {
     //States:
     const [user, setUser] = useState({});
     const [resume, setResume] = useState({});
+    const [data, setData] = useState({
+        status: applicant.status,
+        message: "",
+    });
 
     //Functions: 
     useEffect(() => {
@@ -58,20 +61,35 @@ const AnswerJobApplications = () => {
     //Getting the application based on the id:
     const getApplication = async() => {
         
-    }
+    };
+
+    const changeHandler = (event) => {
+        setData({...data, [event.target.name]: event.target.value});
+    };
+
+    const submitHandler = async(event) => {
+        event.preventDefault();
+        const response = await jobApplicationAnswerAPI(data, applicant.application_id, token);
+        console.log(response)
+    };
+
     return (
         <div>
             <Navbar />
             <div>
                 <div className={`${styles.userContainer}`}>
                     <h1>User Profile</h1>
-                    <section className={`${styles.userSection}`}>
-                        <p><strong>First Name:</strong> {user.first_name}</p>
-                        <p><strong>Last Name:</strong> {user.last_name}</p>
-                        <p><strong>Username:</strong> {user.username}</p>
-                        <p><strong>Email:</strong> {user.email}</p>
-                        <p><strong>Birth Date:</strong> {user.birth_date}</p>
-                    </section>
+                    {
+                        user &&
+
+                        <section className={`${styles.userSection}`}>
+                            <p><strong>First Name:</strong> {user.first_name}</p>
+                            <p><strong>Last Name:</strong> {user.last_name}</p>
+                            <p><strong>Username:</strong> {user.username}</p>
+                            <p><strong>Email:</strong> {user.email}</p>
+                            <p><strong>Birth Date:</strong> {user.birth_date}</p>
+                        </section>
+                    }
                 </div>
 
                 <div className={`${styles.resumeContainer} rounded`}>
@@ -79,7 +97,7 @@ const AnswerJobApplications = () => {
 
                     <section className={`${styles.resumeSection}`}>
                         <h2>About Me</h2>
-                        <p>{resume.about}</p>
+                        <p className={`m-2`}>{resume.about}</p>
                     </section>
 
                     <section className={`${styles.resumeSection}`}>
@@ -87,7 +105,7 @@ const AnswerJobApplications = () => {
                         {resume.education && resume.education.length > 0 ? (
                             <ul>
                                 {resume.education.map((edu, index) => (
-                                    <li key={index}>
+                                    <li key={index} className={`m-2`}>
                                         <strong>{edu.degree}</strong> at {edu.institution} {edu.year && `(${edu.year})`}
                                     </li>
                                 ))}
@@ -102,7 +120,7 @@ const AnswerJobApplications = () => {
                         {resume.experience && resume.experience.length > 0 ? (
                             <ul>
                                 {resume.experience.map((exp, index) => (
-                                    <li key={index}>
+                                    <li key={index} className={`m-2`}>
                                         <strong>{exp.title}</strong> at {exp.company}
                                         {exp.start_date && exp.end_date && (
                                             <span>{` (${exp.start_date} - ${exp.end_date})`}</span>
@@ -120,7 +138,7 @@ const AnswerJobApplications = () => {
                         {resume.skills && resume.skills.length > 0 ? (
                             <ul>
                                 {resume.skills.map((skill, index) => (
-                                    <li key={index}>{skill}</li>
+                                    <li key={index} className={`m-2`}>{skill}</li>
                                 ))}
                             </ul>
                         ) : (
@@ -133,8 +151,8 @@ const AnswerJobApplications = () => {
                         {resume.languages && resume.languages.length > 0 ? (
                             <ul>
                                 {resume.languages.map((language, index) => (
-                                    <li key={index}>
-                                        {language.name} - {language.proficiency}
+                                    <li key={index} className={`m-2`}>
+                                        <strong>{language.name}</strong> - {language.proficiency}
                                     </li>
                                 ))}
                             </ul>
@@ -148,7 +166,7 @@ const AnswerJobApplications = () => {
                         {resume.projects && resume.projects.length > 0 ? (
                             <ul>
                                 {resume.projects.map((project, index) => (
-                                    <li key={index}>
+                                    <li key={index} className={`m-2`}>
                                         <strong>{project.title}</strong>
                                         <p>{project.description}</p>
                                     </li>
@@ -164,7 +182,7 @@ const AnswerJobApplications = () => {
                         {resume.hobbies && resume.hobbies.length > 0 ? (
                             <ul>
                                 {resume.hobbies.map((hobby, index) => (
-                                    <li key={index}>{hobby}</li>
+                                    <li key={index} className={`m-2`}>{hobby}</li>
                                 ))}
                             </ul>
                         ) : (
@@ -177,7 +195,11 @@ const AnswerJobApplications = () => {
                         {resume.licenses_and_certificates && resume.licenses_and_certificates.length > 0 ? (
                             <ul>
                                 {resume.licenses_and_certificates.map((cert, index) => (
-                                    <li key={index}>{cert}</li>
+                                    <li key={index} className={`m-2`}>
+                                        <p><strong>{cert.institution}</strong></p>
+                                        <p>{cert.title}</p>
+                                        <p>{cert.year}</p>
+                                    </li>
                                 ))}
                             </ul>
                         ) : (
@@ -190,7 +212,14 @@ const AnswerJobApplications = () => {
                         {resume.references && resume.references.length > 0 ? (
                             <ul>
                                 {resume.references.map((reference, index) => (
-                                    <li key={index}>{reference}</li>
+                                    <li key={index} className={`m-2`}>
+                                        <p><strong>{reference.name}</strong></p>
+                                        <p>{reference.company}</p>
+                                        <p>{reference.position}</p>
+                                        <p>{reference.relationship}</p>
+                                        <p>{reference.email}</p>
+                                        <p>{reference.phone}</p>
+                                    </li>
                                 ))}
                             </ul>
                         ) : (
@@ -198,6 +227,33 @@ const AnswerJobApplications = () => {
                         )}
                     </section>
                 </div>
+                <form onSubmit={submitHandler} className={styles.formContainer}>
+                    <div className="form-group">
+                        <label htmlFor="status">Application Status:</label>
+                        <div className={styles.radioContainer}>
+                            <label>Pending</label>
+                            <input type='radio' name='status' value={"pending"} checked={data.status === "pending"} onChange={changeHandler} />
+                            <label>Accepted</label>
+                            <input type='radio' name='status' value={"accepted"} checked={data.status === "accepted"} onChange={changeHandler} />
+                            <label>Rejected</label>
+                            <input type='radio' name='status' value={"rejected"} checked={data.status === "rejected"} onChange={changeHandler} />
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="message">Message:</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            className="form-control"
+                            value={data.message}
+                            onChange={changeHandler}
+                            rows="5"
+                        />
+                    </div>
+                    <div className={styles.buttonContainer}>
+                        <SubmitButton text="Submit" />
+                    </div>
+                </form>
             </div>
         </div>
     );

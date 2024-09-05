@@ -79,3 +79,29 @@
     font-size: 0.9em;
     color: #666;
 }
+
+.formContainer {
+    width: 80%;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    box-shadow: 1px 4px 4px 0px rgba(89, 89, 89, 0.34);
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.formContainer>div {
+    margin: 10px;
+}
+
+.radioContainer label {
+    margin-right: 5px;
+}
+
+.radioContainer input {
+    margin-right: 50px;
+}
+
+.buttonContainer {
+    text-align: center;
+}
