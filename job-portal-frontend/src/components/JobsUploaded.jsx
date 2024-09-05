@@ -113,10 +113,6 @@ const JobsUploaded = () => {
         setIsOpenSuccess(true);
     };
 
-    const trying = () => {
-        openUnsuccesModal();
-    }
-
       return (
         <div>
             <Navbar />

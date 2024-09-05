@@ -80,7 +80,7 @@ const Navbar = () => {
                                     <Link to="/jobs-uploaded">My Jobs</Link>
                                 </li>
                                 <li>
-                                    <Link>Messages</Link>
+                                    <Link to="/my-messages">Messages</Link>
                                 </li>
                                 <li onClick={logoutHandler}>
                                     Logout
