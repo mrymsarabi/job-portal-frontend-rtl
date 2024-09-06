@@ -12,6 +12,9 @@ import { getUserByIdAPI } from '/src/apis/getUserByIdAPI';
 //Components:
 import Navbar from "/src/components/Navbar";
 import SubmitButton from "/src/components/SubmitButton";
+//Modals:
+import SuccessModal from "/src/components/Modals/SuccessModal";
+import UnsuccessModal from "/src/components/Modals/UnsuccessModal";
 
 //CSS:
 import styles from "/src/styles/AnswerJobApplications.module.css";
@@ -30,6 +33,12 @@ const AnswerJobApplications = () => {
         status: applicant.status,
         message: "",
     });
+
+    //States for Unsucces Message Modal:
+    const [isOpenUnsuccess, setIsOpenUnsuccess] = useState(false);
+
+    //States for Succes Message Modal:
+    const [isOpenSuccess, setIsOpenSuccess] = useState(false);
 
     //Functions: 
     useEffect(() => {
@@ -58,11 +67,6 @@ const AnswerJobApplications = () => {
         }
     }
 
-    //Getting the application based on the id:
-    const getApplication = async() => {
-        
-    };
-
     const changeHandler = (event) => {
         setData({...data, [event.target.name]: event.target.value});
     };
@@ -70,7 +74,21 @@ const AnswerJobApplications = () => {
     const submitHandler = async(event) => {
         event.preventDefault();
         const response = await jobApplicationAnswerAPI(data, applicant.application_id, token);
-        console.log(response)
+        if(response.status === "success") {
+            openSuccesModal();
+        } else {
+            openUnsuccesModal();
+        };
+    };
+
+    //Opening Unsuccess Mesage Modal:
+    const openUnsuccesModal = () => {
+        setIsOpenUnsuccess(true);
+    };
+
+    //Opening Success Mesage Modal:
+    const openSuccesModal = () => {
+        setIsOpenSuccess(true);
     };
 
     return (
@@ -255,6 +273,8 @@ const AnswerJobApplications = () => {
                     </div>
                 </form>
             </div>
+            <SuccessModal isOpenSuccess={isOpenSuccess} setIsOpenSuccess={setIsOpenSuccess} type="answer" />
+            <UnsuccessModal isOpenUnsuccess={isOpenUnsuccess} setIsOpenUnsuccess={setIsOpenUnsuccess} />
         </div>
     );
 };

@@ -16,7 +16,7 @@ export const jobApplicationAnswerAPI = async(data, applicationId, token) => {
         );
 
         console.log(response);
-        return response;
+        return response.data;
     } catch(error) {
         console.log(error);
         return {status: "error", error: error.response ? error.response.data.error : 'An error occurred'};
