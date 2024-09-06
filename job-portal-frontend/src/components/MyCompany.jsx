@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 //Modules and Library:
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 //APIs:
 import { myCompanyAPI } from '/src/apis/myCompanyAPI';
@@ -16,6 +17,8 @@ import styles from "/src/styles/MyCompany.module.css";
 const MyCompany = () => {
     const token = Cookies.get("token");
 
+    const navigate = useNavigate();
+
     //States:
     const [company, setCompany] = useState({});
 
@@ -29,9 +32,21 @@ const MyCompany = () => {
         const response = await myCompanyAPI(token);
         if (response.status === "success") {
             setCompany(response.company);
+            console.log(response.company)
         } else {
             setCompany({});
         }
+    };
+
+    //Handle sending to the edit page (if a company already existed created by the user):
+    const editHandler = (event, id) => {
+        event.preventDefault();
+        navigate(`/update-company/${id}`);
+    };
+
+    //Handle adding a company (if no company was added by the user):
+    const addHandler = () => {
+        navigate('/add-company');
     };
 
     return (
@@ -55,14 +70,16 @@ const MyCompany = () => {
                                     {new Date(company.created_at).toLocaleString()}
                                 </div>
                             </div>
-                            <div className={styles.iconContainer}>
+                            <div className={styles.iconContainer} onClick={event => editHandler(event, company._id)}>
                                 <Icon icon="pencil" width="30px" height="30px" color="#000000" />
                             </div>
                         </>
                     ) : (
                         <div>
                             <p>There is nothing to show.</p>
-                            <Icon icon="plus" width="30px" height="30px" color="#000000" />
+                            <div onClick={addHandler}>
+                                <Icon icon="plus" width="30px" height="30px" color="#000000" />
+                            </div>
                         </div>
                     )}
                 </div>

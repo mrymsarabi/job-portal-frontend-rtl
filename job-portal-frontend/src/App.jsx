@@ -24,6 +24,7 @@ import Message from '/src/components/Message';
 import CompanyDetails from '/src/components/CompanyDetails';
 import UpdateJob from '/src/components/UpdateJob';
 import MyCompany from '/src/components/MyCompany';
+import UpdateCompany from '/src/components/UpdateCompany';
 
 const App = () => {
   return (
@@ -45,7 +46,8 @@ const App = () => {
       <Route path='/message/:id' element={<Message />} />
       <Route path='/company/:id' element={<CompanyDetails />} />
       <Route path='/update-job/:id' element={<UpdateJob />} />
-      <Route path='/my-company' element={<MyCompany />} /> 
+      <Route path='/my-company' element={<MyCompany />} />
+      <Route path='/update-company/:id' element={<UpdateCompany />} /> 
       <Route path='/about-us' element={<AboutUs />} />
       <Route path='/test' element={<Test />} />
       <Route path="/*" element={<Navigate to="/home" replace />} />
