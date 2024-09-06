@@ -6,7 +6,7 @@ import Icon from "/src/icons/Icon";
 //CSS:
 import styles from '/src/styles/Section.module.css';
 
-const EducationSection = ({ title, items, onChange, addItem, deleteItem, editItem }) => {
+const EducationSection = ({ title, items, onChange, addItem, deleteItem }) => {
     return (
         <div className={styles.sectionContainer}>
             <h2 className={styles.sectionTitle}>{title}</h2>
@@ -29,10 +29,8 @@ const EducationSection = ({ title, items, onChange, addItem, deleteItem, editIte
                         placeholder="Institution"
                     />
                     <div className={styles.iconContainer}>
-                        {/* Add more fields as necessary */}
-                        <Icon icon="pencil" width="24px" height="24px" color="#000000"  onClick={() => editItem('education', index)} /> {/* Edit Icon */}
                         <Icon icon="delete" width="24px" height="24px" color="#000000" onClick={() => deleteItem('education', index)} /> {/* Delete Icon */}
-                        </div>
+                    </div>
                 </div>
             ))}
             <button className={styles.addButton} type="button" onClick={addItem}>Add Education</button>

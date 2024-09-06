@@ -6,7 +6,7 @@ import Icon from "/src/icons/Icon";
 //CSS:
 import styles from '/src/styles/Section.module.css';
 
-const ExperienceSection = ({ title, items, onChange, addItem, deleteItem, editItem }) => {
+const ExperienceSection = ({ title, items, onChange, addItem, deleteItem }) => {
     return (
         <div className={styles.sectionContainer}>
             <h2 className={styles.sectionTitle}>{title}</h2>
@@ -29,9 +29,7 @@ const ExperienceSection = ({ title, items, onChange, addItem, deleteItem, editIt
                         placeholder="Company"
                     />
                     <div className={styles.iconContainer}>
-                    {/* Add more fields as necessary */}
-                    <Icon icon="pencil" width="24px" height="24px" color="#000000"  onClick={() => editItem('experience', index)} /> {/* Edit Icon */}
-                    <Icon icon="delete" width="24px" height="24px" color="#000000" onClick={() => deleteItem('experience', index)} /> {/* Delete Icon */}
+                        <Icon icon="delete" width="24px" height="24px" color="#000000" onClick={() => deleteItem('experience', index)} /> {/* Delete Icon */}
                     </div>
                 </div>
             ))}

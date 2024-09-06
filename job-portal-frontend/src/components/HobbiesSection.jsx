@@ -6,7 +6,7 @@ import Icon from "/src/icons/Icon";
 //CSS:
 import styles from '/src/styles/Section.module.css';
 
-const HobbiesSection = ({ title, items, onChange, addItem, deleteItem, editItem }) => {
+const HobbiesSection = ({ title, items, onChange, addItem, deleteItem }) => {
     return (
         <div className={styles.sectionContainer}>
             <h2 className={styles.sectionTitle}>{title}</h2>
@@ -21,7 +21,6 @@ const HobbiesSection = ({ title, items, onChange, addItem, deleteItem, editItem 
                         placeholder="Hobby"
                     />
                     <div className={styles.iconContainer}>
-                        <Icon icon="pencil" width="24px" height="24px" color="#000000"  onClick={() => editItem('hobbies', index)} /> {/* Edit Icon */}
                         <Icon icon="delete" width="24px" height="24px" color="#000000" onClick={() => deleteItem('hobbies', index)} /> {/* Delete Icon */}
                     </div>
                 </div>

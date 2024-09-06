@@ -84,3 +84,7 @@ li > a:hover {
 .dropDown li:last-child {
     border-bottom: none; /* Remove the border from the last item */
 }
+
+li {
+    margin-bottom: 0 !important;
+}

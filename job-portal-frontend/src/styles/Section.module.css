@@ -28,7 +28,7 @@
 
 .textarea {
     height: 80px;
-    resize: none;
+    width: 720px;
 }
 
 .iconContainer {
@@ -49,11 +49,10 @@
 .addButton {
     padding: 10px 15px;
     border: none;
-    background-color: #007bff;
+    background-color: #045996;
     color: #fff;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 1rem;
     transition: background-color 0.3s;
 }
 

@@ -17,6 +17,7 @@ import LanguagesSection from '/src/components/LanguagesSection';
 import ProjectsSection from '/src/components/ProjectsSection';
 import ReferencesSection from '/src/components/ReferencesSection';
 import HobbiesSection from '/src/components/HobbiesSection';
+import SubmitButton from "/src/components/SubmitButton";
 
 //CSS:
 import styles from '/src/styles/UpdateResume.module.css';
@@ -156,72 +157,76 @@ const UpdateResume = () => {
     return (
         <div>
             <Navbar />
-            <div className={styles.container}>
-                <form onSubmit={submitHandler}>  {/* Wrap sections in a form */}
-                    <AboutSection
-                        title="About Me"
-                        value={data.about}
-                        onChange={changeHandler}
-                        editItem={editItem}
-                    />
-                    <ExperienceSection
-                        title="Experience"
-                        items={data.experience}
-                        onChange={changeHandler}
-                        addItem={() => addItem('experience', { title: "", company: "", start_date: "", end_date: "", description: "" })}
-                        deleteItem={deleteItem}
-                        editItem={editItem}
-                    />
-                    <EducationSection
-                        title="Education"
-                        items={data.education}
-                        onChange={changeHandler}
-                        addItem={() => addItem('education', { degree: "", institution: "", year: "", description: "" })}
-                        deleteItem={deleteItem}
-                        editItem={editItem}
-                    />
-                    <SkillsSection
-                        title="Skills"
-                        items={data.skills}
-                        onChange={changeHandler}
-                        addItem={() => addItem('skills', "")}
-                        deleteItem={deleteItem}
-                        editItem={editItem}
-                    />
-                    <LanguagesSection
-                        title="Languages"
-                        items={data.languages}
-                        onChange={changeHandler}
-                        addItem={() => addItem('languages', { name: "", proficiency: "" })}
-                        deleteItem={deleteItem}
-                        editItem={editItem}
-                    />
-                    <ProjectsSection
-                        title="Projects"
-                        items={data.projects}
-                        onChange={changeHandler}
-                        addItem={() => addItem('projects', { title: "", description: "" })}
-                        deleteItem={deleteItem}
-                        editItem={editItem}
-                    />
-                    <ReferencesSection
-                        title="References"
-                        items={data.references}
-                        onChange={changeHandler}
-                        addItem={() => addItem('references', { name: "", position: "", company: "", email: "", phone: "", relationship: "" })}
-                        deleteItem={deleteItem}
-                        editItem={editItem}
-                    />
-                    <HobbiesSection
-                        title="Hobbies"
-                        items={data.hobbies}
-                        onChange={changeHandler}
-                        addItem={() => addItem('hobbies', "")}
-                        deleteItem={deleteItem}
-                        editItem={editItem}
-                    />
-                    <button type="submit" className={styles.submitButton}>Submit</button>  {/* Submit button */}
-                </form>
+            <div className={styles.content}>
+                <h1>Update Resume</h1>
+                <div className={styles.container}>
+                    <form onSubmit={submitHandler}>  {/* Wrap sections in a form */}
+                        <AboutSection
+                            title="About Me"
+                            value={data.about}
+                            onChange={changeHandler}
+                            editItem={editItem}
+                        />
+                        <ExperienceSection
+                            title="Experience"
+                            items={data.experience}
+                            onChange={changeHandler}
+                            addItem={() => addItem('experience', { title: "", company: "", start_date: "", end_date: "", description: "" })}
+                            deleteItem={deleteItem}
+                            editItem={editItem}
+                        />
+                        <EducationSection
+                            title="Education"
+                            items={data.education}
+                            onChange={changeHandler}
+                            addItem={() => addItem('education', { degree: "", institution: "", year: "", description: "" })}
+                            deleteItem={deleteItem}
+                            editItem={editItem}
+                        />
+                        <SkillsSection
+                            title="Skills"
+                            items={data.skills}
+                            onChange={changeHandler}
+                            addItem={() => addItem('skills', "")}
+                            deleteItem={deleteItem}
+                            editItem={editItem}
+                        />
+                        <LanguagesSection
+                            title="Languages"
+                            items={data.languages}
+                            onChange={changeHandler}
+                            addItem={() => addItem('languages', { name: "", proficiency: "" })}
+                            deleteItem={deleteItem}
+                            editItem={editItem}
+                        />
+                        <ProjectsSection
+                            title="Projects"
+                            items={data.projects}
+                            onChange={changeHandler}
+                            addItem={() => addItem('projects', { title: "", description: "" })}
+                            deleteItem={deleteItem}
+                            editItem={editItem}
+                        />
+                        <ReferencesSection
+                            title="References"
+                            items={data.references}
+                            onChange={changeHandler}
+                            addItem={() => addItem('references', { name: "", position: "", company: "", email: "", phone: "", relationship: "" })}
+                            deleteItem={deleteItem}
+                            editItem={editItem}
+                        />
+                        <HobbiesSection
+                            title="Hobbies"
+                            items={data.hobbies}
+                            onChange={changeHandler}
+                            addItem={() => addItem('hobbies', "")}
+                            deleteItem={deleteItem}
+                        />
+                        <div className={styles.buttonContainer}>
+                            <SubmitButton text="Submit" />
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     );
