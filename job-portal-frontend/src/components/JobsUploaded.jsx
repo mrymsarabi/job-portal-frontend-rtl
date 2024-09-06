@@ -73,6 +73,12 @@ const JobsUploaded = () => {
         setPageSize(size);
     };
 
+    //Handle editing the job:
+    const editHandler = (event, id) => {
+        event.preventDefault();
+        navigate(`/update-job/${id}`);
+    };
+
     const detailsHandler = (event, id) => {
         event.preventDefault();
         navigate(`/jobs-uploaded/${id}`);
@@ -165,6 +171,9 @@ const JobsUploaded = () => {
                                     <td>{formatDate(item.date_posted)}</td>
                                     <td>{item.salary}</td>
                                     <td className={styles.iconContainer}>
+                                        <div onClick={event => editHandler(event, item._id)}>
+                                            <Icon icon="pencil" color="#003459" />
+                                        </div>
                                         <div onClick={event => detailsHandler(event, item._id)}>
                                             <Icon icon="read-more" color="#003459" />
                                         </div>
