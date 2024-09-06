@@ -94,7 +94,7 @@ const AnswerJobApplications = () => {
     return (
         <div>
             <Navbar />
-            <div>
+            <div className={styles.content}>
                 <div className={`${styles.userContainer}`}>
                     <h1>User Profile</h1>
                     {

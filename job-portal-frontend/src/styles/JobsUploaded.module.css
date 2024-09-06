@@ -11,6 +11,7 @@
     flex-direction: column;
     justify-content: center; /* Horizontally centers the content */
     padding: 20px; /* Adds padding around the entire content */
+    margin-top: 70px;
 }
 
 .content h1 {

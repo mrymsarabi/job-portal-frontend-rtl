@@ -1,6 +1,9 @@
+.content {
+    margin-top: 70px;
+}
+
 .content h1 {
     margin: 20px;
-    margin-left: 20%;
     font-size: 30px;
 }
 

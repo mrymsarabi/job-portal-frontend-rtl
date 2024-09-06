@@ -4,6 +4,11 @@
     align-items: center; /* Center content horizontally */
     width: 100%; /* Full width of the parent container */
     padding: 0 15px; /* Optional: Add padding if needed */
+    margin-top: 70px;
+}
+
+.content h1 {
+    font-size: 24px;
 }
 
 .listContainer {

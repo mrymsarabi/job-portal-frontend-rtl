@@ -59,6 +59,7 @@ const MyMessages = () => {
         <div className={`${styles.page}`}>
             <Navbar />
             <div className={`${styles.content}`}>
+                <h1>My Messages</h1>
                 {
                     messages.length > 0 ?
                     <div className={styles.listContainer}>

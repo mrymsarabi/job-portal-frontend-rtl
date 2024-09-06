@@ -51,8 +51,9 @@ const Navbar = () => {
     return (
         <div className={styles.navContainer}>
             <nav className={styles.navbar}>
-                <ul>
-                    <div>
+                <ul className={styles.navItems}>
+                    {/* First part of the navbar */}
+                    <div className={styles.firstPart}>
                         <li className={styles.home}>
                             <Link to="/home">Home</Link>
                         </li>
@@ -63,17 +64,18 @@ const Navbar = () => {
                             <Link to="/about-us">About Us</Link>
                         </li>
                     </div>
+                    
+                    {/* Profile/Login container */}
                     <div className={styles.profileContainer}>
-                        {
-                            loggedIn ? 
+                        {loggedIn ? (
                             <li className={styles.profile} onClick={showHandler}>
                                 <Icon icon="account-circle-1" color="#ffffff" width="24px" height="24px" />
                             </li>
-                            :
+                        ) : (
                             <li className={styles.login}>
                                 <Link to="/signup">Sign Up</Link>/<Link to="/login">Login</Link>
                             </li>
-                        }
+                        )}
                         {show && (
                             <ul className={styles.dropDown}>
                                 <li>
@@ -88,9 +90,7 @@ const Navbar = () => {
                                 <li>
                                     <Link to="/my-company">Company</Link>
                                 </li>
-                                <li onClick={logoutHandler}>
-                                    Logout
-                                </li>
+                                <li onClick={logoutHandler}>Logout</li>
                             </ul>
                         )}
                     </div>

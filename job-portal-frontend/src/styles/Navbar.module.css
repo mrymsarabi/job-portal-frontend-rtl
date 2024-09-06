@@ -1,94 +1,89 @@
 .navContainer {
-    position: relative;
-    z-index: 1; /* Ensure the navbar is on top */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #003459; /* Blue background */
 }
 
-.navbar ul {
+.navbar {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between; /* Space between the first part and profile/login */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #003459;
+    color: #fff;
+}
+
+.navItems {
+    display: flex;
     justify-content: space-between;
-    list-style: none;
-    height: 50px;
-    line-height: 50px;
-    background-color: #003459;
-    color: #FFFFFF;
+    align-items: center;
+    width: 100%; /* Makes sure the profile/login part is aligned to the right */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
-li {
-    display: inline-block;
+.firstPart {
+    display: flex; /* Align the links next to each other */
 }
 
-li > a {
-    display: inline-block;
-    width: 150px;
-    padding-left: 10px;
-    text-decoration: none;
-    color: #FFFFFF;
-}
-
-li > a:hover {
-    color: #ADECFE;
-    cursor: pointer;
-}
-
-.login > a {
-    width: fit-content;
-}
-
-.login > a:hover {
-    color: #ADECFE;
-    background-color: #003459;
-}
-
-.login {
-    margin-right: 10px;
-}
-
-.profile {
+.firstPart li {
     margin-right: 20px;
 }
 
-.profile:hover {
-    cursor: pointer;
+.navbar li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.navbar li a:hover {
+    color: #ADECFE;
 }
 
 .profileContainer {
     position: relative;
-    display: inline-block;
 }
 
 .dropDown {
-    display: flex !important;
-    flex-direction: column !important;
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    top: 100%; /* Position below the profile icon */
+    top: 100%;
     right: 0;
-    background-color: #ffffff; /* Dropdown background color */
+    background-color: #ffffff;
     color: #003459;
     border: 1px solid #ddd;
     border-radius: 4px;
-    padding: 0; /* Remove padding to make background color consistent */
+    padding: 0;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 2; /* Ensure dropdown hovers over other elements */
-    width: 150px; /* Set a fixed width */
+    z-index: 2000;
+    width: 150px;
+    list-style: none;
 }
 
 .dropDown li {
-    padding: 10px 12px; /* Add padding for each item */
     cursor: pointer;
-    background-color: #003459; /* Ensure each item has the same background color */
-    color: #FFFFFF; /* Text color for each item */
-    border-bottom: 1px solid #ddd; /* Add a separator between items */
-}
-
-.dropDown li:last-child {
-    border-bottom: none; /* Remove the border from the last item */
-}
-
-li {
+    background-color: #003459;
+    color: #FFFFFF;
+    border-bottom: 1px solid #ddd;
     margin-bottom: 0 !important;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 5px;
 }
 
-li:hover {
+.dropDown li a {
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 5px;
+}
+
+.dropDown li a:hover, .dropDown li:hover {
     color: #ADECFE;
 }

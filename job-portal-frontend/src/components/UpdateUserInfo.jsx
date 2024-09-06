@@ -96,7 +96,7 @@ const UpdateUserInfo = () => {
                             </div>
                         </div>
                         <div className={styles.buttonContainer}>
-                            <SubmitButton text="Save Changes" />
+                            <SubmitButton text="Update" />
                         </div>
                     </form>
                 </div>

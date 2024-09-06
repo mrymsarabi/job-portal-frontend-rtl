@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center; /* Centers the table and pagination horizontally */
     width: 100%; /* Ensures the content takes up most of the screen width */
+    margin-top: 70px;
 }
 
 .topContent {
