@@ -56,11 +56,11 @@ const Navbar = () => {
                         <li className={styles.home}>
                             <Link to="/home">Home</Link>
                         </li>
-                        <li className={styles.about_us}>
-                            <Link to="/about-us">About Us</Link>
-                        </li>
                         <li className={styles.add}>
                             <Link to="/add-job">Add a Position</Link>
+                        </li>
+                        <li className={styles.about_us}>
+                            <Link to="/about-us">About Us</Link>
                         </li>
                     </div>
                     <div className={styles.profileContainer}>

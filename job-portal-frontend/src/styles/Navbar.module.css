@@ -88,3 +88,7 @@ li > a:hover {
 li {
     margin-bottom: 0 !important;
 }
+
+li:hover {
+    color: #ADECFE;
+}
