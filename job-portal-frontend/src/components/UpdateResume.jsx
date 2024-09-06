@@ -77,20 +77,10 @@ const UpdateResume = () => {
         }
     };
 
-    // const changeHandler = (e) => {
-    //     const { name, value } = e.target;
-    //     const [section, index, key] = name.split('.');
-    //     setData((prevState) => {
-    //         const updatedSection = [...prevState[section]];
-    //         updatedSection[index][key] = value;
-    //         return { ...prevState, [section]: updatedSection };
-    //     });
-    // };
-
-    const changeHandler = (e) => {
-        const { name, value } = e.target;
+    const changeHandler = (event) => {
+        const { name, value } = event.target;
     
-    const [section, index, key] = name.split('.');
+        const [section, index, key] = name.split('.');
 
         // Check if the name is 'about' or another simple field
         if (name === "about") {

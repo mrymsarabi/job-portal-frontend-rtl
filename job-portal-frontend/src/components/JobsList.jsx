@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
+//Modules and Libraries:
+import { useNavigate } from 'react-router-dom';
+
 //APIs:
 import { jobsListAPI } from '/src/apis/jobsListAPI';
 
@@ -8,12 +11,12 @@ import Navbar from '/src/components/Navbar';
 import JobDetails from '/src/components/JobDetails';
 import PaginationComponent from '/src/components/PaginationComponent';
 
-
 //CSS:
 import styles from "/src/styles/JobsList.module.css";
 
-
 const JobsList = () => {
+    const navigate = useNavigate();
+
     //States:
     const [data, setData] = useState([]);
     const [show, setShow] = useState({});
@@ -59,7 +62,13 @@ const JobsList = () => {
     const handlePageChange = (page, size) => {
         setCurrentPage(page);
         setPageSize(size);
-    };0
+    };
+
+    //Handle clicking on a company name:
+    const companyHandler = (event, companyId) => {
+        event.preventDefault();
+        navigate(`/company/${companyId}`)
+    };
 
     return (
         <div className={styles.page}>
@@ -72,6 +81,7 @@ const JobsList = () => {
                             data.length > 0 && data.map((item, index) => (
                                 <div onClick={() => showHandler(index)} className={show[index] ? styles.activeItem : styles.itemContainer}>
                                     <h3>{item.title}</h3>
+                                    <div>{item.company_name ? <span className={styles.company} onClick={event => companyHandler(event, item.posted_by.company_id)}>{item.company_name}</span> : "-"}</div>
                                     <div>{item.sector}</div>
                                     <div>{item.location}</div>
                                     <div>{item.salary}</div>
@@ -82,7 +92,7 @@ const JobsList = () => {
                     </div>
                     <div>
                         {data.length > 0 &&
-                            <JobDetails data={chosenItem} />
+                            <JobDetails data={chosenItem} companyHandler={companyHandler} />
                         }
                     </div>
                 </div>

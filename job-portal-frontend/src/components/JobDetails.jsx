@@ -6,7 +6,7 @@ import styles from "/src/styles/JobDetails.module.css";
 //CSS:
 import { useNavigate } from 'react-router-dom';
 
-const JobDetails = ({ data }) => {
+const JobDetails = ({ data, companyHandler }) => {
     const navigate = useNavigate();
 
     const applyHandler = (event) => {
@@ -20,12 +20,12 @@ const JobDetails = ({ data }) => {
             <div>
                 <div className={styles.details}>
                     <h2>{data.title}</h2>
+                    <div>{data.company_name ? <span className={styles.company} onClick={event => companyHandler(event, data.posted_by.company_id)}>{data.company_name}</span> : "-"}</div>
                     <div>{data.salary}</div>
                     <div>{data.sector}</div>
                     <div>{data.date_posted}</div>
                     <div>{data.job_type}</div>
                     <div>{data.location}</div>
-                    <div>{data.company_name}</div>
                 </div>
                 <div className={`${styles.buttonContainer} rounded`} onClick={applyHandler}>
                     Apply now!

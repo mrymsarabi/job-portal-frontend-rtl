@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 //Modules andLibraries:
 import Cookies from 'js-cookie';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // APIs:
 import { checkLoginStatus } from '/src/apis/checkLoginStatus';
@@ -14,6 +14,8 @@ import Icon from "/src/icons/Icon";
 import styles from "/src/styles/Navbar.module.css";
 
 const Navbar = () => {
+    const navigate = useNavigate();
+
     // States:
     const [loggedIn, setLoggedIn] = useState(false);
     const [show, setShow] = useState(false);
@@ -43,6 +45,7 @@ const Navbar = () => {
         Cookies.remove("token");
         setShow(false);
         loginCheck();
+        navigate('/home')
     };
 
     return (

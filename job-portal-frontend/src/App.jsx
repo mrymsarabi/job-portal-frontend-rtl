@@ -21,6 +21,7 @@ import AboutUs from '/src/components/AboutUs';
 import AnswerJobApplications from '/src/components/AnswerJobApplications';
 import MyMessages from '/src/components/MyMessages';
 import Message from '/src/components/Message';
+import CompanyDetails from '/src/components/CompanyDetails';
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
       <Route path='/answer-applications/:id' element={<AnswerJobApplications />} />
       <Route path='/my-messages' element={<MyMessages />} />
       <Route path='/message/:id' element={<Message />} />
+      <Route path='/company/:id' element={<CompanyDetails />} /> 
       <Route path='/about-us' element={<AboutUs />} />
       <Route path='/test' element={<Test />} />
       <Route path="/*" element={<Navigate to="/home" replace />} />

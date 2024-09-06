@@ -20,7 +20,7 @@
 
 .itemContainer, .activeItem  {
     border: 1px solid #DDDDDC;
-    height: 200px;
+    height: 230px;
     margin: 20px;
     border-radius: 10px;
     box-sizing: border-box; /* Ensure padding and border are included in the width */
@@ -48,4 +48,8 @@
 
 .pagination {
     margin: 20px;
+}
+
+.company:hover {
+    cursor: pointer;
 }
