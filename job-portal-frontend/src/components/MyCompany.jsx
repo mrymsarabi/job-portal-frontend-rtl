@@ -55,7 +55,7 @@ const MyCompany = () => {
             <div className={styles.content}>
                 <h1 className={styles.title}>{company.title || "My Company"}</h1>
                 <div className={styles.companyBox}>
-                    {company ? (
+                    {Object.keys(company).length > 0 ? (
                         <>
                             <p className={styles.about}>{company.about_us}</p>
                             <div className={styles.details}>
@@ -77,7 +77,7 @@ const MyCompany = () => {
                     ) : (
                         <div>
                             <p>There is nothing to show.</p>
-                            <div onClick={addHandler}>
+                            <div onClick={addHandler} className={styles.iconContainer}>
                                 <Icon icon="plus" width="30px" height="30px" color="#000000" />
                             </div>
                         </div>
