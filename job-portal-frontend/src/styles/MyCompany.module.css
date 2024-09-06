@@ -1,0 +1,61 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.companyBox {
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 1px 4px 4px 0px rgba(89, 89, 89, 0.34);
+    background-color: #fff;
+    padding: 30px;
+    width: 80%;
+    max-width: 900px;
+    margin-top: 20px;
+    transition: box-shadow 0.3s ease;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.about {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.detailItem {
+    font-size: 16px;
+    color: #444;
+}
+
+.detailItem strong {
+    color: #333;
+    font-weight: 600;
+}
+
+.iconContainer {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.iconContainer:hover {
+    transform: scale(1.1);
+}

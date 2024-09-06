@@ -23,6 +23,7 @@ import MyMessages from '/src/components/MyMessages';
 import Message from '/src/components/Message';
 import CompanyDetails from '/src/components/CompanyDetails';
 import UpdateJob from '/src/components/UpdateJob';
+import MyCompany from '/src/components/MyCompany';
 
 const App = () => {
   return (
@@ -43,7 +44,8 @@ const App = () => {
       <Route path='/my-messages' element={<MyMessages />} />
       <Route path='/message/:id' element={<Message />} />
       <Route path='/company/:id' element={<CompanyDetails />} />
-      <Route path='/update-job/:id' element={<UpdateJob />} /> 
+      <Route path='/update-job/:id' element={<UpdateJob />} />
+      <Route path='/my-company' element={<MyCompany />} /> 
       <Route path='/about-us' element={<AboutUs />} />
       <Route path='/test' element={<Test />} />
       <Route path="/*" element={<Navigate to="/home" replace />} />

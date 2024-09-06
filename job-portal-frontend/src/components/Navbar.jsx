@@ -85,6 +85,9 @@ const Navbar = () => {
                                 <li>
                                     <Link to="/my-messages">Messages</Link>
                                 </li>
+                                <li>
+                                    <Link to="/my-company">Company</Link>
+                                </li>
                                 <li onClick={logoutHandler}>
                                     Logout
                                 </li>
