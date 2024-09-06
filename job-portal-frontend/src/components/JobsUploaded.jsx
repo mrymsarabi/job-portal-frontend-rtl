@@ -58,7 +58,7 @@ const JobsUploaded = () => {
             setData(response.data.jobs);
             setTotalCount(response.data.total_count)
         } else {
-            
+            setData([]);
         }
     };
 

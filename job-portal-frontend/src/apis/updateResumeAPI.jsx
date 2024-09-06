@@ -12,7 +12,7 @@ export const updateResumeAPI = async(data, token) => {
             }
         );
 
-        return response;
+        return response.data;
     } catch (error) {
         console.error('Error updating resume section:', error);
         return { status: "error", message: error.message };

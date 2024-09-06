@@ -48,7 +48,7 @@ const JobDetailsApplicants = () => {
         if(response.status === "success") {
             setApplicants(response.applications);
         } else {
-
+            setApplicants([]);
         }
     }
 

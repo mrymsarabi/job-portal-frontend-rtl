@@ -9,6 +9,9 @@ import { applyForJobAPI } from '/src/apis/applyForJobAPI';
 
 //Components:
 import Navbar from "/src/components/Navbar";
+//Modals:
+import SuccessModal from "/src/components/Modals/SuccessModal";
+import UnsuccessModal from "/src/components/Modals/UnsuccessModal";
 
 //CSS:
 import styles from "/src/styles/JobDetailsPage.module.css";
@@ -20,6 +23,12 @@ const JobDetailsPage = () => {
     
     //States:
     const [data, setData] = useState({});
+
+    //States for Unsucces Message Modal:
+    const [isOpenUnsuccess, setIsOpenUnsuccess] = useState(false);
+
+    //States for Succes Message Modal:
+    const [isOpenSuccess, setIsOpenSuccess] = useState(false);
 
     //Functions:
     useEffect(() => {
@@ -36,7 +45,22 @@ const JobDetailsPage = () => {
     const applyHandler = async(event, job_id) => {
         event.preventDefault();
         const response = await applyForJobAPI(id, token);
-    }
+        if(response.status === "success") {
+            openSuccesModal();
+        } else {
+            openUnsuccesModal();
+        };
+    };
+
+    //Opening Unsuccess Mesage Modal:
+    const openUnsuccesModal = () => {
+        setIsOpenUnsuccess(true);
+    };
+
+    //Opening Success Mesage Modal:
+    const openSuccesModal = () => {
+        setIsOpenSuccess(true);
+    };
 
     return (
         <div className={styles.page}>
@@ -96,6 +120,8 @@ const JobDetailsPage = () => {
                     </div>
                 </div>
             </div>
+            <SuccessModal isOpenSuccess={isOpenSuccess} setIsOpenSuccess={setIsOpenSuccess} type="apply" />
+            <UnsuccessModal isOpenUnsuccess={isOpenUnsuccess} setIsOpenUnsuccess={setIsOpenUnsuccess} />
         </div>
     );
 };

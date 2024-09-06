@@ -31,12 +31,8 @@ const Message = () => {
     //Updating the message status from unread to read:
     const updateMessageStatus = async() => {
         const response = await updateMessageStatusAPI(messageId, token);
-        if(response.status === "success") {
-            console.log(response)
-        } else {
-            const response = await updateMessageStatusAPI(messageId, token);
-        }
-    }
+        console.log(response);
+    };
 
     //Getting message by the message id:
     const fetchMessage = async() => {
@@ -46,8 +42,8 @@ const Message = () => {
             setMessage(response.message);
             console.log(response.message)
         } else {
-
-        }
+            setMessage({});
+        };
     };
 
     return (

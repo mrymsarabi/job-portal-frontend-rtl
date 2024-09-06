@@ -18,6 +18,9 @@ import ProjectsSection from '/src/components/ProjectsSection';
 import ReferencesSection from '/src/components/ReferencesSection';
 import HobbiesSection from '/src/components/HobbiesSection';
 import SubmitButton from "/src/components/SubmitButton";
+//Modals:
+import SuccessModal from "/src/components/Modals/SuccessModal";
+import UnsuccessModal from "/src/components/Modals/UnsuccessModal";
 
 //CSS:
 import styles from '/src/styles/UpdateResume.module.css';
@@ -36,6 +39,12 @@ const UpdateResume = () => {
         references: [],
         hobbies: []
     });
+
+    //States for Unsucces Message Modal:
+    const [isOpenUnsuccess, setIsOpenUnsuccess] = useState(false);
+
+    //States for Succes Message Modal:
+    const [isOpenSuccess, setIsOpenSuccess] = useState(false);
 
     // Fetch data from the API on component mount
     useEffect(() => {
@@ -105,8 +114,6 @@ const UpdateResume = () => {
         }
     };
     
-    
-
     const addItem = (sectionName, newItem) => {
         setData((prevState) => ({
             ...prevState,
@@ -121,27 +128,27 @@ const UpdateResume = () => {
         });
     };
 
-    const editItem = (sectionName, index) => {
-        // Here, you would implement whatever logic you need to edit an item.
-        // For example, you might prompt the user with a modal to edit the item.
-        // As a simple example:
-        console.log(`Editing ${sectionName} at index ${index}`);
+    const submitHandler = async (event) => {
+        event.preventDefault();
+        const response = await updateResumeAPI(data, token);
+        if (response.status === "error") {
+            console.log(response)
+            openSuccesModal();
+        } else {
+            // return { status: "error", message: "Failed to update resume section." };
+            console.log("Failed to update resume section.");
+            openUnsuccesModal();
+        };
     };
 
-    const submitHandler = async (e) => {
-        e.preventDefault();  // Prevent the default form submission behavior
+    //Opening Unsuccess Mesage Modal:
+    const openUnsuccesModal = () => {
+        setIsOpenUnsuccess(true);
+    };
 
-        try {
-            const response = await updateResumeAPI(data, token);
-            if (response.status === 200) {
-                console.log(response)
-            } else {
-                // return { status: "error", message: "Failed to update resume section." };
-                console.log("Failed to update resume section.")
-            }
-        } catch (error) {
-            console.log(error)
-        }
+    //Opening Success Mesage Modal:
+    const openSuccesModal = () => {
+        setIsOpenSuccess(true);
     };
 
     return (
@@ -155,7 +162,6 @@ const UpdateResume = () => {
                             title="About Me"
                             value={data.about}
                             onChange={changeHandler}
-                            editItem={editItem}
                         />
                         <ExperienceSection
                             title="Experience"
@@ -163,7 +169,6 @@ const UpdateResume = () => {
                             onChange={changeHandler}
                             addItem={() => addItem('experience', { title: "", company: "", start_date: "", end_date: "", description: "" })}
                             deleteItem={deleteItem}
-                            editItem={editItem}
                         />
                         <EducationSection
                             title="Education"
@@ -171,7 +176,6 @@ const UpdateResume = () => {
                             onChange={changeHandler}
                             addItem={() => addItem('education', { degree: "", institution: "", year: "", description: "" })}
                             deleteItem={deleteItem}
-                            editItem={editItem}
                         />
                         <SkillsSection
                             title="Skills"
@@ -179,7 +183,6 @@ const UpdateResume = () => {
                             onChange={changeHandler}
                             addItem={() => addItem('skills', "")}
                             deleteItem={deleteItem}
-                            editItem={editItem}
                         />
                         <LanguagesSection
                             title="Languages"
@@ -187,7 +190,6 @@ const UpdateResume = () => {
                             onChange={changeHandler}
                             addItem={() => addItem('languages', { name: "", proficiency: "" })}
                             deleteItem={deleteItem}
-                            editItem={editItem}
                         />
                         <ProjectsSection
                             title="Projects"
@@ -195,7 +197,6 @@ const UpdateResume = () => {
                             onChange={changeHandler}
                             addItem={() => addItem('projects', { title: "", description: "" })}
                             deleteItem={deleteItem}
-                            editItem={editItem}
                         />
                         <ReferencesSection
                             title="References"
@@ -203,7 +204,6 @@ const UpdateResume = () => {
                             onChange={changeHandler}
                             addItem={() => addItem('references', { name: "", position: "", company: "", email: "", phone: "", relationship: "" })}
                             deleteItem={deleteItem}
-                            editItem={editItem}
                         />
                         <HobbiesSection
                             title="Hobbies"
@@ -218,6 +218,8 @@ const UpdateResume = () => {
                     </form>
                 </div>
             </div>
+            <SuccessModal isOpenSuccess={isOpenSuccess} setIsOpenSuccess={setIsOpenSuccess} type="update" />
+            <UnsuccessModal isOpenUnsuccess={isOpenUnsuccess} setIsOpenUnsuccess={setIsOpenUnsuccess} />
         </div>
     );
 };

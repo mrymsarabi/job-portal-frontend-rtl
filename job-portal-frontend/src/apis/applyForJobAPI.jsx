@@ -14,9 +14,9 @@ export const applyForJobAPI = async(id, token) => {
             }
         );
         console.log('Application submitted successfully:', response);
-        return response;
+        return response.data;
     } catch (error) {
         console.error('Error applying for job:', error);
-        return { status: "error", error: error.response };
+        return { status: "error", error: error.message };
     }
 }

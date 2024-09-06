@@ -40,8 +40,8 @@ const MyMessages = () => {
             setMessages(response.messages);
             setTotalCount(response.total_count)
         } else {
-
-        }
+            setMessages([]);
+        };
     };
 
     const handlePageChange = (page, size) => {

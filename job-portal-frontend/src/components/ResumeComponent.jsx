@@ -31,8 +31,8 @@ const ResumeComponent = () => {
         if(response.status === "success") {
             setResume(response.resume);
         } else {
-
-        }
+            setResume({});
+        };
     };
 
     return (
