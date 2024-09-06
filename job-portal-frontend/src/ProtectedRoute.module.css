@@ -1,0 +1,14 @@
+.page {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+p {
+    text-align: center;
+}
+
+.page>p>a {
+    color: #6E3DF9;
+    text-decoration: underline;
+}

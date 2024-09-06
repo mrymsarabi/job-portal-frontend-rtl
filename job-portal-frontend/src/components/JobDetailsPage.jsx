@@ -12,7 +12,7 @@ import Navbar from "/src/components/Navbar";
 
 //CSS:
 import styles from "/src/styles/JobDetailsPage.module.css";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const JobDetailsPage = () => {
     const token = Cookies.get("token");
@@ -78,12 +78,21 @@ const JobDetailsPage = () => {
                         {/* Apply for the position */}
                         <h2>Apply Here</h2>
                         <div>
-                            <div>If you want to make changes to your resume, click here.</div>
-                            <div>Click on Apply button to send your resume for this postion</div>
+                            <div>If you want to make changes to your resume, <Link to="/update-resume">click here</Link>.</div>
+                            {
+                                (token) &&
+                                <div>Click on Apply button to send your resume for this postion</div>
+                            }
                         </div>
-                        <div onClick={event => applyHandler(event, id)} className={`${styles.buttonContainer} rounded`}>
-                            Apply
-                        </div>
+                        {
+                            (token) ? 
+                                <div onClick={event => applyHandler(event, id)} className={`${styles.buttonContainer} rounded`}>
+                                    Apply
+                                </div>
+
+                            :
+                            <div>Please <Link to="/login">login</Link> first, then you'll be able to apply.</div>
+                        }
                     </div>
                 </div>
             </div>

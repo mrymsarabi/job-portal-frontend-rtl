@@ -12,7 +12,6 @@ import Profile from '/src/components/Profile';
 import UpdateUserInfo from '/src/components/UpdateUserInfo';
 import UpdateResume from '/src/components/UpdateResume';
 import JobsUploaded from '/src/components/JobsUploaded';
-import Test from '/src/components/Test';
 import AddCompany from '/src/components/AddCompany';
 import JobDetailsPage from '/src/components/JobDetailsPage';
 import MyApplicationsPage from '/src/components/MyApplicationsPage';
@@ -26,30 +25,31 @@ import UpdateJob from '/src/components/UpdateJob';
 import MyCompany from '/src/components/MyCompany';
 import UpdateCompany from '/src/components/UpdateCompany';
 
+import ProtectedRoute from '/src/ProtectedRoute';
+
 const App = () => {
   return (
     <Routes>
       <Route path='/home' element={<JobsList />} />
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<Signup />} />
-      <Route path='/add-job' element={<AddJob />} />
-      <Route path='/profile' element={<Profile />} />
-      <Route path='/update-user-info' element={<UpdateUserInfo />} />
-      <Route path='/update-resume' element={<UpdateResume />} />
-      <Route path='/jobs-uploaded' element={<JobsUploaded />} />
-      <Route path='/jobs-uploaded/:id' element={<JobDetailsApplicants />} />
-      <Route path='/add-company' element={<AddCompany />} />
+      <Route path='/add-job' element={<ProtectedRoute element={<AddJob />} />} />
+      <Route path='/profile' element={<ProtectedRoute element={<Profile />} />} />
+      <Route path='/update-user-info' element={<ProtectedRoute element={<UpdateUserInfo />} />} />
+      <Route path='/update-resume' element={<ProtectedRoute element={<UpdateResume />} />} />
+      <Route path='/jobs-uploaded' element={<ProtectedRoute element={<JobsUploaded />} />} />
+      <Route path='/jobs-uploaded/:id' element={<ProtectedRoute element={<JobDetailsApplicants />} />} />
+      <Route path='/add-company' element={<ProtectedRoute element={<AddCompany />} />} />
       <Route path='/job/:id' element={<JobDetailsPage />} />
-      <Route path='/my-applications' element={<MyApplicationsPage />} />
-      <Route path='/answer-applications/:id' element={<AnswerJobApplications />} />
-      <Route path='/my-messages' element={<MyMessages />} />
-      <Route path='/message/:id' element={<Message />} />
+      <Route path='/my-applications' element={<ProtectedRoute element={<MyApplicationsPage />} />} />
+      <Route path='/answer-applications/:id' element={<ProtectedRoute element={<AnswerJobApplications />} />} />
+      <Route path='/my-messages' element={<ProtectedRoute element={<MyMessages />} />} />
+      <Route path='/message/:id' element={<ProtectedRoute element={<Message />} />} />
       <Route path='/company/:id' element={<CompanyDetails />} />
-      <Route path='/update-job/:id' element={<UpdateJob />} />
-      <Route path='/my-company' element={<MyCompany />} />
-      <Route path='/update-company/:id' element={<UpdateCompany />} /> 
+      <Route path='/update-job/:id' element={<ProtectedRoute element={<UpdateJob />} />} />
+      <Route path='/my-company' element={<ProtectedRoute element={<MyCompany />} />} />
+      <Route path='/update-company/:id' element={<ProtectedRoute element={<UpdateCompany />} />} /> 
       <Route path='/about-us' element={<AboutUs />} />
-      <Route path='/test' element={<Test />} />
       <Route path="/*" element={<Navigate to="/home" replace />} />
     </Routes>
   );
