@@ -186,9 +186,6 @@ const JobsUploaded = () => {
                         </tbody>
                     </table>
                 </div>
-                <div className={styles.pagination}>
-                    <PaginationComponent currentPage={currentPage} pageSize={pageSize} total={totalCount} onPageChange={handlePageChange} />
-                </div>
             </div>
             <DeleteModal
                 isOpen={isOpen}

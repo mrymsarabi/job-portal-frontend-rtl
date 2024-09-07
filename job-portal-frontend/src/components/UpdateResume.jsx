@@ -132,12 +132,11 @@ const UpdateResume = () => {
         event.preventDefault();
         const response = await updateResumeAPI(data, token);
         if (response.status === "error") {
-            console.log(response)
-            openSuccesModal();
-        } else {
-            // return { status: "error", message: "Failed to update resume section." };
             console.log("Failed to update resume section.");
+            console.log(response)
             openUnsuccesModal();
+        } else {
+            openSuccesModal();
         };
     };
 

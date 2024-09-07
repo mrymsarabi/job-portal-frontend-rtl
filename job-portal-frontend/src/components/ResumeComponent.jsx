@@ -38,6 +38,7 @@ const ResumeComponent = () => {
     return (
         <div className={styles.resumeContainer}>
             {/* About Section */}
+            <h2>Resume</h2>
             <div className={styles.section}>
                 <h2 className={styles.sectionTitle}>About Me</h2>
                 <ul>

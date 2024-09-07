@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const updateResumeAPI = async(data, token) => {
+    console.log(token, data)
     try {
         const response = await axios.post(`http://localhost:5000/resume/resume`,
             data,
