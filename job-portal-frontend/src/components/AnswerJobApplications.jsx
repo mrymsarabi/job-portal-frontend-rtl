@@ -92,54 +92,56 @@ const AnswerJobApplications = () => {
     };
 
     return (
-        <div>
+        <div className={styles.page}>
             <Navbar />
             <div className={styles.content}>
                 <div className={`${styles.userContainer}`}>
-                    <h1>User Profile</h1>
+                    <h1>پروفایل کاربر</h1>
                     {
                         user &&
-
-                        <section className={`${styles.userSection}`}>
-                            <p><strong>First Name:</strong> {user.first_name}</p>
-                            <p><strong>Last Name:</strong> {user.last_name}</p>
-                            <p><strong>Username:</strong> {user.username}</p>
-                            <p><strong>Email:</strong> {user.email}</p>
-                            <p><strong>Birth Date:</strong> {user.birth_date}</p>
-                        </section>
+                        <div className={styles.gridContainer}>
+                            <div>نام:</div>
+                            <div>{user.first_name}</div>
+                            <div>نام خانوادگی:</div>
+                            <div>{user.last_name}</div>
+                            <div>نام کاربری:</div>
+                            <div>{user.username}</div>
+                            <div>ایمیل:</div>
+                            <div>{user.email}</div>
+                            <div>تاریخ تولد:</div>
+                            <div>{user.birth_date}</div>
+                        </div>
                     }
                 </div>
 
                 <div className={`${styles.resumeContainer} rounded`}>
-                    <h1>Resume</h1>
-
+                    <h1>رزومه</h1>
                     <section className={`${styles.resumeSection}`}>
-                        <h2>About Me</h2>
+                        <h2>درباره من</h2>
                         <p className={`m-2`}>{resume.about}</p>
                     </section>
-
                     <section className={`${styles.resumeSection}`}>
-                        <h2>Education</h2>
+                        <h2>تحصیلات و آموزش</h2>
                         {resume.education && resume.education.length > 0 ? (
                             <ul>
                                 {resume.education.map((edu, index) => (
                                     <li key={index} className={`m-2`}>
-                                        <strong>{edu.degree}</strong> at {edu.institution} {edu.year && `(${edu.year})`}
+                                        <strong>{edu.degree}</strong> - {edu.institution} {edu.year && `(${edu.year})`}
                                     </li>
                                 ))}
                             </ul>
                         ) : (
-                            <p>No education details available.</p>
+                            <p>اطلاعاتی درباره تحصیلات در دسترس نیست.</p>
                         )}
                     </section>
 
                     <section className={`${styles.resumeSection}`}>
-                        <h2>Experience</h2>
+                        <h2>تجربه ها</h2>
                         {resume.experience && resume.experience.length > 0 ? (
                             <ul>
                                 {resume.experience.map((exp, index) => (
                                     <li key={index} className={`m-2`}>
-                                        <strong>{exp.title}</strong> at {exp.company}
+                                        <strong>{exp.title}</strong> - {exp.company}
                                         {exp.start_date && exp.end_date && (
                                             <span>{` (${exp.start_date} - ${exp.end_date})`}</span>
                                         )}
@@ -147,12 +149,12 @@ const AnswerJobApplications = () => {
                                 ))}
                             </ul>
                         ) : (
-                            <p>No experience details available.</p>
+                            <p>اطلاعاتی درباره تجربه ها در دسترس نیست.</p>
                         )}
                     </section>
 
                     <section className={`${styles.resumeSection}`}>
-                        <h2>Skills</h2>
+                        <h2>مهارت ها</h2>
                         {resume.skills && resume.skills.length > 0 ? (
                             <ul>
                                 {resume.skills.map((skill, index) => (
@@ -160,12 +162,12 @@ const AnswerJobApplications = () => {
                                 ))}
                             </ul>
                         ) : (
-                            <p>No skills listed.</p>
+                            <p>مهارتی لیست نشده است.</p>
                         )}
                     </section>
 
                     <section className={`${styles.resumeSection}`}>
-                        <h2>Languages</h2>
+                        <h2>زبان ها</h2>
                         {resume.languages && resume.languages.length > 0 ? (
                             <ul>
                                 {resume.languages.map((language, index) => (
@@ -175,12 +177,12 @@ const AnswerJobApplications = () => {
                                 ))}
                             </ul>
                         ) : (
-                            <p>No languages listed.</p>
+                            <p>زبانی لیست نشده است.</p>
                         )}
                     </section>
 
                     <section className={`${styles.resumeSection}`}>
-                        <h2>Projects</h2>
+                        <h2>پروژه ها</h2>
                         {resume.projects && resume.projects.length > 0 ? (
                             <ul>
                                 {resume.projects.map((project, index) => (
@@ -191,12 +193,12 @@ const AnswerJobApplications = () => {
                                 ))}
                             </ul>
                         ) : (
-                            <p>No projects listed.</p>
+                            <p>پروژه ای لیست نشده است.</p>
                         )}
                     </section>
 
                     <section className={`${styles.resumeSection}`}>
-                        <h2>Hobbies</h2>
+                        <h2>تفریحات و سرگرمی ها</h2>
                         {resume.hobbies && resume.hobbies.length > 0 ? (
                             <ul>
                                 {resume.hobbies.map((hobby, index) => (
@@ -204,12 +206,12 @@ const AnswerJobApplications = () => {
                                 ))}
                             </ul>
                         ) : (
-                            <p>No hobbies listed.</p>
+                            <p>سرگرمی ای لیست نشده است.</p>
                         )}
                     </section>
 
                     <section className={`${styles.resumeSection}`}>
-                        <h2>Licenses and Certificates</h2>
+                        <h2>مدارک و گواهینامه ها</h2>
                         {resume.licenses_and_certificates && resume.licenses_and_certificates.length > 0 ? (
                             <ul>
                                 {resume.licenses_and_certificates.map((cert, index) => (
@@ -221,12 +223,12 @@ const AnswerJobApplications = () => {
                                 ))}
                             </ul>
                         ) : (
-                            <p>No licenses or certificates listed.</p>
+                            <p>گواهی و مدرکی لیست نشده است.</p>
                         )}
                     </section>
 
                     <section className={`${styles.resumeSection}`}>
-                        <h2>References</h2>
+                        <h2>معرف ها</h2>
                         {resume.references && resume.references.length > 0 ? (
                             <ul>
                                 {resume.references.map((reference, index) => (
@@ -241,24 +243,24 @@ const AnswerJobApplications = () => {
                                 ))}
                             </ul>
                         ) : (
-                            <p>No references listed.</p>
+                            <p>معرف ای لیست نشده است.</p>
                         )}
                     </section>
                 </div>
                 <form onSubmit={submitHandler} className={styles.formContainer}>
                     <div className="form-group">
-                        <label htmlFor="status">Application Status:</label>
+                        <label htmlFor="status">وضعیت درخواست:</label>
                         <div className={styles.radioContainer}>
-                            <label>Pending</label>
                             <input type='radio' name='status' value={"pending"} checked={data.status === "pending"} onChange={changeHandler} />
-                            <label>Accepted</label>
+                            <label>در انتظار</label>
                             <input type='radio' name='status' value={"accepted"} checked={data.status === "accepted"} onChange={changeHandler} />
-                            <label>Rejected</label>
+                            <label>پذیرفته شده</label>
                             <input type='radio' name='status' value={"rejected"} checked={data.status === "rejected"} onChange={changeHandler} />
+                            <label>رد شده</label>
                         </div>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="message">Message:</label>
+                        <label htmlFor="message">پیام</label>
                         <textarea
                             id="message"
                             name="message"
@@ -269,7 +271,7 @@ const AnswerJobApplications = () => {
                         />
                     </div>
                     <div className={styles.buttonContainer}>
-                        <SubmitButton text="Submit" />
+                        <SubmitButton text="ثبت" />
                     </div>
                 </form>
             </div>

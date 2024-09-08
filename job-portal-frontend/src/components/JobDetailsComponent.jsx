@@ -6,6 +6,9 @@ import { useNavigate } from 'react-router-dom';
 // Components:
 import Icon from "/src/icons/Icon";
 
+//Functions:
+import { toPersian } from "/src/helper/toPersian";
+
 // CSS:
 import styles from "/src/styles/JobDetailsApplicants.module.css";
 
@@ -40,26 +43,35 @@ const JobDetailsComponent = ({ jobInfo, applicants }) => {
         event.preventDefault();
         navigate(`/answer-applications/${application_id}`, { state: applicant });
     };
+
+    //Handling status in persian:
+    const statusHandler = (status) => {
+        if(status === "accepted") {
+            return "پذیرفته شده";
+        } else if(status === "rejected") {
+            return "رد شده";
+        } else if(status === "pending") {
+            return "در انتظار";
+        };
+    };
     
     return (
         <div>
             <h1 className={styles.header}>Job Details and Applicants</h1>
             <div className={`${styles.jobDetailsContainer} rounded`}>
                 <div className={styles.gridContainer}>
-                    <div>Title</div>
+                    <div>عنوان</div>
                     <div>{jobInfo.title}</div>
-                    <div>Company</div>
+                    <div>شرکت</div>
                     <div>{jobInfo.company_name}</div>
-                    <div>Location</div>
+                    <div>موقعیت</div>
                     <div>{jobInfo.location}</div>
-                    <div>Job Type</div>
+                    <div>نوع شغل</div>
                     <div>{jobInfo.job_type}</div>
-                    <div>Sector</div>
+                    <div>بخش</div>
                     <div>{jobInfo.sector}</div>
-                    <div>Salary</div>
+                    <div>حقوق</div>
                     <div>{jobInfo.salary}</div>
-                    <div>User (Posted by:)</div>
-                    <div>...</div>
                 </div>
                 <div className={styles.iconContainer} onClick={toggleDropdown}>
                     {
@@ -70,20 +82,20 @@ const JobDetailsComponent = ({ jobInfo, applicants }) => {
                 </div>
                 {isOpen && (
                     <div className={styles.dropdownContent}>
-                        <div>Requirements</div>
+                        <div>الزامات</div>
                         <div>{jobInfo.requirements}</div>
-                        <div>Description</div>
+                        <div>توضیحات</div>
                         <div>{jobInfo.description}</div>
-                        <div>Benefits</div>
+                        <div>مزایا</div>
                         <div>{jobInfo.benefits}</div>
                     </div>
                 )}
             </div>
             <div className={styles.listContainer}>
-                <h2>Applicants</h2>
+                <h2>متقاضیان</h2>
                 {
                     applicants.length > 0 ?
-                    <div className={styles.tableWrapper}>  {/* Additional wrapper div */}
+                    <div className={styles.tableWrapper}>
                         <table className={`${styles.listHead} rounded`}>
                             <colgroup>
                                 <col className={styles.col1} />
@@ -95,9 +107,9 @@ const JobDetailsComponent = ({ jobInfo, applicants }) => {
                             <thead className={`${styles.thead} rounded`}>
                                 <tr>
                                     <th>#</th>
-                                    <th>Username</th>
-                                    <th>Date Applied</th>
-                                    <th>Status</th>
+                                    <th>نام کاربری</th>
+                                    <th>تاریخ درخواست</th>
+                                    <th>وضعیت</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -114,10 +126,10 @@ const JobDetailsComponent = ({ jobInfo, applicants }) => {
                                 {
                                     applicants.map((applicant, index) => (
                                         <tr key={index} onClick={event => applicantHandler(event, applicant.application_id, applicant)}>
-                                            <td>{applicant.counter}</td>
+                                            <td>{toPersian(applicant.counter)}</td>
                                             <td>{applicant.username}</td>
                                             <td>{formatDateApplied(applicant.date_applied)}</td>
-                                            <td>{applicant.status}</td>
+                                            <td>{statusHandler(applicant.status)}</td>
                                             <td></td>
                                         </tr>
                                     ))
@@ -128,7 +140,7 @@ const JobDetailsComponent = ({ jobInfo, applicants }) => {
                     :
                     <div className={styles.noData}>
                         <Icon icon="alert-circle" />
-                        No data was found.
+                        هیچ داده ای یات نشد.
                     </div>
                 }
             </div>

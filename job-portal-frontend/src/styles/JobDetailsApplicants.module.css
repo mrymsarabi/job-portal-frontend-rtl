@@ -1,3 +1,7 @@
+.page {
+    direction: rtl;
+}
+
 .content {
     margin-top: 70px;
 }
@@ -12,6 +16,10 @@
     grid-template-columns: 1fr 3fr; /* First column 200px wide, second column takes up the remaining space */
     grid-template-rows: auto;
     gap: 20px;
+}
+
+.gridContainer>div:nth-child(2n + 1) {
+    font-weight: bold;
 }
 
 /* Center the container horizontally on the page */
@@ -42,6 +50,10 @@
     padding: 10px;
     background-color: #f9f9f9;
     border-radius: 10px;
+}
+
+.dropdownContent>div:nth-child(2n + 1) {
+    font-weight: bold;
 }
 
 .listContainer {

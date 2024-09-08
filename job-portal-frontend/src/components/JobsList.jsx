@@ -74,7 +74,7 @@ const JobsList = () => {
         <div className={styles.page}>
             <Navbar name="home" />
             <div className={styles.content}>
-                <h1>Jobs List</h1>
+                <h1>لیست مشاغل</h1>
                 <div className={styles.listContainer}>
                     <div>
                         {

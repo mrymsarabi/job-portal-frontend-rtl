@@ -1,5 +1,19 @@
+.page {
+    direction: rtl;
+}
+
 .content {
     margin-top: 70px;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 10px;
+}
+
+.gridContainer>div:nth-child(2n + 1) {
+    font-weight: bold;
 }
 
 .userContainer {
@@ -13,7 +27,7 @@
 }
 
 .userContainer h1 {
-    text-align: center;
+    text-align: right;
     font-size: 28px;
     color: #333;
     margin-bottom: 20px;
@@ -40,7 +54,7 @@
 }
 
 .resumeContainer h1 {
-    text-align: center;
+    text-align: right;
     font-size: 28px;
     color: #333;
     margin-bottom: 20px;
@@ -108,4 +122,8 @@
 
 .buttonContainer {
     text-align: center;
+}
+
+p {
+    text-align: right !important;
 }

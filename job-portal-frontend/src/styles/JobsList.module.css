@@ -1,3 +1,7 @@
+.page {
+    direction: rtl;
+}
+
 .content {
     margin-top: 70px;
 }
@@ -43,12 +47,6 @@
 .activeItem {
     border: 1px solid #ADECFE;
 }
-
-/* .pagination {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-} */
 
 .pagination {
     margin: 20px;

@@ -60,9 +60,6 @@ const JobDetailsApplicants = () => {
                     {/* Job Details */}
                     <JobDetailsComponent jobInfo={jobInfo} applicants={applicants} />
                 </div>
-                <div>
-                    {/* Applicants list */}
-                </div>
             </div>
         </div>
     );
