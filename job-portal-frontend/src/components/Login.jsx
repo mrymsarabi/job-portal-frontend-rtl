@@ -81,26 +81,26 @@ const Login = () => {
         <div className={styles.page}>
             <div className={styles.content}>
                 <form onSubmit={submitHandler} className={styles.form_container}>
-                    <h1>Login</h1>
+                    <h1>ورود</h1>
                     <div>
                         <div className={styles.field_container}>
-                            <input type='text' placeholder='Username' name='username' value={data.username} onChange={changeHandler} onFocus={focusHandler} />
+                            <input type='text' placeholder='نام کاربری' name='username' value={data.username} onChange={changeHandler} onFocus={focusHandler} />
                             {
                                 (touched.username && errors.username) && <span className={styles.error}>{errors.username}</span>
                             }
                         </div>
                         <div className={styles.field_container}>
-                            <input type='password' placeholder='Password' name='password' value={data.password} onChange={changeHandler} onFocus={focusHandler} />
+                            <input type='password' placeholder='رمز عبور' name='password' value={data.password} onChange={changeHandler} onFocus={focusHandler} />
                             {
                                 (touched.password && errors.password) && <span className={styles.error}>{errors.password}</span>
                             }
                         </div>
                     </div>
                     <div className={styles.buttonContainer}>
-                        <SubmitButton text="Login" />
+                        <SubmitButton text="ورود" />
                     </div>
-                    <div>
-                        <Link to="/signup">If you don't already have an account, please sign up!</Link>
+                    <div className={styles.link}>
+                        <Link to="/signup">اگر حسابی از قبل ندارید، لطفا ثبت نام کنید.</Link>
                     </div>
                 </form>
                 <div className={styles.img_container}>

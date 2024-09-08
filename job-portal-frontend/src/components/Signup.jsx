@@ -100,17 +100,17 @@ const Signup = () => {
         <div className={styles.page}>
             <div className={styles.content}>
                 <form onSubmit={submitHandler} className={styles.form_container}>
-                    <h1>Sign Up</h1>
+                    <h1>ثبت نام</h1>
                     <div>
                         <div className={styles.fields}>
                             <div className={`${styles.field_container} ${styles.first} mr-2`}>
-                                <input type='text' placeholder='First Name' name='first_name' value={data.first_name} onChange={changeHandler} onFocus={focusHandler} />
+                                <input type='text' placeholder='نام' name='first_name' value={data.first_name} onChange={changeHandler} onFocus={focusHandler} />
                                 {
                                     (touched.first_name && errors.first_name) && <span className={styles.error}>{errors.first_name}</span>
                                 }
                             </div>
                             <div className={`${styles.field_container} ${styles.second} ml-1`}>
-                                <input type='text' placeholder='Last Name' name='last_name' value={data.last_name} onChange={changeHandler} onFocus={focusHandler} />
+                                <input type='text' placeholder='نام خانوادگی' name='last_name' value={data.last_name} onChange={changeHandler} onFocus={focusHandler} />
                                 {
                                     (touched.last_name && errors.last_name) && <span className={styles.error}>{errors.last_name}</span>
                                 }
@@ -118,35 +118,35 @@ const Signup = () => {
                         </div>
                         <div className={styles.fields}>
                             <div className={`${styles.field_container} ${styles.first}`}>
-                                <input type='text' placeholder='Username' name='username' value={data.username} onChange={changeHandler} onFocus={focusHandler} />
+                                <input type='text' placeholder='نام کاربری' name='username' value={data.username} onChange={changeHandler} onFocus={focusHandler} />
                                 {
                                     (touched.username && errors.username) && <span className={styles.error}>{errors.username}</span>
                                 }
                             </div>
                             <div className={styles.field_container}>
-                                <input type='password' placeholder='Password' name='password' value={data.password} onChange={changeHandler} onFocus={focusHandler} />
+                                <input type='password' placeholder='رمزعبور' name='password' value={data.password} onChange={changeHandler} onFocus={focusHandler} />
                                 {
                                     (touched.password && errors.password) && <span className={styles.error}>{errors.password}</span>
                                 }
                             </div>
                         </div>
                         <div className={styles.field_container}>
-                            <input type='email' placeholder='Email' name='email' value={data.email} onChange={changeHandler} onFocus={focusHandler} />
+                            <input type='email' placeholder='ایمیل' name='email' value={data.email} onChange={changeHandler} onFocus={focusHandler} />
                             {
                                 (touched.email && errors.email) && <span className={styles.error}>{errors.email}</span>
                             }
                         </div>
                         <div className={styles.field_container}>
-                            <input type='date' placeholder='Birth Date' name='birth_date' value={data.birth_date} onChange={changeHandler} onFocus={focusHandler} />
+                            <input type='date' placeholder='تاریخ تولد' name='birth_date' value={data.birth_date} onChange={changeHandler} onFocus={focusHandler} />
                             {
                                 (touched.birth_date && errors.birth_date) && <span className={styles.error}>{errors.birth_date}</span>
                             }
                         </div>
                         <div className={styles.buttonContainer}>
-                            <SubmitButton text="Sign Up" />
+                            <SubmitButton text="ثبت نام" />
                         </div>
-                        <div>
-                            <Link to="/login">If you already have an account, please login!</Link>
+                        <div className={styles.link}>
+                            <Link to="/login">اگر از قبل یک حساب کاربری دارید، لطفا وارد شوید.</Link>
                         </div>
                     </div>
                 </form>

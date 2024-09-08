@@ -1,5 +1,5 @@
 .page {
-    font-family: "Inter", sans-serif;
+    direction: rtl;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,6 +70,10 @@
 
 .form_container>div>div>a {
     font-size: 14px;
+}
+
+.buttonContainer {
+    text-align: center;
 }
 
 .error {

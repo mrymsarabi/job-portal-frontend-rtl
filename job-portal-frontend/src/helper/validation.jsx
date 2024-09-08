@@ -7,7 +7,7 @@ export const validation = (data, type) => {
         if(!data.first_name.trim()) {
             errors.first_name = <span>
                 <Icon icon="alert-circle" />
-                <div>You must enter your first name.</div>
+                <div>وارد کردن نام الزامی است.</div>
             </span>;
         } else {
             delete errors.first_name;
@@ -16,7 +16,7 @@ export const validation = (data, type) => {
         if(!data.last_name.trim()) {
             errors.last_name = <span>
                 <Icon icon="alert-circle" />
-                <div>You must enter your last name.</div>
+                <div>وارد کردن نام خانوادگی الزامی است.</div>
             </span>;
         } else {
             delete errors.last_name;
@@ -25,7 +25,7 @@ export const validation = (data, type) => {
         if(!data.username) {
             errors.username = <span>
                 <Icon icon="alert-circle" />
-                <div>You must enter a username.</div>
+                <div>باید یک نام کاربری وارد کنید.</div>
             </span>;
         } else {
             delete errors.username;
@@ -34,7 +34,7 @@ export const validation = (data, type) => {
         if(!data.email) {
             errors.email = <span>
                 <Icon icon="alert-circle" />
-                <div>You must enter a valid email belonging to you.</div>
+                <div>باید یک ایمیل معتبر وارد کنید.</div>
             </span>;
         } else {
             delete errors.email;
@@ -43,12 +43,12 @@ export const validation = (data, type) => {
         if(!data.password) {
             errors.password = <span>
                 <Icon icon="alert-circle" />
-                <div>You must enter a password.</div>
+                <div>باید یک رمزعبور وارد کنید.</div>
             </span>;
         } else if(data.password.length < 8) {
             errors.password = <span>
                 <Icon icon="alert-circle" />
-                <div>You must enter a password with at least 8 characters.</div>
+                <div>رمزعبور شما باید حداقل از 8 کارکتر تشکیل شده باشد.</div>
             </span>;
         } else {
             delete errors.password;
@@ -57,7 +57,7 @@ export const validation = (data, type) => {
         if(!data.birth_date) {
             errors.birth_date = <span>
                 <Icon icon="alert-circle" />
-                <div>You must enter your birth date.</div>
+                <div>وارد کردن تاریخ تولد الزامی است.</div>
             </span>;
         } else {
             delete errors.birth_date;
@@ -66,7 +66,7 @@ export const validation = (data, type) => {
         if(!data.username) {
             errors.username = <span>
                 <Icon icon="alert-circle" />
-                <div>You must enter your username.</div>
+                <div>باید نام کاربری خود را وارد کنید.</div>
             </span>;
         } else {
             delete errors.username;
@@ -75,7 +75,7 @@ export const validation = (data, type) => {
         if(!data.password) {
             errors.password = <span>
                 <Icon icon="alert-circle" />
-                <div>You must enter your password.</div>
+                <div>باید رمزتان را وارد کنید.</div>
             </span>;
         } else {
             delete errors.password;
@@ -84,7 +84,7 @@ export const validation = (data, type) => {
         if(!data.title.trim()) {
             errors.title = <span>
                 <Icon icon="alert-circle" />
-                <div>You must enter a title.</div>
+                <div>وارد کردن عنوان الزامی است.</div>
             </span>;
         } else {
             delete errors.title;
@@ -93,7 +93,7 @@ export const validation = (data, type) => {
         if(!data.sector) {
             errors.sector = <span>
                 <Icon icon="alert-circle" />
-                <div>You must enter the sector.</div>
+                <div>وارد کردن بخش الزامی است.</div>
             </span>;
         } else {
             delete errors.sector;
@@ -102,7 +102,7 @@ export const validation = (data, type) => {
         if(!data.salary) {
             errors.salary = <span>
                 <Icon icon="alert-circle" />
-                <div>You must enter the salary.</div>
+                <div>وارد کردن حقوق الزامی است.</div>
             </span>;
         } else {
             delete errors.sector;
@@ -111,7 +111,7 @@ export const validation = (data, type) => {
         if(!data.location.trim()) {
             errors.location = <span>
                 <Icon icon="alert-circle" />
-                <div>You must enter the location.</div>
+                <div>وارد کردن شهر الزامی است.</div>
             </span>;
         } else {
             delete errors.location;
@@ -120,12 +120,12 @@ export const validation = (data, type) => {
         if(!data.job_type) {
             errors.job_type = <span>
                 <Icon icon="alert-circle" />
-                <div>You must enter the job type.</div>
+                <div>وارد کردن نوع شغل الزامی است.</div>
             </span>;
         } else  {
             delete errors.job_type;
         };
-    }
+    };
 
     return errors;
 }
