@@ -46,17 +46,28 @@ const Message = () => {
         };
     };
 
+    //Handling status:
+    const statusHandler = (status) => {
+        if(status === "accepted") {
+            return "پذیرفته شد.";
+        } else if(status === "rejected") {
+            return "رد شد";
+        } else {
+            return "در انتظار";
+        };
+    };
+
     return (
         <div className={styles.page}>
             <Navbar />
             <div className={styles.content}>
                 <div className={styles.messageContainer}>
-                    <h2 className={styles.title}>Message Details</h2>
-                    <p><strong>Job Name:</strong> {message.job_name}</p>
-                    <p><strong>Company Name:</strong> {message.company_name}</p>
-                    <p><strong>Sender:</strong> {message.sender_username}</p>
-                    <p><strong>Message:</strong> {message.message}</p>
-                    <p><strong>Status:</strong> <span className={message.status === "accepted" ? styles.greenStatus : styles.redStatus}>{message.status}</span></p>
+                    <h2 className={styles.title}>جزئیات پیام</h2>
+                    <p><strong>نام شغل:</strong> {message.job_name}</p>
+                    <p><strong>نام شرکت:</strong> {message.company_name}</p>
+                    <p><strong>فرستنده:</strong> {message.sender_username}</p>
+                    <p><strong>پیام:</strong> {message.message}</p>
+                    <p><strong>وضعیت:</strong> <span className={message.status === "accepted" ? styles.greenStatus : styles.redStatus}>{statusHandler(message.status)}</span></p>
                 </div>
             </div>
         </div>

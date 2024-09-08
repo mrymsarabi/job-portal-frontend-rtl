@@ -43,16 +43,25 @@ const Profile = () => {
             <Navbar />
             <div className={styles.content}>
                 <div>
-                    <h1 className={styles.heading}>Profile</h1>
+                    <h1 className={styles.heading}>پروفایل</h1>
                     <div className={styles.personalInfo}>
                         <div>
-                            <div className={styles.username}>{pInfo.username}</div>
-                            <div className={styles.names}>
-                                <div>{pInfo.first_name}</div>
-                                <div>{pInfo.last_name}</div>
+                            <div className={`${styles.username} ${styles.gridContainer}`}>
+                                <div>نام کاربری:</div>
+                                <div>
+                                    {pInfo.username}
+                                </div>
                             </div>
-                            <div>{pInfo.email}</div>
-                            <div>{pInfo.birth_date}</div>
+                            <div className={styles.gridContainer}>
+                                <div>نام:</div>
+                                <div>{pInfo.first_name}</div>
+                                <div>نام خانوادگی:</div>
+                                <div>{pInfo.last_name}</div>
+                                <div>ایمیل:</div>
+                                {pInfo.email}
+                                <div>تاریخ تولد:</div>
+                                <div>{pInfo.birth_date}</div>  
+                            </div>
                             <div className={styles.iconContainer} onClick={editHandler}>
                                 <Link to="/update-user-info">
                                     <Icon icon="account-edit" color="#000" width="60px" height="60px" />

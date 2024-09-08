@@ -1,8 +1,8 @@
 .page {
+    direction: rtl;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: "Inter", sans-serif;
 }
   
 .content {
@@ -14,8 +14,9 @@
 }
   
 .heading {
-    text-align: left;
-    margin: 10px;
+    font-size: 32px;
+    text-align: right;
+    margin: 20px;
 }
 
 .personalInfo {
@@ -37,24 +38,25 @@
     margin: 10px;
 }
 
+.gridContainer {
+    display: grid;
+    grid-template-columns: 3fr 4fr;
+    gap: 10px;
+}
+
 .username {
     font-size: 24px;
 }
 
-.names {
-    display: flex;
-    gap: 10px;
-}
-
 .iconContainer {
     position: absolute;
-    top: 10px;  /* Adjusts the vertical position */
-    right: 10px;  /* Adjusts the horizontal position */
+    top: 10px;
+    left: 10px;
     cursor: pointer;
 }
 
 .resumeContainer {
-    position: relative;  /* This makes the editIcon position relative to resumeContainer */
+    position: relative;
     box-shadow: 1px 4px 4px 0px rgba(89, 89, 89, 0.34);
     border-radius: 10px;
     padding: 40px;
@@ -63,13 +65,13 @@
 
 .editIcon {
     position: absolute;
-    top: 10px;  /* Adjusts the vertical position */
-    right: 10px;  /* Adjusts the horizontal position */
+    top: 10px;
+    left: 10px;
     cursor: pointer;
 }
 
 .section {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .sectionTitle {
@@ -79,19 +81,26 @@
     color: #333;
 }
 
-.educationItem, .experienceItem, .projectItem {
+.educationItem, .experienceItem, .projectItem, .certificateItem {
     margin-bottom: 10px;
 }
 
-.educationItem h3, .experienceItem h3, .projectItem h3 {
+.educationItem h3, .experienceItem h3, .projectItem h3, .certificateItem h3 {
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 5px;
 }
 
+.educationItem, .experienceItem, .projectItem, .certificateItem {
+    display: flex;
+}
+
+.educationItem p, .experienceItem p, .projectItem p, .certificateItem p {
+    margin-right: 15px;
+}
+
 ul {
     list-style-type: disc;
-    padding-left: 20px;
 }
 
 li {

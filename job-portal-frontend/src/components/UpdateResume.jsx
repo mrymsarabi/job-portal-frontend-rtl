@@ -17,6 +17,7 @@ import LanguagesSection from '/src/components/LanguagesSection';
 import ProjectsSection from '/src/components/ProjectsSection';
 import ReferencesSection from '/src/components/ReferencesSection';
 import HobbiesSection from '/src/components/HobbiesSection';
+import LicensesAndCertificatesSection from '/src/components/LicensesAndCertificatesSection';
 import SubmitButton from "/src/components/SubmitButton";
 //Modals:
 import SuccessModal from "/src/components/Modals/SuccessModal";
@@ -174,6 +175,13 @@ const UpdateResume = () => {
                             items={data.education}
                             onChange={changeHandler}
                             addItem={() => addItem('education', { degree: "", institution: "", year: "", description: "" })}
+                            deleteItem={deleteItem}
+                        />
+                        <LicensesAndCertificatesSection
+                            title="مدارک و گواهینامه‌ها"
+                            items={data.licenses_and_certificates}
+                            onChange={changeHandler}
+                            addItem={() => addItem('licenses_and_certificates', { institution: "", title: "", year: "" })}
                             deleteItem={deleteItem}
                         />
                         <SkillsSection

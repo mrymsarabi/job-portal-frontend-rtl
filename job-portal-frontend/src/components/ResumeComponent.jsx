@@ -38,18 +38,18 @@ const ResumeComponent = () => {
     return (
         <div className={styles.resumeContainer}>
             {/* About Section */}
-            <h2>Resume</h2>
+            <h2>رزومه</h2>
             <div className={styles.section}>
-                <h2 className={styles.sectionTitle}>About Me</h2>
+                <h2 className={styles.sectionTitle}>درباره من</h2>
                 <ul>
                     {
-                        resume.about !== "" ? <li>{resume.about}</li> : <li>There is nothing to show!</li>
+                        resume.about !== "" ? <li>{resume.about}</li> : <li>هیچی برای نمایش وجود ندارد!</li>
                     }
                 </ul>
             </div>
             {/* Education Section */}
             <div className={styles.section}>
-                <h2 className={styles.sectionTitle}>Education</h2>
+                <h2 className={styles.sectionTitle}>تحصیلات و آموزش</h2>
                 <ul>
                     {(resume.education && resume.education.length > 0)  ? resume.education.map((edu, index) => (
                         <li key={index} className={styles.educationItem}>
@@ -59,14 +59,14 @@ const ResumeComponent = () => {
                             <p>{edu.description}</p>
                         </li>
                     ))
-                    : <li>There is nothing to show!</li>
+                    : <li>هیچی برای نمایش وجود ندارد!</li>
                     }
                 </ul>
             </div>
 
             {/* Experience Section */}
             <div className={styles.section}>
-                <h2 className={styles.sectionTitle}>Experience</h2>
+                <h2 className={styles.sectionTitle}>تجربه ها</h2>
                 <ul>
                     {(resume.experience && resume.experience.length > 0) ? resume.experience.map((exp, index) => (
                         <li key={index} className={styles.experienceItem}>
@@ -76,14 +76,14 @@ const ResumeComponent = () => {
                             <p>{exp.description}</p>
                         </li>
                     ))
-                    : <li>There is nothing to show!</li>
+                    : <li>هیچی برای نمایش وجود ندارد!</li>
                     }
                 </ul>
             </div>
 
             {/* Projects Section */}
             <div className={styles.section}>
-                <h2 className={styles.sectionTitle}>Projects</h2>
+                <h2 className={styles.sectionTitle}>پروژه ها</h2>
                 <ul>
                     {(resume.projects && resume.projects.length > 0) ? resume.projects.map((project, index) => (
                         <li key={index} className={styles.projectItem}>
@@ -91,52 +91,52 @@ const ResumeComponent = () => {
                             <p>{project.description}</p>
                         </li>
                     ))
-                    : <li>There is nothing to show!</li>
+                    : <li>هیچی برای نمایش وجود ندارد!</li>
                     }
                 </ul>
             </div>
 
             {/* Skills Section */}
             <div className={styles.section}>
-                <h2 className={styles.sectionTitle}>Skills</h2>
+                <h2 className={styles.sectionTitle}>مهارت ها</h2>
                 <ul>
                     {(resume.skills && resume.skills.length > 0) ? resume.skills.map((skill, index) => (
                         <li key={index}>{skill}</li>
                     ))
-                    : <li>There is nothing to show!</li>
+                    : <li>هیچی برای نمایش وجود ندارد!</li>
                 }
                 </ul>
             </div>
 
             {/* Languages Section */}
             <div className={styles.section}>
-                <h2 className={styles.sectionTitle}>Languages</h2>
+                <h2 className={styles.sectionTitle}>زبان ها</h2>
                 <ul>
                     {(resume.languages && resume.languages.length > 0) ? resume.languages.map((lang, index) => (
                         <li key={index}>
                             <p>{lang.name} - {lang.proficiency}</p>
                         </li>
                     ))
-                    : <li>There is nothing to show!</li>
+                    : <li>هیچی برای نمایش وجود ندارد!</li>
                     }
                 </ul>
             </div>
 
             {/* Hobbies Section */}
             <div className={styles.section}>
-                <h2 className={styles.sectionTitle}>Hobbies</h2>
+                <h2 className={styles.sectionTitle}>تفریحات و سرگرمی ها</h2>
                 <ul>
                     {(resume.hobbies && resume.hobbies.length > 0) ? resume.hobbies.map((hobby, index) => (
                         <li key={index}>{hobby}</li>
                     ))
-                    : <li>There is nothing to show!</li>
+                    : <li>هیچی برای نمایش وجود ندارد!</li>
                 }
                 </ul>
             </div>
 
             {/* Licenses and Certificates Section */}
             <div className={styles.section}>
-                <h2 className={styles.sectionTitle}>Licenses & Certificates</h2>
+                <h2 className={styles.sectionTitle}>مدارک و گواهینامه ها</h2>
                 <ul>
                     {(resume.licenses_and_certificates && resume.licenses_and_certificates.length > 0) ? resume.licenses_and_certificates.map((cert, index) => (
                         <li key={index} className={styles.certificateItem}>
@@ -145,14 +145,14 @@ const ResumeComponent = () => {
                             <p>{cert.year}</p>
                         </li>
                     ))
-                    : <li>There is nothing to show!</li>
+                    : <li>هیچی برای نمایش وجود ندارد!</li>
                 }
             </ul>
             </div>
 
             {/* References Section */}
             <div className={styles.section}>
-                <h2 className={styles.sectionTitle}>References</h2>
+                <h2 className={styles.sectionTitle}>معرف ها</h2>
                 <ul>
                     {(resume.references && resume.references.length > 0) ? resume.references.map((reference, index) => (
                         <li key={index} className={styles.referenceItem}>
@@ -163,7 +163,7 @@ const ResumeComponent = () => {
                             <p>Relationship: {reference.relationship}</p>
                         </li>
                     ))
-                    : <li>There is nothing to show!</li>
+                    : <li>هیچی برای نمایش وجود ندارد!</li>
                     }
                 </ul>
             </div>

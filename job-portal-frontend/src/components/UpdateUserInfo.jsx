@@ -70,33 +70,33 @@ const UpdateUserInfo = () => {
         <div className={styles.page}>
             <Navbar />
             <div className={styles.content}>
-                <h1>Edit Profile</h1>
+                <h1>ویرایش پروفایل</h1>
                 <div>
                     <form onSubmit={submitHandler} className={styles.form}>
                         <div className={styles.gridContainer}>
                             <div className={styles.field}>
-                                <label>First Name</label>
+                                <label>نام</label>
                                 <input type='text' name='first_name' value={data.first_name} onChange={changeHandler} />
                             </div>
                             <div className={styles.field}>
-                                <label>Last Name</label>
+                                <label>نام خانوادگی</label>
                                 <input type='text' name='last_name' value={data.last_name} onChange={changeHandler} />
                             </div>
                             <div className={styles.field}>
-                                <label>Username</label>
+                                <label>نام کاربری</label>
                                 <input type='text' name='username' value={data.username} onChange={changeHandler} />
                             </div>
                             <div className={styles.field}>
-                                <label>Email</label>
+                                <label>ایمیل</label>
                                 <input type='email' name='email' value={data.email} onChange={changeHandler} />
                             </div>
                             <div className={styles.field}>
-                                <label>Birth Date</label>
+                                <label>تاریخ تولد</label>
                                 <input type='date' name='birth_date' value={data.birth_date} onChange={changeHandler} />
                             </div>
                         </div>
                         <div className={styles.buttonContainer}>
-                            <SubmitButton text="Update" />
+                            <SubmitButton text="ویرایش" />
                         </div>
                     </form>
                 </div>
