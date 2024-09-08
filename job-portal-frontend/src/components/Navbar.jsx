@@ -55,13 +55,13 @@ const Navbar = () => {
                     {/* First part of the navbar */}
                     <div className={styles.firstPart}>
                         <li className={styles.home}>
-                            <Link to="/home">Home</Link>
+                            <Link to="/home">صفحه اصلی</Link>
                         </li>
                         <li className={styles.add}>
-                            <Link to="/add-job">Add a Position</Link>
+                            <Link to="/add-job">افزودن شغل</Link>
                         </li>
                         <li className={styles.about_us}>
-                            <Link to="/about-us">About Us</Link>
+                            <Link to="/about-us">درباره ما</Link>
                         </li>
                     </div>
                     
@@ -73,24 +73,24 @@ const Navbar = () => {
                             </li>
                         ) : (
                             <li className={styles.login}>
-                                <Link to="/signup">Sign Up</Link>/<Link to="/login">Login</Link>
+                                <Link to="/signup">ثبت نام</Link>/<Link to="/login">ورود</Link>
                             </li>
                         )}
                         {show && (
                             <ul className={styles.dropDown}>
                                 <li>
-                                    <Link to="/profile">My Profile</Link>    
+                                    <Link to="/profile">پروفایل</Link>    
                                 </li>
                                 <li>
-                                    <Link to="/jobs-uploaded">My Jobs</Link>
+                                    <Link to="/jobs-uploaded">شغل های من</Link>
                                 </li>
                                 <li>
-                                    <Link to="/my-messages">Messages</Link>
+                                    <Link to="/my-messages">پیام ها</Link>
                                 </li>
                                 <li>
-                                    <Link to="/my-company">Company</Link>
+                                    <Link to="/my-company">شرکت</Link>
                                 </li>
-                                <li onClick={logoutHandler}>Logout</li>
+                                <li onClick={logoutHandler}>خروج</li>
                             </ul>
                         )}
                     </div>

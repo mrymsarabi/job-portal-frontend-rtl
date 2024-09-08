@@ -17,6 +17,9 @@ import DeleteModal from '/src/components/Modals/DeleteModal';
 import SuccessModal from "/src/components/Modals/SuccessModal";
 import UnsuccessModal from "/src/components/Modals/UnsuccessModal";
 
+//Functions:
+import { toPersian } from '/src/helper/toPersian';
+
 //CSS:
 import styles from "/src/styles/JobsUploaded.module.css";
 
@@ -120,10 +123,10 @@ const JobsUploaded = () => {
     };
 
       return (
-        <div>
+        <div className={styles.page}>
             <Navbar />
             <div className={styles.content}>
-                <h1>Jobs Uploaded</h1>
+                <h1>شغل های آپلود شده</h1>
                 <div className={styles.listContainer}>
                     <table className={`${styles.listHead} rounded`}>
                         <colgroup>
@@ -139,13 +142,13 @@ const JobsUploaded = () => {
                         <thead className={`${styles.thead} rounded`}>
                             <tr>
                                 <th>#</th>
-                                <th>Title</th>
-                                <th>Job Type</th>
-                                <th>Sector</th>
-                                <th>Location</th>
-                                <th>Date Posted</th>
-                                <th>Salary</th>
-                                <th></th>
+                                <th>عنوان</th>
+                                <th>نوع شغل</th>
+                                <th>بخش</th>
+                                <th>موقعیت</th>
+                                <th>تاریخ ارسال</th>
+                                <th>حقوق</th>
+                                <th>امکانات</th>
                             </tr>
                         </thead>
                     </table>
@@ -163,13 +166,13 @@ const JobsUploaded = () => {
                         <tbody className={`${styles.tbody}`}>
                             {data && data.map((item, index) => (
                                 <tr key={index}>
-                                    <td>{item.counter}</td>
+                                    <td>{toPersian(item.counter)}</td>
                                     <td>{item.title}</td>
                                     <td>{item.job_type}</td>
                                     <td>{item.sector}</td>
                                     <td>{item.location}</td>
-                                    <td>{formatDate(item.date_posted)}</td>
-                                    <td>{item.salary}</td>
+                                    <td>{toPersian(formatDate(item.date_posted))}</td>
+                                    <td>{toPersian(item.salary)}</td>
                                     <td className={styles.iconContainer}>
                                         <div onClick={event => editHandler(event, item._id)}>
                                             <Icon icon="pencil" color="#003459" />

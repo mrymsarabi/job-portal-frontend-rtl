@@ -1,7 +1,9 @@
 .page {
+    direction: rtl;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    padding: 30px;
 }
 
 p {

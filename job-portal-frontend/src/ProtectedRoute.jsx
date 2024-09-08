@@ -13,8 +13,8 @@ const ProtectedRoute = ({ element }) => {
   if (!token) {
     return (
       <div className={styles.page}>
-        <h1>Access Denied</h1>
-        <p>You don't have the authority to see this page. Please <Link to="/login">log in</Link>.</p>
+        <h1>اجازه دسترسی ندارید.</h1>
+        <p>شما اجازه دیدن این صفحه را ندارید. برای دین این صفحه لطفا<Link to="/login">وارد</Link>شوید.</p>
       </div>
     );
   }

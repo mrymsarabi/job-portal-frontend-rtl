@@ -1,15 +1,16 @@
 .navContainer {
+    direction: rtl;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: #003459; /* Blue background */
+    background-color: #003459;
 }
 
 .navbar {
     display: flex;
-    justify-content: space-between; /* Space between the first part and profile/login */
+    justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     background-color: #003459;
@@ -20,14 +21,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%; /* Makes sure the profile/login part is aligned to the right */
+    width: 100%;
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
 .firstPart {
-    display: flex; /* Align the links next to each other */
+    display: flex;
 }
 
 .firstPart li {
@@ -47,12 +48,16 @@
     position: relative;
 }
 
+.profileContainer:hover {
+    cursor: pointer;
+}
+
 .dropDown {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 100%;
-    right: 0;
+    top: 130%;
+    left: 0px;
     background-color: #ffffff;
     color: #003459;
     border: 1px solid #ddd;
@@ -73,7 +78,7 @@
     width: 150px;
     height: 50px;
     line-height: 50px;
-    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .dropDown li a {
