@@ -151,68 +151,68 @@ const UpdateResume = () => {
     };
 
     return (
-        <div>
+        <div className={styles.page}>
             <Navbar />
             <div className={styles.content}>
-                <h1>Update Resume</h1>
+                <h1>ویرایش رزومه</h1>
                 <div className={styles.container}>
                     <form onSubmit={submitHandler}>  {/* Wrap sections in a form */}
                         <AboutSection
-                            title="About Me"
+                            title="درباره من"
                             value={data.about}
                             onChange={changeHandler}
                         />
                         <ExperienceSection
-                            title="Experience"
+                            title="تجربه کاری"
                             items={data.experience}
                             onChange={changeHandler}
                             addItem={() => addItem('experience', { title: "", company: "", start_date: "", end_date: "", description: "" })}
                             deleteItem={deleteItem}
                         />
                         <EducationSection
-                            title="Education"
+                            title="تحصیلات و آموزش"
                             items={data.education}
                             onChange={changeHandler}
                             addItem={() => addItem('education', { degree: "", institution: "", year: "", description: "" })}
                             deleteItem={deleteItem}
                         />
                         <SkillsSection
-                            title="Skills"
+                            title="مهارت ها"
                             items={data.skills}
                             onChange={changeHandler}
                             addItem={() => addItem('skills', "")}
                             deleteItem={deleteItem}
                         />
                         <LanguagesSection
-                            title="Languages"
+                            title="زبان ها"
                             items={data.languages}
                             onChange={changeHandler}
                             addItem={() => addItem('languages', { name: "", proficiency: "" })}
                             deleteItem={deleteItem}
                         />
                         <ProjectsSection
-                            title="Projects"
+                            title="پروژه ها"
                             items={data.projects}
                             onChange={changeHandler}
                             addItem={() => addItem('projects', { title: "", description: "" })}
                             deleteItem={deleteItem}
                         />
                         <ReferencesSection
-                            title="References"
+                            title="معرف ها"
                             items={data.references}
                             onChange={changeHandler}
                             addItem={() => addItem('references', { name: "", position: "", company: "", email: "", phone: "", relationship: "" })}
                             deleteItem={deleteItem}
                         />
                         <HobbiesSection
-                            title="Hobbies"
+                            title="سرگرمی و تفریحات"
                             items={data.hobbies}
                             onChange={changeHandler}
                             addItem={() => addItem('hobbies', "")}
                             deleteItem={deleteItem}
                         />
                         <div className={styles.buttonContainer}>
-                            <SubmitButton text="Submit" />
+                            <SubmitButton text="ثبت" />
                         </div>
                     </form>
                 </div>

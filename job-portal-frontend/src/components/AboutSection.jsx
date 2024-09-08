@@ -18,7 +18,7 @@ const AboutSection = ({ title, value, onChange }) => {
                 name="about"
                 value={value}
                 onChange={onChange}
-                placeholder="Tell us about yourself"
+                placeholder="درباره خودت بگو"
             />
         </div>
     );

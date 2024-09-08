@@ -18,7 +18,7 @@ const ReferencesSection = ({ title, items, onChange, addItem, deleteItem }) => {
                     name={`references.${index}.name`}
                     value={item.name}
                     onChange={onChange}
-                    placeholder="Name"
+                    placeholder="نام"
                 />
                 <input
                     className={styles.input}
@@ -26,7 +26,7 @@ const ReferencesSection = ({ title, items, onChange, addItem, deleteItem }) => {
                     name={`references.${index}.position`}
                     value={item.position}
                     onChange={onChange}
-                    placeholder="Position"
+                    placeholder="موقعیت"
                 />
                 <input
                     className={styles.input}
@@ -34,7 +34,7 @@ const ReferencesSection = ({ title, items, onChange, addItem, deleteItem }) => {
                     name={`references.${index}.company`}
                     value={item.company}
                     onChange={onChange}
-                    placeholder="Company"
+                    placeholder="شرکت"
                 />
                 <input
                     className={styles.input}
@@ -42,7 +42,7 @@ const ReferencesSection = ({ title, items, onChange, addItem, deleteItem }) => {
                     name={`references.${index}.email`}
                     value={item.email}
                     onChange={onChange}
-                    placeholder="Email"
+                    placeholder="ایمیل"
                 />
                 <input
                     className={styles.input}
@@ -50,7 +50,7 @@ const ReferencesSection = ({ title, items, onChange, addItem, deleteItem }) => {
                     name={`references.${index}.phone`}
                     value={item.phone}
                     onChange={onChange}
-                    placeholder="Phone"
+                    placeholder="تلفن"
                 />
                 <input
                     className={styles.input}
@@ -58,14 +58,14 @@ const ReferencesSection = ({ title, items, onChange, addItem, deleteItem }) => {
                     name={`references.${index}.relationship`}
                     value={item.relationship}
                     onChange={onChange}
-                    placeholder="Relationship"
+                    placeholder="ارتباط"
                 />
                 <div className={styles.iconContainer}>
                     <Icon icon="delete" width="24px" height="24px" color="#000000" onClick={() => deleteItem('references', index)} /> {/* Delete Icon */}
                     </div>
                 </div>
             ))}
-            <button className={styles.addButton} type="button" onClick={addItem}>Add Reference</button>
+            <button className={styles.addButton} type="button" onClick={addItem}>افزودن معرف</button>
         </div>
     );
 };

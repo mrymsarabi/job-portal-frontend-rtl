@@ -18,21 +18,21 @@ const ProjectsSection = ({ title, items, onChange, addItem, deleteItem }) => {
                     name={`projects.${index}.title`}
                     value={item.title}
                     onChange={onChange}
-                    placeholder="Project Title"
+                    placeholder="عنوان پروژه"
                 />
                 <textarea
                     className={styles.textarea}
                     name={`projects.${index}.description`}
                     value={item.description}
                     onChange={onChange}
-                    placeholder="Project Description"
+                    placeholder="توضیحات پروژه"
                 />
                 <div className={styles.iconContainer}>
                     <Icon icon="delete" width="24px" height="24px" color="#000000" onClick={() => deleteItem('projects', index)} /> {/* Delete Icon */}
                     </div>
                 </div>
             ))}
-            <button className={styles.addButton} type="button" onClick={addItem}>Add Project</button>
+            <button className={styles.addButton} type="button" onClick={addItem}>افزودن پروژه</button>
         </div>
     );
 };

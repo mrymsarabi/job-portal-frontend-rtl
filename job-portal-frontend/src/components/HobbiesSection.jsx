@@ -18,14 +18,14 @@ const HobbiesSection = ({ title, items, onChange, addItem, deleteItem }) => {
                         name={`hobbies.${index}`}
                         value={item}
                         onChange={onChange}
-                        placeholder="Hobby"
+                        placeholder="سرگرمی"
                     />
                     <div className={styles.iconContainer}>
                         <Icon icon="delete" width="24px" height="24px" color="#000000" onClick={() => deleteItem('hobbies', index)} /> {/* Delete Icon */}
                     </div>
                 </div>
             ))}
-            <button className={styles.addButton} type="button" onClick={addItem}>Add Hobby</button>
+            <button className={styles.addButton} type="button" onClick={addItem}>افزودن سرگرمی</button>
         </div>
     );
 };

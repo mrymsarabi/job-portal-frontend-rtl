@@ -18,7 +18,7 @@ const LanguagesSection = ({ title, items, onChange, addItem, deleteItem }) => {
                         name={`languages.${index}.name`}
                         value={item.name}
                         onChange={onChange}
-                        placeholder="Language"
+                        placeholder="زبان"
                     />
                     <input
                         className={styles.input}
@@ -26,14 +26,14 @@ const LanguagesSection = ({ title, items, onChange, addItem, deleteItem }) => {
                         name={`languages.${index}.proficiency`}
                         value={item.proficiency}
                         onChange={onChange}
-                        placeholder="Proficiency"
+                        placeholder="سطح"
                     />
                     <div className={styles.iconContainer}>
                         <Icon icon="delete" width="24px" height="24px" color="#000000" onClick={() => deleteItem('languages', index)} /> {/* Delete Icon */}
                     </div>
                 </div>
             ))}
-            <button className={styles.addButton} type="button" onClick={addItem}>Add Language</button>
+            <button className={styles.addButton} type="button" onClick={addItem}>افزودن زبان</button>
         </div>
     );
 };

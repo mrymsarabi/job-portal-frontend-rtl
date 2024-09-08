@@ -18,7 +18,7 @@ const ExperienceSection = ({ title, items, onChange, addItem, deleteItem }) => {
                         name={`experience.${index}.title`}
                         value={item.title}
                         onChange={onChange}
-                        placeholder="Title"
+                        placeholder="عنوان"
                     />
                     <input
                         className={styles.input}
@@ -26,14 +26,14 @@ const ExperienceSection = ({ title, items, onChange, addItem, deleteItem }) => {
                         name={`experience.${index}.company`}
                         value={item.company}
                         onChange={onChange}
-                        placeholder="Company"
+                        placeholder="شرکت"
                     />
                     <div className={styles.iconContainer}>
                         <Icon icon="delete" width="24px" height="24px" color="#000000" onClick={() => deleteItem('experience', index)} /> {/* Delete Icon */}
                     </div>
                 </div>
             ))}
-            <button className={styles.addButton} type="button" onClick={addItem}>Add Experience</button>
+            <button className={styles.addButton} type="button" onClick={addItem}>افزودن تجربه</button>
         </div>
     );
 };

@@ -11,6 +11,9 @@ import { getMyMessagesAPI } from '/src/apis/getMyMessagesAPI';
 import Navbar from "/src/components/Navbar";
 import PaginationComponent from "/src/components/PaginationComponent";
 
+//Functions:
+import { toPersian } from "/src/helper/toPersian";
+
 //CSS:
 import styles from "/src/styles/MyMessages.module.css";
 
@@ -55,11 +58,19 @@ const MyMessages = () => {
         navigate(`/message/${messageId}`);
     };
 
+    const statusHandler = (status) => {
+        if(status === "read") {
+            return "خوانده شده";
+        } else if(status === "unread") {
+            return "خوانده نشده";
+        };
+    };
+
     return (
         <div className={`${styles.page}`}>
             <Navbar />
             <div className={`${styles.content}`}>
-                <h1>My Messages</h1>
+                <h1>پیام های من</h1>
                 {
                     messages.length > 0 ?
                     <div className={styles.listContainer}>
@@ -75,9 +86,9 @@ const MyMessages = () => {
                             <thead className={styles.thead}>
                                 <tr>
                                     <th>#</th>
-                                    <th>Job</th>
-                                    <th>Company</th>
-                                    <th>Status</th>
+                                    <th>شغل</th>
+                                    <th>شرکت</th>
+                                    <th>وضعیت</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -94,10 +105,10 @@ const MyMessages = () => {
                                 {
                                     messages && messages.map((message, index) => (
                                         <tr onClick={event => messageHandler(event, message.id)}>
-                                            <td>{message.counter}</td>
+                                            <td>{toPersian(message.counter)}</td>
                                             <td>{message.job_name}</td>
                                             <td>{message.company_name}</td>
-                                            <td>{message.read_status}</td>
+                                            <td>{statusHandler(message.read_status)}</td>
                                             <td></td>
                                         </tr>
                                     ))

@@ -18,14 +18,14 @@ const SkillsSection = ({ title, items, onChange, addItem, deleteItem }) => {
                         name={`skills.${index}`}
                         value={item}
                         onChange={onChange}
-                        placeholder="Skill"
+                        placeholder="مهارت"
                     />
                     <div className={styles.iconContainer}>
                         <Icon icon="delete" width="24px" height="24px" color="#000000" onClick={() => deleteItem('skills', index)} /> {/* Delete Icon */}
                     </div>
                 </div>
             ))}
-            <button className={styles.addButton} type="button" onClick={addItem}>Add Skill</button>
+            <button className={styles.addButton} type="button" onClick={addItem}>افزودن مهارت</button>
         </div>
     );
 };

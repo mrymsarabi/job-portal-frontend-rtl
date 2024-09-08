@@ -18,7 +18,7 @@ const EducationSection = ({ title, items, onChange, addItem, deleteItem }) => {
                         name={`education.${index}.degree`}
                         value={item.degree}
                         onChange={onChange}
-                        placeholder="Degree"
+                        placeholder="مدرک"
                     />
                     <input
                         className={styles.input}
@@ -26,14 +26,14 @@ const EducationSection = ({ title, items, onChange, addItem, deleteItem }) => {
                         name={`education.${index}.institution`}
                         value={item.institution}
                         onChange={onChange}
-                        placeholder="Institution"
+                        placeholder="موسسه"
                     />
                     <div className={styles.iconContainer}>
                         <Icon icon="delete" width="24px" height="24px" color="#000000" onClick={() => deleteItem('education', index)} /> {/* Delete Icon */}
                     </div>
                 </div>
             ))}
-            <button className={styles.addButton} type="button" onClick={addItem}>Add Education</button>
+            <button className={styles.addButton} type="button" onClick={addItem}>افزودن تحصیلات و آموزش</button>
         </div>
     );
 };
