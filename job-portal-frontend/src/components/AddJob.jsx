@@ -59,104 +59,104 @@ const AddJob = () => {
 
     const sectors = [
         {
-            value: "Education and training",
-            label: "Education and training"
+            value: "آموزش و پرورش",
+            label: "آموزش و پرورش"
         },
         {
-            value: "Construction, repair and maintenance services",
-            label: "Construction, repair and maintenance services"
+            value: "خدمات ساخت، تعمیر و نگهداری",
+            label: "خدمات ساخت، تعمیر و نگهداری"
         },
         {
-            value: "Manufacturing industry",
-            label: "Manufacturing industry"
+            value: "صنعت تولیدی",
+            label: "صنعت تولیدی"
         },
         {
-            value: "Transport of goods and people",
-            label: "Transport of goods and people"
+            value: "حمل و نقل کالا و مردم",
+            label: "حمل و نقل کالا و مردم"
         }, 
         {
-            value: "Health",
-            label: "Health"
+            value: "سلامت و بهداشت",
+            label: "سلامت و بهداشت"
         },
         {
-            value: "Aerospace and defence",
-            label: "Aerospace and defence"
+            value: "هوا فضا و دفاع",
+            label: "هوا فضا و دفاع"
         },
         {
-            value: "Real estate",
-            label: "Real estate"
+            value: "املاک و مستغلات",
+            label: "املاک و مستغلات"
         },
         {
-            value: "Government and public administration",
-            label: "Government and public administration"
+            value: "دولت و مدیریت دولتی",
+            label: "دولت و مدیریت دولتی"
         },
         {
-            value: "Human Resources and recruitment",
-            label: "Human Resources and recruitment"
+            value: "منابع انسانی و استخدام",
+            label: "منابع انسانی و استخدام"
         },
         {
-            value: "Pharmaceuticals and biotechnology",
-            label: "Pharmaceuticals and biotechnology"
+            value: "داروسازی و بیوتکنولوژی",
+            label: "داروسازی و بیوتکنولوژی"
         },
         {
-            value: "NGOs and non-profit associations",
-            label: "NGOs and non-profit associations"
+            value: "NGO ها و انجمن های غیر انتفاعی",
+            label: "NGO ها و انجمن های غیر انتفاعی"
         },
         {
-            value: "Arts, Entertainment and Recreation",
-            label: "Arts, Entertainment and Recreation"
+            value: "هنر، سرگرمی و تفریح",
+            label: "هنر، سرگرمی و تفریح"
         }, 
         {
-            value: "Legal",
-            label: "Legal"
+            value: "حقوقی و قانونی",
+            label: "حقوقی و قانونی"
         },
         {
-            value: "Retail and wholesale trade",
-            label: "Retail and wholesale trade"
+            value: "تجارت خرده فروشی و عمده فروشی",
+            label: "تجارت خرده فروشی و عمده فروشی"
         },
         {
-            value: "Energy and Exploitation of natural resources",
-            label:"Energy and Exploitation of natural resources"
+            value: "انرژی و بهره برداری از منابع طبیعی",
+            label:"انرژی و بهره برداری از منابع طبیعی"
         },
         {
-            value: "Finance",
-            label: "Finance"
+            value: "مالی",
+            label: "مالی"
         },
         {
-            value: "Computer Science",
-            label: "Computer Science"
+            value: "علوم کامپیوتر",
+            label: "علوم کامپیوتر"
         },
         {
-            value: "Particular services",
-            label: "Particular services"
+            value: "خدمات خاص",
+            label: "خدمات خاص"
         },
         {
-            value: "Management and business consulting",
-            label: "Management and business consulting"
+            value: "مشاوره مدیریت و کسب و کار",
+            label: "مشاوره مدیریت و کسب و کار"
         },
         {
-            value: "Insurance",
-            label: "Insurance"
+            value: "بیمه",
+            label: "بیمه"
         },
         {
-            value: "Restoration",
-            label: "Restoration"
+            value: "ترمیم و مرمت",
+            label: "ترمیم و مرمت"
         },
         {
-            value: "Media and communication",
-            label: "Media and communication"
+            value: "رسانه و ارتباطات",
+            label: "رسانه و ارتباطات"
         },
         {
-            value: "Telecommunications",
-            label: "Telecommunications"
+            value: "مخابرات",
+            label: "مخابرات"
         },
         {
-            value: "Agriculture",
-            label: "Agriculture"
+            value: "کشاورزی",
+            label: "کشاورزی"
         },
         {
-            value: "Hospitality and Tourism",
-            label: "Hospitality and Tourism"
+            value: "هتلداری و گردشگری",
+            label: "هتلداری و گردشگری"
         }
     ];
 
@@ -167,36 +167,32 @@ const AddJob = () => {
 
     const jobTypes = [
         {
-            value: "Full-time",
-            label: "Full-time"
+            value: "تمام وقت",
+            label: "تمام وقت"
         },
         {
-            value: "Permanent",
-            label: "Permanent"
+            value: "دائمی",
+            label: "دائمی"
         },
         {
-            value: "Contract",
-            label: "Contract"
+            value: "قراردادی",
+            label: "قراردادی"
         },
         {
-            value: "Part-time",
-            label:"Part-time"
+            value: "پاره وقت",
+            label:"پاره وقت"
         },
         {
-            value: "Temporary",
-            label: "Temporary"
+            value: "موقت",
+            label: "موقت"
         },
         {
-            value: "Apprenticeship",
-            label: "Apprenticeship"
+            value: "کارآموزی",
+            label: "کارآموزی"
         },
         {
-            value: "Internship",
-            label: "Internship"
-        },
-        {
-            value: "Volunteer",
-            label: "Volunteer"
+            value: "داوطلب",
+            label: "داوطلب"
         }
     ];
 
@@ -261,59 +257,59 @@ const AddJob = () => {
             <Navbar />
             <div className={styles.content}>
                 <div>
-                    <h1>Add Job</h1>
+                    <h1>افزودن شغل</h1>
                     <form className={styles.form} onSubmit={submitHandler}>
                         <div className={styles.gridContainer}>
                             <div className={styles.fieldContainer}>
-                                <label>Title</label>
+                                <label>عنوان</label>
                                 <input type='text' name='title' value={data.title} onChange={changeHandler} onFocus={focusHanlder} />
                                 {
                                     (touched.title && errors.title) && <span className={styles.error}>{errors.title}</span>
                                 }
                             </div>
                             <div className={styles.fieldContainer}>
-                                <label>Salary</label>
+                                <label>حقوق</label>
                                 <input type='text' name='salary' value={data.salary} onChange={changeHandler} onFocus={focusHanlder} />
                                 {
                                     (touched.salary && errors.salary) && <span className={styles.error}>{errors.salary}</span>
                                 }
                             </div>
                             <div className={styles.fieldContainer}>
-                                <label>Sector</label>
+                                <label>بخش</label>
                                 <SelectComponent options={sectors} handleChange={handleSectorChange} width="350px" height="40px" />
                                 {
                                     (touched.sector && errors.sector) && <span className={styles.error}>{errors.sector}</span>
                                 }
                             </div>
                             <div className={styles.fieldContainer}>
-                                <label>Job Type</label>
+                                <label>نوع شغل</label>
                                 <SelectComponent options={jobTypes} handleChange={handleJobTypeChange} width="350px" height="40px" />
                                 {
                                     (touched.job_type && errors.job_type) && <span className={styles.error}>{errors.job_type}</span>
                                 }
                             </div>
                             <div className={styles.fieldContainer}>
-                                <label>City</label>
+                                <label>شهر</label>
                                 <input type='text' name='location' value={data.location} onChange={changeHandler} onFocus={focusHanlder} />
                                 {
                                     (touched.location && errors.location) && <span className={styles.error}>{errors.location}</span>
                                 }
                             </div>
                             <div className={styles.fieldContainer}>
-                                <label>Desctiption</label>
+                                <label>توضیحات</label>
                                 <textarea name='description' value={data.description} onChange={changeHandler} />
                             </div>
                             <div className={styles.fieldContainer}>
-                                <label>Reuirements</label>
+                                <label>الزامات</label>
                                 <textarea name='requirements' value={data.requirements} onChange={changeHandler} />
                             </div>
                             <div className={styles.fieldContainer}>
-                                <label>Benefits</label>
+                                <label>مزایا</label>
                                 <textarea name='benefits' value={data.benefits} onChange={changeHandler} />
                             </div>
                         </div>
                         <div className={styles.buttonContainer}>
-                            <SubmitButton text="Add" />
+                            <SubmitButton text="افزودن" />
                         </div>
                     </form>
                 </div>

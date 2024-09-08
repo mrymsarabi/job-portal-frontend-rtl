@@ -9,7 +9,7 @@ import Icon from "/src/icons/Icon";
 //CSS:
 import styles from "/src/styles/Modals.module.css";
 
-const UnsuccessModal = ({ isOpenUnsuccess, setIsOpenUnsuccess, message = "The operation was unsuccessful" }) => {
+const UnsuccessModal = ({ isOpenUnsuccess, setIsOpenUnsuccess, message = "عملیات ناموفق بود." }) => {
     const closeModal = () => {
         setIsOpenUnsuccess(false);
     };

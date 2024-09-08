@@ -17,17 +17,17 @@ const SuccessModal = ({ isOpenSuccess, setIsOpenSuccess, type }) => {
     const typeHandler = () => {
         switch(type) {
             case "signup":
-                return "Signup was successful";
+                return "ثبت نام با موفقیت انجام شد.";
             case "login":
-                return "Login was successful";
+                return "ورود با موفقیت انجام شد.";
             case "add":
-                return "item was added successfully";
+                return "آیتم با موفقیت اضافه شد.";
             case "update":
-                return "item was updated successfully";
+                return "آیتم با موفقیت به روزرسانی شد.";
             case "delete":
-                return "item was deleted successfully";
+                return "آیتم با موفقیت حذف شد.";
             default:
-                return "The operation was successful";
+                return "عملیات با موفقیت انجام شد.";
         };
     };
 
