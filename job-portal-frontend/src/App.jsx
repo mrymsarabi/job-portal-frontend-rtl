@@ -26,6 +26,7 @@ import MyCompany from '/src/components/MyCompany';
 import UpdateCompany from '/src/components/UpdateCompany';
 
 import ProtectedRoute from '/src/ProtectedRoute';
+import AdminLogin from '/src/components/Admins/AdminLogin';
 
 const App = () => {
   return (
@@ -50,6 +51,10 @@ const App = () => {
       <Route path='/my-company' element={<ProtectedRoute element={<MyCompany />} />} />
       <Route path='/update-company/:id' element={<ProtectedRoute element={<UpdateCompany />} />} /> 
       <Route path='/about-us' element={<AboutUs />} />
+
+      {/* Admins Routes */}
+      <Route path='/admin/login' element={<AdminLogin />} />
+ 
       <Route path="/*" element={<Navigate to="/home" replace />} />
     </Routes>
   );

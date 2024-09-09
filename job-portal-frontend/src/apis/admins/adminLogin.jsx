@@ -6,7 +6,7 @@ export const adminLogin = async(data) => {
             data
         );
         console.log(response);
-        return response;
+        return response.data;
     } catch (error) {
         console.log(error);
         return {status: "error"};
