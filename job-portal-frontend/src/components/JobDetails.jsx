@@ -28,7 +28,7 @@ const JobDetails = ({ data, companyHandler }) => {
                     <div>{data.location}</div>
                 </div>
                 <div className={`${styles.buttonContainer} rounded`} onClick={applyHandler}>
-                    اکنون درخواست دهید!
+                 درخواست دهید!
                 </div>
             </div>
             <hr />

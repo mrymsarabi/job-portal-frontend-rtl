@@ -1,3 +1,7 @@
+.page {
+    direction: rtl;
+}
+
 .content {
     display: flex;
     flex-direction: column;
@@ -52,7 +56,7 @@
 .iconContainer {
     position: absolute;
     top: 20px;
-    right: 20px;
+    left: 20px;
     cursor: pointer;
     transition: transform 0.3s ease;
 }

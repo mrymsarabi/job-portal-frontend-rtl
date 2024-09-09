@@ -70,44 +70,41 @@ const AddCompany = () => {
 
                 <div className={styles.container}>
                     <div className={styles.header}>
-                        <h1>Add Company</h1>
+                        <h1>افزودن شرکت</h1>
                     </div>
                     <form onSubmit={submitHandler} className={styles.form}>
                         <div className={styles.gridContainer}>
                             <div className={styles.field}>
-                                <label htmlFor="title">Company Title</label>
+                                <label htmlFor="title">عنوان شرکت</label>
                                 <input 
                                     type='text' 
                                     name='title' 
                                     value={data.title} 
                                     onChange={changeHandler} 
                                     className={styles.input} 
-                                    placeholder="Enter company title" 
                                 />
                             </div>
                             <div className={styles.field}>
-                                <label htmlFor="about_us">About Us</label>
+                                <label htmlFor="about_us">درباره ما</label>
                                 <textarea 
                                     name='about_us' 
                                     value={data.about_us} 
                                     onChange={changeHandler} 
                                     className={styles.textarea} 
-                                    placeholder="Describe your company" 
                                 />
                             </div>
                             <div className={styles.field}>
-                                <label htmlFor="number_of_employees">Number of Employees</label> 
+                                <label htmlFor="number_of_employees">تعداد کارکنان</label> 
                                 <input 
                                     type='number' 
                                     name='number_of_employees' 
                                     value={data.number_of_employees} 
                                     onChange={changeHandler} 
                                     className={styles.input} 
-                                    placeholder="Enter number of employees" 
                                 /> 
                             </div>
                             <div className={styles.field}>
-                                <label htmlFor="founded_date">Founded Date</label>
+                                <label htmlFor="founded_date">تاریخ تاسیس</label>
                                 <input 
                                     type='date' 
                                     name='founded_date' 
@@ -118,7 +115,7 @@ const AddCompany = () => {
                             </div>
                         </div>
                         <div className={styles.buttonContainer}>
-                            <SubmitButton text="Submit" />
+                            <SubmitButton text="افزودن" />
                         </div>
                     </form>
                 </div>

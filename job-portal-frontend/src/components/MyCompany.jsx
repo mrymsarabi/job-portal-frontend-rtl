@@ -53,17 +53,17 @@ const MyCompany = () => {
         <div className={styles.page}>
             <Navbar />
             <div className={styles.content}>
-                <h1 className={styles.title}>{company.title || "My Company"}</h1>
+                <h1 className={styles.title}>{company.title || "شرکت من"}</h1>
                 <div className={styles.companyBox}>
                     {Object.keys(company).length > 0 ? (
                         <>
                             <p className={styles.about}>{company.about_us}</p>
                             <div className={styles.details}>
                                 <div className={styles.detailItem}>
-                                    <strong>Number of Employees:</strong> {company.number_of_employees}
+                                    <strong>تعداد کارکنان:</strong> {company.number_of_employees}
                                 </div>
                                 <div className={styles.detailItem}>
-                                    <strong>Founded Date:</strong> {company.founded_date}
+                                    <strong>تاریخ تاسیس:</strong> {company.founded_date}
                                 </div>
                                 <div className={styles.detailItem}>
                                     <strong>Created At:</strong>{" "}
@@ -76,7 +76,7 @@ const MyCompany = () => {
                         </>
                     ) : (
                         <div>
-                            <p>There is nothing to show.</p>
+                            <p>هیچی برای نمایش وجود ندارد.</p>
                             <div onClick={addHandler} className={styles.iconContainer}>
                                 <Icon icon="plus" width="30px" height="30px" color="#000000" />
                             </div>

@@ -265,7 +265,7 @@ const UpdateJob = () => {
                             </div>
                         </div>
                         <div className={styles.buttonContainer}>
-                            <SubmitButton text="افزودن" />
+                            <SubmitButton text="ویرایش" />
                         </div>
                     </form>
                 </div>
