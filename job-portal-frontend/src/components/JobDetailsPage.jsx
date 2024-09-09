@@ -77,15 +77,15 @@ const JobDetailsPage = () => {
                     <div>{data.company_name}</div>
                     <hr />
                     <div>
-                        <div>Description: </div>
+                        <div>توضیحات: </div>
                         <div>{data.description}</div>
                     </div>
                     <div>
-                        <div>Benefits: </div>
+                        <div>مزایا: </div>
                         <div>{data.benefits}</div>
                     </div>
                     <div>
-                        <div>Requirements: </div>
+                        <div>الزامات: </div>
                         <div>{data.requirements}</div>
                     </div>
                 </div>
@@ -100,22 +100,22 @@ const JobDetailsPage = () => {
                     </div>
                     <div className={`${styles.apply_container} border rounded`}>
                         {/* Apply for the position */}
-                        <h2>Apply Here</h2>
+                        <h2>اینجا درخواست دهید.</h2>
                         <div>
-                            <div>If you want to make changes to your resume, <Link to="/update-resume">click here</Link>.</div>
+                            <div>اگر میخواهید تغییراتی در رزومه خود ایجاد کنید اینجا<Link to="/update-resume"> کلیک </Link>کنید.</div>
                             {
                                 (token) &&
-                                <div>Click on Apply button to send your resume for this postion</div>
+                                <div>بر دکمه درخواست کلیک کنید تا رزومه شما ارسال شود.</div>
                             }
                         </div>
                         {
                             (token) ? 
                                 <div onClick={event => applyHandler(event, id)} className={`${styles.buttonContainer} rounded`}>
-                                    Apply
+                                    درخواست
                                 </div>
 
                             :
-                            <div>Please <Link to="/login">login</Link> first, then you'll be able to apply.</div>
+                            <div>لطفا برای ثبت درخواست<Link to="/login"> وارد</Link> شوید.</div>
                         }
                     </div>
                 </div>

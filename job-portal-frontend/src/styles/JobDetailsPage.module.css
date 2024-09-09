@@ -1,3 +1,7 @@
+.page {
+    direction: rtl;
+}
+
 .content {
     display: flex;
     width: 100%;

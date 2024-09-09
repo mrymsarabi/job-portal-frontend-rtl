@@ -41,9 +41,9 @@ const CompanyDetails = () => {
                     <h1 className={styles.title}>{company.title}</h1>
                     <p className={styles.about}>{company.about_us}</p>
                     <div className={styles.details}>
-                        <p><strong>Founded:</strong> {company.founded_date}</p>
-                        <p><strong>Employees:</strong> {company.number_of_employees}</p>
-                        <p><strong>Created At:</strong> {new Date(company.created_at).toLocaleDateString()}</p>
+                        <p><strong>تاریخ تاسیس:</strong> {company.founded_date}</p>
+                        <p><strong>تعداد کارکنان</strong> {company.number_of_employees}</p>
+                        <p><strong>زمان ثبت شرکت در سایت:</strong> {new Date(company.created_at).toLocaleDateString()}</p>
                     </div>
                 </div>
             </div>
