@@ -1,0 +1,12 @@
+.page {
+    direction: rtl;
+}
+
+.chart {
+    width: 50%;
+    margin: 20px;
+}
+
+.chart h2 {
+    font-size: 24px;
+}

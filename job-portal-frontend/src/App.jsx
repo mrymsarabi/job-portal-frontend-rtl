@@ -27,6 +27,7 @@ import UpdateCompany from '/src/components/UpdateCompany';
 
 import ProtectedRoute from '/src/ProtectedRoute';
 import AdminLogin from '/src/components/Admins/AdminLogin';
+import AdminReports from './components/Admins/AdminReports';
 
 const App = () => {
   return (
@@ -54,6 +55,7 @@ const App = () => {
 
       {/* Admins Routes */}
       <Route path='/admin/login' element={<AdminLogin />} />
+      <Route path='/admin/reports' element={<AdminReports />} />
  
       <Route path="/*" element={<Navigate to="/home" replace />} />
     </Routes>

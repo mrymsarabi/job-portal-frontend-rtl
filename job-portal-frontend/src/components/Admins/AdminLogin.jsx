@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 
+//Modules and Libraries:
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+
 //APIs:
 import { adminLogin } from "/src/apis/admins/adminLogin";
 
@@ -12,6 +16,8 @@ import UnsuccessModal from "/src/components/Modals/UnsuccessModal";
 import styles from "/src/styles/Admins/AdminLogin.module.css";
 
 const AdminLogin = () => {
+    const navigate = useNavigate();
+
     const [data, setData] = useState({
         username: "",
         password: "",
@@ -41,7 +47,8 @@ const AdminLogin = () => {
         event.preventDefault();
         const response = await adminLogin(data);
         if(response.status === "success") {
-
+            Cookies.set("admin_token", response.token);
+            navigate('/admin/reports')
         } else {
             openUnsuccesModal();
         };
