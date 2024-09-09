@@ -4,8 +4,8 @@
 
 .content {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    justify-content: center;
+    align-items: center;
     flex: 1;
     margin-top: 70px;
 }
@@ -18,7 +18,7 @@
 .form {
     display: flex;
     flex-direction: column;
-    gap: 1rem; /* Add some space between the form elements */
+    gap: 1rem; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 10px;
     border-radius: 20px;
@@ -28,8 +28,8 @@
 
 .gridContainer {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns with equal width */
-    grid-template-rows: auto; /* 5 rows with equal height */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto; 
     gap: 20px;
 }
 

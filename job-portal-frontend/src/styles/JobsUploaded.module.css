@@ -5,8 +5,8 @@
 .content {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Horizontally centers the content */
-    padding: 20px; /* Adds padding around the entire content */
+    justify-content: center; 
+    padding: 20px; 
     margin-top: 70px;
 }
 
@@ -21,26 +21,26 @@
 }
 
 .listContainer {
-    width: 100%; /* Ensures the container takes the full width available */
-    max-width: 1200px; /* Restricts the maximum width to a reasonable size */
+    width: 100%; 
+    max-width: 1200px; 
 }
 
 .listHead, .listBody {
     box-shadow: 1px 4px 4px 0px rgba(89, 89, 89, 0.34);
-    width: 100%; /* Makes the tables take up the full width of the container */
-    margin: 10px 0; /* Adds margin between the tables */
-    padding: 15px; /* Adds padding inside the tables */
+    width: 100%; 
+    margin: 10px 0; 
+    padding: 15px; 
 }
 
 .thead th {
-    padding: 10px 5px; /* Padding around the table headers */
-    height: 80px; /* Set a fixed height for table headers */
+    padding: 10px 5px; 
+    height: 80px; 
 }
 
 .tbody td {
-    padding: 10px 5px; /* Padding around the table cells */
-    height: 80px; /* Set a fixed height for table rows */
-    vertical-align: middle; /* Vertically center the content within table cells */
+    padding: 10px 5px; 
+    height: 80px; 
+    vertical-align: middle; 
 }
 
 .tbody tr {

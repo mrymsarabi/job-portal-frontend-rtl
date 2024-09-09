@@ -2,44 +2,44 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; /* Centers the table and pagination horizontally */
-    width: 100%; /* Ensures the content takes up most of the screen width */
+    align-items: center; 
+    width: 100%; 
     margin-top: 70px;
 }
 
 .topContent {
-    width: 80%; /* Ensures the top content takes the full width of the container */
-    margin-bottom: 20px; /* Adds space below the heading */
-    text-align: left; /* Aligns the heading to the left */
+    width: 80%; 
+    margin-bottom: 20px; 
+    text-align: left; 
 }
 
 .topContent > h1 {
     font-size: 32px;
     font-weight: 400;
-    margin-left: 0; /* Aligns the header to the start of the table */
+    margin-left: 0;
     text-align: left;
 }
 
 .listContainer {
-    width: 80%; /* Ensures the container takes the full width available */
+    width: 80%;
 }
 
 .listHead, .listBody {
     box-shadow: 1px 4px 4px 0px rgba(89, 89, 89, 0.34);
-    width: 100%; /* Makes the tables take up the full width of the container */
-    margin: 10px 0; /* Adds margin between the tables */
-    padding: 15px; /* Adds padding inside the tables */
+    width: 100%; 
+    margin: 10px 0;
+    padding: 15px; 
 }
 
 .thead th {
-    padding: 10px 5px; /* Padding around the table headers */
-    height: 80px; /* Set a fixed height for table headers */
+    padding: 10px 5px;
+    height: 80px; 
 }
 
 .tbody td {
-    padding: 10px 5px; /* Padding around the table cells */
-    height: 80px; /* Set a fixed height for table rows */
-    vertical-align: middle; /* Vertically center the content within table cells */
+    padding: 10px 5px; 
+    height: 80px; 
+    vertical-align: middle; 
 }
 
 .tbody tr {
@@ -71,8 +71,8 @@
 }
 
 .pagination {
-    margin-top: 20px; /* Adds space above the pagination */
+    margin-top: 20px;
     display: flex;
-    justify-content: center; /* Centers the pagination */
-    width: 100%; /* Ensures the pagination takes the full width of the container */
+    justify-content: center;
+    width: 100%;
 }

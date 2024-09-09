@@ -15,8 +15,8 @@
 .listContainer {
     display: flex;
     flex-direction: row;
-    justify-content: space-between; /* Adjust as needed */
-    align-items: flex-start; /* Adjust as needed */
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .listContainer>div:first-child {
@@ -32,7 +32,7 @@
     height: 230px;
     margin: 20px;
     border-radius: 10px;
-    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    box-sizing: border-box;
     padding: 20px;
 }
 

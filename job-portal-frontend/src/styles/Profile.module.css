@@ -20,7 +20,7 @@
 }
 
 .personalInfo {
-    position: relative;  /* This makes the iconContainer position relative to personalInfo */
+    position: relative;
     box-shadow: 1px 4px 4px 0px rgba(89, 89, 89, 0.34);
     border-radius: 10px;
     padding: 20px;
